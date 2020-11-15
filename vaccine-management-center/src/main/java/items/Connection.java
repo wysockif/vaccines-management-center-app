@@ -3,7 +3,6 @@ package items;
 import java.util.Objects;
 
 public class Connection {
-
     private long producerId;
     private long pharmacyId;
     private int maxNumberOVaccines;
