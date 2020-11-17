@@ -5,25 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a2d0a13-90c8-459c-bd89-f559637367fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Errors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/InputFileReader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/OutputFileWriter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/items/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/output.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/structures/binaryheap/HeapInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/structures/binaryheap/MinHeap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/structures/queue/MinPriorityQueue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/structures/queue/PriorityQueueInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pl/wysockif/optimizer/structures/binaryheap/MinHeapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/pl/wysockif/optimizer/structures/queue/MinPriorityQueueTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/InputFile.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/items/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/items/Connections.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/Connections.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/items/Pharmacies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/Pharmacies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/items/Producers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/Producers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/InputFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/items/Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/items/Connection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/items/Connections.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/items/Connections.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/items/Pharmacies.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/items/Pharmacies.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/items/Producers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/items/Producers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Errors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/io/Errors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/InputFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/io/InputFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/Optimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/OutputFileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/io/OutputFileWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/connections/Connection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/Connections.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/connections/Connections.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/Pharmacies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/pharmacies/Pharmacies.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/Pharmacy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/pharmacies/Pharmacy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/producers/Producer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/Producers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/producers/Producers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Errors.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InputFileReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/OutputFileWriter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/Connection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/Connections.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/Item.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/Pharmacies.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/Pharmacy.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/Producer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/Producers.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/output.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +45,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -58,44 +72,134 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last.edited.regexp" value="adn | asda " />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/structures/heap" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="pl.wysockif.optimizer.structures.queue" />
+      <recent name="pl.wysockif.optimizer.structures.binaryheap" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\items" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\structures\heap" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="pl.wysockif.optimizer.structures" />
+    </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+  <component name="RunManager" selected="Application.Optimizer">
+    <configuration name="Optimizer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="pl.wysockif.optimizer.Optimizer" />
       <module name="vaccine-management-center" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.wysockif.optimizer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MinPriorityQueueTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="vaccine-management-center" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.wysockif.optimizer.structures.queue.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.wysockif.optimizer.structures.queue" />
+      <option name="MAIN_CLASS_NAME" value="pl.wysockif.optimizer.structures.queue.MinPriorityQueueTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MinPriorityQueueTest.should_returnMinimumValue_when_queueIsNotEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="vaccine-management-center" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.wysockif.optimizer.structures.queue.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.wysockif.optimizer.structures.queue" />
+      <option name="MAIN_CLASS_NAME" value="pl.wysockif.optimizer.structures.queue.MinPriorityQueueTest" />
+      <option name="METHOD_NAME" value="should_returnMinimumValue_when_queueIsNotEmpty" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MinPriorityQueueTest.should_returnTrue_when_queueIsNotEmpty" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="vaccine-management-center" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.wysockif.optimizer.structures.queue.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.wysockif.optimizer.structures.queue" />
+      <option name="MAIN_CLASS_NAME" value="pl.wysockif.optimizer.structures.queue.MinPriorityQueueTest" />
+      <option name="METHOD_NAME" value="should_returnTrue_when_queueIsNotEmpty" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MinPriorityQueueTest.should_throwIllegalArgumentException_when_thereIsGettingMinimumFromEmptyQueue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="vaccine-management-center" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="pl.wysockif.optimizer.structures.queue.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="pl.wysockif.optimizer.structures.queue" />
+      <option name="MAIN_CLASS_NAME" value="pl.wysockif.optimizer.structures.queue.MinPriorityQueueTest" />
+      <option name="METHOD_NAME" value="should_throwIllegalArgumentException_when_thereIsGettingMinimumFromEmptyQueue" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Optimizer" />
+        <item itemvalue="JUnit.MinPriorityQueueTest.should_throwIllegalArgumentException_when_thereIsGettingMinimumFromEmptyQueue" />
+        <item itemvalue="JUnit.MinPriorityQueueTest" />
+        <item itemvalue="JUnit.MinPriorityQueueTest.should_returnMinimumValue_when_queueIsNotEmpty" />
+        <item itemvalue="JUnit.MinPriorityQueueTest.should_returnTrue_when_queueIsNotEmpty" />
       </list>
     </recent_temporary>
   </component>
@@ -113,6 +217,10 @@
       <workItem from="1605385296293" duration="11075000" />
       <workItem from="1605396994457" duration="320000" />
       <workItem from="1605433866836" duration="13243000" />
+      <workItem from="1605512776617" duration="111000" />
+      <workItem from="1605515138335" duration="1353000" />
+      <workItem from="1605623446420" duration="3567000" />
+      <workItem from="1605627549058" duration="7351000" />
     </task>
     <servers />
   </component>
@@ -128,50 +236,62 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605102696535" />
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1605440177186">
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1605636206292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605440177186" />
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605636206292" />
     <state x="743" y="385" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1605444984936">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="743" y="385" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605444984936" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605098632313">
+    <state x="529" y="75" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605627433507">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605098632313" />
-    <state width="1877" height="249" key="GridCell.Tab.0.bottom" timestamp="1605447240052">
+    <state x="529" y="75" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605627433507" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605624488515">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="249" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605447240052" />
-    <state width="1493" height="282" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605296637330" />
-    <state width="1877" height="249" key="GridCell.Tab.0.center" timestamp="1605447240052">
+    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605624488515" />
+    <state width="1877" height="248" key="GridCell.Tab.0.bottom" timestamp="1605637769325">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="249" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605447240052" />
-    <state width="1493" height="282" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605296637330" />
-    <state width="1877" height="249" key="GridCell.Tab.0.left" timestamp="1605447240052">
+    <state width="1877" height="248" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605637769325" />
+    <state width="1493" height="185" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605512887913" />
+    <state width="1877" height="248" key="GridCell.Tab.0.center" timestamp="1605637769325">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="249" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605447240052" />
-    <state width="1493" height="282" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605296637330" />
-    <state width="1877" height="249" key="GridCell.Tab.0.right" timestamp="1605447240052">
+    <state width="1877" height="248" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605637769325" />
+    <state width="1493" height="185" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605512887913" />
+    <state width="1877" height="248" key="GridCell.Tab.0.left" timestamp="1605637769325">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="249" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605447240052" />
-    <state width="1493" height="282" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605296637330" />
+    <state width="1877" height="248" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605637769325" />
+    <state width="1493" height="185" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605512887913" />
+    <state width="1877" height="248" key="GridCell.Tab.0.right" timestamp="1605637769325">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="248" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605637769325" />
+    <state width="1493" height="185" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605512887913" />
     <state x="540" y="263" key="IDE.errors.dialog" timestamp="1605101284765">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="263" key="IDE.errors.dialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605101284765" />
+    <state x="490" y="175" key="Maven.ArtifactSearchDialog" timestamp="1605627680072">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="490" y="175" key="Maven.ArtifactSearchDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605627680072" />
+    <state x="701" y="266" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1605633865906">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="701" y="266" key="com.intellij.testIntegration.createTest.CreateTestDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605633865906" />
     <state x="-1612" y="0" width="1242" height="645" maximized="true" key="dock-window-1" timestamp="1605436433253">
       <screen x="-1920" y="0" width="1536" height="832" />
     </state>
     <state x="-1612" y="0" width="1242" height="645" maximized="true" key="dock-window-1/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605436433253" />
-    <state x="-1810" y="0" width="1242" height="645" maximized="true" key="dock-window-2" timestamp="1605444276002">
+    <state x="-1810" y="0" width="1242" height="645" maximized="true" key="dock-window-2" timestamp="1605623756182">
       <screen x="-1920" y="0" width="1536" height="832" />
     </state>
-    <state x="-1810" y="0" width="1242" height="645" maximized="true" key="dock-window-2/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605444276002" />
+    <state x="-1810" y="0" width="1242" height="645" maximized="true" key="dock-window-2/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605623756182" />
     <state x="1218" y="453" key="extract.method.dialog" timestamp="1605442604236">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -184,9 +304,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605292079353" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605386404284">
+    <state x="752" y="378" key="scopes" timestamp="1605623858199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605386404284" />
+    <state x="752" y="378" key="scopes/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605623858199" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605625404309">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605625404309" />
   </component>
 </project>
