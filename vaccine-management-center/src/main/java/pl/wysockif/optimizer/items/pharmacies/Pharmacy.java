@@ -5,12 +5,12 @@ import java.util.Objects;
 public class Pharmacy {
     private long id;
     private String name;
-    private int dailyRequirement;
+    private int dailyDemand;
 
-    public Pharmacy(long id, String name, int dailyRequirement) {
+    public Pharmacy(long id, String name, int dailyDemand) {
         this.id = id;
         this.name = name;
-        this.dailyRequirement = dailyRequirement;
+        this.dailyDemand = dailyDemand;
     }
 
     @Override
@@ -43,11 +43,11 @@ public class Pharmacy {
     }
 
     public int getDailyRequirement() {
-        return dailyRequirement;
+        return dailyDemand;
     }
 
     public void setDailyRequirement(int dailyRequirement) {
-        this.dailyRequirement = dailyRequirement;
+        this.dailyDemand = dailyRequirement;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class Pharmacy {
         return "Pharmacy{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", dailyRequirement=" + dailyRequirement +
+                ", dailyRequirement=" + dailyDemand +
                 '}';
     }
 }

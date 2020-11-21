@@ -48,7 +48,7 @@ public class OutputFileWriter {
             printWriter = new PrintWriter(outputFile);
         }catch (FileNotFoundException e){
             String message = "[Plik wyjściowy: " + fileName + "]. Plik nie został znaleziony.";
-                    Errors.handleTheError(Errors.OUTPUT_FILE_NOT_FOUNT, message);
+                    ErrorsHandler.handleTheError(ErrorsHandler.OUTPUT_FILE_NOT_FOUNT, message);
         }
         return printWriter;
     }
