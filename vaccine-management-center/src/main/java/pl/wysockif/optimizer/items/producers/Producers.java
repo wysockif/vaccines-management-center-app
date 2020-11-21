@@ -1,14 +1,14 @@
 package pl.wysockif.optimizer.items.producers;
 
 import org.jetbrains.annotations.NotNull;
-import pl.wysockif.optimizer.items.Item;
+import pl.wysockif.optimizer.items.Items;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
-public class Producers implements Item, Iterable<Producer> {
+public class Producers implements Items, Iterable<Producer> {
     private final List<Producer> producers;
 
     public Producers() {

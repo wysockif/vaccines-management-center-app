@@ -1,7 +1,7 @@
 package pl.wysockif.optimizer.io;
 
 import pl.wysockif.optimizer.items.connections.Connections;
-import pl.wysockif.optimizer.items.Item;
+import pl.wysockif.optimizer.items.Items;
 import pl.wysockif.optimizer.items.pharmacies.Pharmacies;
 import pl.wysockif.optimizer.items.pharmacies.Pharmacy;
 import pl.wysockif.optimizer.items.producers.Producer;
@@ -51,7 +51,7 @@ public class InputFileReader {
             String missing = findMissingConnection(connections);
             String message = "[Plik wejściowy: " + fileName + "]. Nie znaleziono wystarczającej liczby połączeń." +
                     " Brakujące połączenie: " + missing + ".";
-            Errors.handleTheError(Errors.INSUFFICIENT_DATA, message);
+            ErrorsHandler.handleTheError(ErrorsHandler.INSUFFICIENT_DATA, message);
         }
     }
 
@@ -68,7 +68,7 @@ public class InputFileReader {
         return missing;
     }
 
-    public Item readDataFromFile(Scanner scanner, Item item) {
+    public Items readDataFromFile(Scanner scanner, Items item) {
         while (scanner.hasNext()) {
             String line = scanner.nextLine();
             lineNumber++;
@@ -80,7 +80,7 @@ public class InputFileReader {
         return item;
     }
 
-    private void loadSingleItem(Item item, String line) {
+    private void loadSingleItem(Items item, String line) {
         String[] attributes = line.split(Pattern.quote(" | "));
         try {
             Object[] convertedAttributes = item.convertAttributes(attributes);
@@ -88,7 +88,7 @@ public class InputFileReader {
             item.addNewElement(convertedAttributes);
         } catch (DataFormatException e) {
             String message = "[Plik wejściowy: " + fileName + ", nr linii: " + lineNumber + "]. " + e.getMessage() +".";
-            Errors.handleTheError(Errors.INCORRECT_FORMAT, message);
+            ErrorsHandler.handleTheError(ErrorsHandler.INCORRECT_FORMAT, message);
         }
     }
 
@@ -100,7 +100,7 @@ public class InputFileReader {
         }
         if (headline == null || !isHeadlineCorrect(headline)) {
             String message = "[Plik wejściowy: " + fileName + ", nr linii: " + lineNumber + "]. " + "Niepoprawny nagłówek.";
-            Errors.handleTheError(Errors.INCORRECT_HEADLINE, message);
+            ErrorsHandler.handleTheError(ErrorsHandler.INCORRECT_HEADLINE, message);
         }
     }
 
@@ -110,7 +110,7 @@ public class InputFileReader {
             scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
             String message = "[Plik wejściowy: " + fileName + "]. Plik nie został znaleziony.";
-            Errors.handleTheError(Errors.INPUT_FILE_NOT_FOUND, message);
+            ErrorsHandler.handleTheError(ErrorsHandler.INPUT_FILE_NOT_FOUND, message);
         }
         return scanner;
     }

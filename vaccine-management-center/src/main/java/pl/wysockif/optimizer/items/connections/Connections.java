@@ -1,7 +1,7 @@
 package pl.wysockif.optimizer.items.connections;
 
 import org.jetbrains.annotations.NotNull;
-import pl.wysockif.optimizer.items.Item;
+import pl.wysockif.optimizer.items.Items;
 import pl.wysockif.optimizer.items.pharmacies.Pharmacies;
 import pl.wysockif.optimizer.items.producers.Producers;
 
@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
-public class Connections implements Item, Iterable<Connection> {
+public class Connections implements Items, Iterable<Connection> {
     private final List<Connection> connections;
     private final Producers producers;
     private final Pharmacies pharmacies;

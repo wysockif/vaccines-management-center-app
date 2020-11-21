@@ -1,14 +1,14 @@
 package pl.wysockif.optimizer.items.pharmacies;
 
 import org.jetbrains.annotations.NotNull;
-import pl.wysockif.optimizer.items.Item;
+import pl.wysockif.optimizer.items.Items;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
-public class Pharmacies implements Item, Iterable<Pharmacy> {
+public class Pharmacies implements Items, Iterable<Pharmacy> {
     private final List<Pharmacy> pharmacies;
 
     public Pharmacies() {

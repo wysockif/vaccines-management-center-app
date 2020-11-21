@@ -2,7 +2,7 @@ package pl.wysockif.optimizer.io;
 
 import static java.lang.System.exit;
 
-public class Errors {
+public class ErrorsHandler {
     public static final int INPUT_FILE_NOT_FOUND = -1;
     public static final int INCORRECT_HEADLINE = -2;
     public static final int INCORRECT_FORMAT = -3;
