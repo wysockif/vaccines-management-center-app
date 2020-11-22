@@ -25,14 +25,6 @@ public class Pharmacies implements Items, Iterable<Pharmacy> {
         return false;
     }
 
-//    public Pharmacy getPharmacy(long id) {
-//        for (Pharmacy p : pharmacies) {
-//            if (p.getId() == id)
-//                return p;
-//        }
-//        return null;
-//    }
-
     public int getNumberOfPharmacies() {
         return pharmacies.size();
     }
@@ -82,5 +74,9 @@ public class Pharmacies implements Items, Iterable<Pharmacy> {
 
     public int getPharmacyIndexById(long pharmacyId) {
         return pharmacies.indexOf(new Pharmacy(pharmacyId, "", 0));
+    }
+
+    public Pharmacy getPharmacyById(long pharmacyId) {
+        return pharmacies.get(getPharmacyIndexById(pharmacyId));
     }
 }

@@ -3,6 +3,8 @@ package pl.wysockif.optimizer.items.connections;
 import org.jetbrains.annotations.NotNull;
 import pl.wysockif.optimizer.items.Items;
 import pl.wysockif.optimizer.items.pharmacies.Pharmacies;
+import pl.wysockif.optimizer.items.pharmacies.Pharmacy;
+import pl.wysockif.optimizer.items.producers.Producer;
 import pl.wysockif.optimizer.items.producers.Producers;
 
 import java.util.ArrayList;
@@ -82,14 +84,16 @@ public class Connections implements Items, Iterable<Connection> {
         long pharmacyId = (long) attributes[1];
         int maxNumberOVaccines = (int) attributes[2];
         double price = (double) attributes[3];
+        Producer producer = producers.getProducerById(producerId);
+        Pharmacy pharmacy = pharmacies.getPharmacyById(pharmacyId);
 
-        Connection connection = new Connection(producerId, pharmacyId, maxNumberOVaccines, price);
+        Connection connection = new Connection(producer, pharmacy, maxNumberOVaccines, price);
         connections.add(connection);
     }
 
     private void CheckWhetherHasAlreadyContain(long producerId, long pharmacyId) throws DataFormatException {
         for (Connection connection : connections) {
-            if (connection.getProducerId() == producerId && connection.getPharmacyId() == pharmacyId) {
+            if (connection.getProducer().getId() == producerId && connection.getPharmacy().getId() == pharmacyId) {
                 String message = "Nie można dodawać więcej niż jednego połączenia " +
                         "z tym samym id producenta i apteki";
                 throw new DataFormatException(message);
@@ -107,16 +111,15 @@ public class Connections implements Items, Iterable<Connection> {
 
     public boolean contain(long producerId, long pharmacyId) {
         for (Connection connection : connections) {
-            if (connection.getProducerId() == producerId && connection.getPharmacyId() == pharmacyId) {
+            if (connection.getProducer().getId() == producerId && connection.getPharmacy().getId() == pharmacyId) {
                 return true;
             }
         }
         return false;
     }
 
-    @NotNull
     @Override
-    public Iterator<Connection> iterator() {
+    public @NotNull Iterator<Connection> iterator() {
         return connections.iterator();
     }
 

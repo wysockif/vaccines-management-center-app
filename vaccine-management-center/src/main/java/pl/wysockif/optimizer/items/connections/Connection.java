@@ -1,16 +1,19 @@
 package pl.wysockif.optimizer.items.connections;
 
+import pl.wysockif.optimizer.items.pharmacies.Pharmacy;
+import pl.wysockif.optimizer.items.producers.Producer;
+
 import java.util.Objects;
 
 public class Connection {
-    private long producerId;
-    private long pharmacyId;
-    private int maxNumberOVaccines;
-    private double price;
+    private final Producer producer;
+    private final Pharmacy pharmacy;
+    private final int maxNumberOVaccines;
+    private final double price;
 
-    public Connection(long producerId, long pharmacyId, int maxNumberOVaccines, double price) {
-        this.producerId = producerId;
-        this.pharmacyId = pharmacyId;
+    public Connection(Producer producer, Pharmacy pharmacy, int maxNumberOVaccines, double price) {
+        this.producer = producer;
+        this.pharmacy = pharmacy;
         this.maxNumberOVaccines = maxNumberOVaccines;
         this.price = price;
     }
@@ -20,55 +23,29 @@ public class Connection {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Connection that = (Connection) o;
-        return producerId == that.producerId &&
-                pharmacyId == that.pharmacyId;
+        return Objects.equals(producer, that.producer) &&
+                Objects.equals(pharmacy, that.pharmacy);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(producerId, pharmacyId);
+        return Objects.hash(producer, pharmacy);
     }
 
-    public long getProducerId() {
-        return producerId;
+    public Producer getProducer() {
+        return producer;
     }
 
-    public void setProducerId(long producerId) {
-        this.producerId = producerId;
-    }
-
-    public long getPharmacyId() {
-        return pharmacyId;
-    }
-
-    public void setPharmacyId(long pharmacyId) {
-        this.pharmacyId = pharmacyId;
+    public Pharmacy getPharmacy() {
+        return pharmacy;
     }
 
     public int getMaxNumberOVaccines() {
         return maxNumberOVaccines;
     }
 
-    public void setMaxNumberOVaccines(int maxNumberOVaccines) {
-        this.maxNumberOVaccines = maxNumberOVaccines;
-    }
-
     public double getPrice() {
         return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
-        return "Connection{" +
-                "producerId=" + producerId +
-                ", pharmacyId=" + pharmacyId +
-                ", maxNumberOVaccines=" + maxNumberOVaccines +
-                ", price=" + price +
-                '}';
     }
 
 }

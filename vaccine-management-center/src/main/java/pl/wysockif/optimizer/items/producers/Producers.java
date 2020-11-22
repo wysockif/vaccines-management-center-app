@@ -28,14 +28,6 @@ public class Producers implements Items, Iterable<Producer> {
         return producers.size();
     }
 
-    public Producer getProducer(long id) {
-        for (Producer p : producers) {
-            if (p.getId() == id)
-                return p;
-        }
-        return null;
-    }
-
 
     @Override
     public Object[] convertAttributes(String[] attributes) throws DataFormatException {
@@ -80,5 +72,9 @@ public class Producers implements Items, Iterable<Producer> {
 
     public int getProducerIndexById(long producerId) {
         return producers.indexOf(new Producer(producerId, "",0));
+    }
+
+    public Producer getProducerById(long producerId) {
+        return producers.get(getProducerIndexById(producerId));
     }
 }
