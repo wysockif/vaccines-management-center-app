@@ -32,11 +32,12 @@ public class MinCostMaxFlowAlgorithm {
     private void addConnectionsToGraph(Graph graph) {
         for (int i = 0; i < connections.getNumberOfConnections(); i++) {
             Connection connection = connections.getConnectionByIndex(i);
-            int producerIndex = producers.getProducerIndexById(connection.getProducerId());
-            int pharmacyIndex = pharmacies.getPharmacyIndexById(connection.getPharmacyId());
+            int producerIndex = producers.getProducerIndexById(connection.getProducer().getId());
+            int pharmacyIndex = pharmacies.getPharmacyIndexById(connection.getPharmacy().getId());
             double price = connection.getPrice();
             int maxNumberOfVaccines = connection.getMaxNumberOVaccines();
-            graph.addEdge(producerIndex + 1, pharmacyIndex + producers.getNumberOfProducers() + 1, maxNumberOfVaccines, price);
+            int numberOfProducers = producers.getNumberOfProducers();
+            graph.addEdge(producerIndex + 1, pharmacyIndex + numberOfProducers + 1, maxNumberOfVaccines, price);
         }
     }
 

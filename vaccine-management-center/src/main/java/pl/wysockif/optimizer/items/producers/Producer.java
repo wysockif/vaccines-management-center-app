@@ -3,9 +3,9 @@ package pl.wysockif.optimizer.items.producers;
 import java.util.Objects;
 
 public class Producer {
-    private long id;
-    private String name;
-    private int dailyProduction;
+    private final long id;
+    private final String name;
+    private final int dailyProduction;
 
     public Producer(long id, String name, int dailyProduction) {
         this.id = id;
@@ -30,24 +30,8 @@ public class Producer {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getDailyProduction() {
         return dailyProduction;
-    }
-
-    public void setDailyProduction(int dailyProduction) {
-        this.dailyProduction = dailyProduction;
     }
 
 
