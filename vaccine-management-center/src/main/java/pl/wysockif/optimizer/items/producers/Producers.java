@@ -16,12 +16,7 @@ public class Producers implements Items, Iterable<Producer> {
     }
 
     public boolean alreadyContains(long id) {
-        for (Producer p : producers) {
-            if (p.getId() == id) {
-                return true;
-            }
-        }
-        return false;
+        return producers.contains(new Producer(id, "", 0));
     }
 
     public int getNumberOfProducers() {

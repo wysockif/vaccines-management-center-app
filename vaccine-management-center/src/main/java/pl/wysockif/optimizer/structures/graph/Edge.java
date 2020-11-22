@@ -5,10 +5,10 @@ public class Edge {
     private int capacity;
     private double price;
 
-    public Edge(int capacity, double price) {
+    public Edge(int flow, int capacity, double price) {
+        this.flow = flow;
         this.capacity = capacity;
         this.price = price;
-        flow = 0;
     }
 
     public int getFlow() {
@@ -41,5 +41,9 @@ public class Edge {
                 + flow + "/"
                 + capacity +
                 ", " + price );
+    }
+
+    public void increaseFlow(int flow) {
+        this.flow += flow;
     }
 }
