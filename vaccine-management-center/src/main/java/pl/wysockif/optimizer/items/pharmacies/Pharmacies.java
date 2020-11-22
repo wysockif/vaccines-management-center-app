@@ -16,15 +16,6 @@ public class Pharmacies implements Items, Iterable<Pharmacy> {
     }
 
 
-    public boolean alreadyContains(long pharmacyId) {
-        for (Pharmacy p : pharmacies) {
-            if (p.getId() == pharmacyId) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public int getNumberOfPharmacies() {
         return pharmacies.size();
     }
@@ -71,6 +62,10 @@ public class Pharmacies implements Items, Iterable<Pharmacy> {
         return pharmacies.get(index);
     }
 
+
+    public boolean alreadyContains(long pharmacyId) {
+        return pharmacies.contains(new Pharmacy(pharmacyId, "", 0));
+    }
 
     public int getPharmacyIndexById(long pharmacyId) {
         return pharmacies.indexOf(new Pharmacy(pharmacyId, "", 0));

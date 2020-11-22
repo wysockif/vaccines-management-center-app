@@ -10,11 +10,11 @@ public class WeightedGraph implements Graph {
     }
 
     @Override
-    public void addEdge(int from, int to,int capacity, double price) {
-        if (!areVerticesExist(from, to)) {
+    public void addEdge(int from, int to, int flow, int capacity, double price) {
+        if (areVerticesExist(from, to)) {
             throw new IllegalArgumentException("Conajmniej jeden z podanych wierzchołków nie istnieje");
         }
-        Edge edge = new Edge(capacity, price);
+        Edge edge = new Edge(flow, capacity, price);
         graph[from][to] = edge;
     }
 
@@ -38,13 +38,13 @@ public class WeightedGraph implements Graph {
     }
 
     @Override
-    public double getFlowOfEdge(int from, int to) {
+    public int getFlowOfEdge(int from, int to) {
         checkCorrectnessOfOperation(from, to, "Nie można pobrać przepływu z nieistniejącej krawędzi");
         return graph[from][to].getFlow();
     }
 
     @Override
-    public double getCapacityOfEdge(int from, int to) {
+    public int getCapacityOfEdge(int from, int to) {
         checkCorrectnessOfOperation(from, to, "Nie można pobrać przepustowości z nieistniejącej krawędzi");
         return graph[from][to].getCapacity();
     }
@@ -53,18 +53,19 @@ public class WeightedGraph implements Graph {
     public void setFlowOfEdge(int from, int to, int flow) {
         checkCorrectnessOfOperation(from, to, "Nie można ustawić przepływu w nieistniejącej krawędzi");
         graph[from][to].setFlow(flow);
+
     }
 
 
     @Override
     public void setCapacityOfEdge(int from, int to, int capacity) {
-        checkCorrectnessOfOperation(from, to, "Nie można ustawić przepływu w nieistniejącej krawędzi");
+        checkCorrectnessOfOperation(from, to, "Nie można ustawić przepustowości w nieistniejącej krawędzi");
         graph[from][to].setCapacity(capacity);
     }
 
     @Override
     public void setPriceOfEdge(int from, int to, double price) {
-        checkCorrectnessOfOperation(from, to, "Nie można ustawić przepływu w nieistniejącej krawędzi");
+        checkCorrectnessOfOperation(from, to, "Nie można ustawić ceny w nieistniejącej krawędzi");
         graph[from][to].setPrice(price);
     }
 
@@ -73,8 +74,20 @@ public class WeightedGraph implements Graph {
         return numberOfVertices;
     }
 
+    @Override
+    public void increaseFlowOfEdge(int from, int to, int flow) {
+        checkCorrectnessOfOperation(from, to, "Nie można zwwiększyć przepływu w nieistniejącej krawędzi");
+        graph[from][to].increaseFlow(flow);
+    }
+
+    @Override
+    public void removeEdge(int from, int to) {
+        checkCorrectnessOfOperation(from, to, "Nie można skasować nieistniejącej krawędzi");
+        graph[from][to] = null;
+    }
+
     private boolean areVerticesExist(int from, int to) {
-        return (from < numberOfVertices && to < numberOfVertices);
+        return (from >= numberOfVertices || to >= numberOfVertices);
     }
 
     @Override

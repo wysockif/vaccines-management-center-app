@@ -1,5 +1,7 @@
 package pl.wysockif.optimizer;
 
+import pl.wysockif.optimizer.algorithms.flow.EdmondsKarpAlgorithm;
+import pl.wysockif.optimizer.algorithms.path.BellmanFordAlgorithm;
 import pl.wysockif.optimizer.algorithms.MinCostMaxFlowAlgorithm;
 import pl.wysockif.optimizer.io.InputFileReader;
 import pl.wysockif.optimizer.items.connections.Connections;
@@ -18,7 +20,13 @@ public class Optimizer {
         pharmacies = inputFileReader.getPharmacies();
         connections = inputFileReader.getConnections();
         MinCostMaxFlowAlgorithm algorithm = new MinCostMaxFlowAlgorithm(producers, pharmacies, connections);
-        System.out.println(algorithm.createGraph());
+        BellmanFordAlgorithm bellmanFordAlgorithm = new BellmanFordAlgorithm();
+
+        EdmondsKarpAlgorithm edmondsKarpAlgorithm = new EdmondsKarpAlgorithm(bellmanFordAlgorithm);
+        edmondsKarpAlgorithm.findMaxFlow(algorithm.createGraph());
+
+
+//        System.out.println();
 //        OutputFileWriter outputFileWriter = new OutputFileWriter("src/main/resources/output.txt");
     }
 
