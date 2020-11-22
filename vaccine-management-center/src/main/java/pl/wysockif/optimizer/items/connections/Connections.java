@@ -85,7 +85,6 @@ public class Connections implements Items, Iterable<Connection> {
 
         Connection connection = new Connection(producerId, pharmacyId, maxNumberOVaccines, price);
         connections.add(connection);
-        System.out.println(connection);
     }
 
     private void CheckWhetherHasAlreadyContain(long producerId, long pharmacyId) throws DataFormatException {
@@ -119,5 +118,13 @@ public class Connections implements Items, Iterable<Connection> {
     @Override
     public Iterator<Connection> iterator() {
         return connections.iterator();
+    }
+
+    public int getNumberOfConnections() {
+        return connections.size();
+    }
+
+    public Connection getConnectionByIndex(int index) {
+        return connections.get(index);
     }
 }

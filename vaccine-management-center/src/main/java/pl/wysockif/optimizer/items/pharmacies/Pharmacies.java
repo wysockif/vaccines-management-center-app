@@ -66,12 +66,21 @@ public class Pharmacies implements Items, Iterable<Pharmacy> {
         int dailyRequirement = (int) attributes[2];
         Pharmacy pharmacy = new Pharmacy(id, name, dailyRequirement);
         pharmacies.add(pharmacy);
-        System.out.println(pharmacy);
     }
 
     @NotNull
     @Override
     public Iterator iterator() {
         return pharmacies.iterator();
+    }
+
+
+    public Pharmacy getPharmacyByIndex(int index) {
+        return pharmacies.get(index);
+    }
+
+
+    public int getPharmacyIndexById(long pharmacyId) {
+        return pharmacies.indexOf(new Pharmacy(pharmacyId, "", 0));
     }
 }

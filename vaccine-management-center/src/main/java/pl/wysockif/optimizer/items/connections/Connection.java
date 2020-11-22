@@ -70,4 +70,5 @@ public class Connection {
                 ", price=" + price +
                 '}';
     }
+
 }

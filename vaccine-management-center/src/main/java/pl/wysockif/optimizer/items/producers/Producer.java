@@ -50,6 +50,7 @@ public class Producer {
         this.dailyProduction = dailyProduction;
     }
 
+
     @Override
     public String toString() {
         return "Producer{" +
