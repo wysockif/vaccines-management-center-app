@@ -1,6 +1,6 @@
 package pl.wysockif.optimizer;
 
-import pl.wysockif.optimizer.io.OutputFileWriter;
+import pl.wysockif.optimizer.algorithms.MinCostMaxFlowAlgorithm;
 import pl.wysockif.optimizer.io.InputFileReader;
 import pl.wysockif.optimizer.items.connections.Connections;
 import pl.wysockif.optimizer.items.pharmacies.Pharmacies;
@@ -12,16 +12,14 @@ public class Optimizer {
     private Connections connections;
 
 
-    public Optimizer(){
-//        InputFile inputFile = new InputFile("src/main/resources/data.txt");
-//        inputFile.loadDataFromFile();
-//        producers = inputFile.getProducers();
-//        pharmacies = inputFile.getPharmacies();
-//        connections = inputFile.getConnections();
+    public Optimizer() {
         InputFileReader inputFileReader = new InputFileReader("src/main/resources/data.txt");
-        OutputFileWriter outputFileWriter = new OutputFileWriter("src/main/resources/output.txt");
-
-
+        producers = inputFileReader.getProducers();
+        pharmacies = inputFileReader.getPharmacies();
+        connections = inputFileReader.getConnections();
+        MinCostMaxFlowAlgorithm algorithm = new MinCostMaxFlowAlgorithm(producers, pharmacies, connections);
+        System.out.println(algorithm.createGraph());
+//        OutputFileWriter outputFileWriter = new OutputFileWriter("src/main/resources/output.txt");
     }
 
     public static void main(String[] args) {

@@ -3,6 +3,7 @@ package pl.wysockif.optimizer.items.pharmacies;
 import java.util.Objects;
 
 public class Pharmacy {
+
     private long id;
     private String name;
     private int dailyDemand;
@@ -42,13 +43,14 @@ public class Pharmacy {
         this.name = name;
     }
 
-    public int getDailyRequirement() {
+    public int getDailyDemand() {
         return dailyDemand;
     }
 
-    public void setDailyRequirement(int dailyRequirement) {
+    public void setDailyDemand(int dailyRequirement) {
         this.dailyDemand = dailyRequirement;
     }
+
 
     @Override
     public String toString() {

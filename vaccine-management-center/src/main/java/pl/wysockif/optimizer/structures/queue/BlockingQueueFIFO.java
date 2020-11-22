@@ -12,6 +12,9 @@ public class BlockingQueueFIFO<T extends Comparable<T>> implements QueueFIFO<T> 
 
     @Override
     public boolean push(T item) {
+        if(item == null){
+            throw new IllegalArgumentException("Nie można wkładać do kolejki niezainicjalizowanych elementów!");
+        }
         if (queue.contains(item))
             return true;
         return queue.add(item);
@@ -37,5 +40,9 @@ public class BlockingQueueFIFO<T extends Comparable<T>> implements QueueFIFO<T> 
             throw new IllegalArgumentException("Nie można zwrócić pierwszego elementu gdy kolejka jest pusta");
         }
         return queue.get(0);
+    }
+
+    public int size() {
+        return queue.size();
     }
 }

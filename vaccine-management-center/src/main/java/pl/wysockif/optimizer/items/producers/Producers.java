@@ -66,12 +66,19 @@ public class Producers implements Items, Iterable<Producer> {
         int dailyProduction = (int) attributes[2];
         Producer producer = new Producer(id, name, dailyProduction);
         producers.add(producer);
-        System.out.println(producer);
     }
 
     @NotNull
     @Override
     public Iterator<Producer> iterator() {
         return producers.iterator();
+    }
+
+    public Producer getProducerByIndex(int index) {
+        return producers.get(index);
+    }
+
+    public int getProducerIndexById(long producerId) {
+        return producers.indexOf(new Producer(producerId, "",0));
     }
 }
