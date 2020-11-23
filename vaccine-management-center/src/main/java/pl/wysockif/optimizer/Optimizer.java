@@ -20,16 +20,19 @@ public class Optimizer {
 
 
     public Optimizer() {
-        InputFileReader inputFileReader = new InputFileReader("src/main/resources/data.txt");
+        System.out.println("ODCZYTYWANIE DANYCH");
+        InputFileReader inputFileReader = new InputFileReader("src/main/resources/dataa.txt");
         producers = inputFileReader.getProducers();
         pharmacies = inputFileReader.getPharmacies();
         connections = inputFileReader.getConnections();
+        System.out.println("OBLICZANIE");
         MinCostMaxFlowAlgorithm algorithm = new MinCostMaxFlowAlgorithm(producers, pharmacies, connections);
         BellmanFordAlgorithm bellmanFordAlgorithm = new BellmanFordAlgorithm();
 
         EdmondsKarpAlgorithm edmondsKarpAlgorithm = new EdmondsKarpAlgorithm(bellmanFordAlgorithm);
         Graph finalGraph = edmondsKarpAlgorithm.findMaxFlow(algorithm.createGraph());
         List<Deal> deals = algorithm.loadResults(finalGraph);
+        System.out.println("ZAPISYWANIE");
         OutputFileWriter outputFileWriter = new OutputFileWriter("src/main/resources/output.txt");
         outputFileWriter.saveDeals(deals);
     }

@@ -1,6 +1,7 @@
-Post-Covid Sp. z o.o. -> CentMedEko Nowogrodzka [Koszt = 300 * 100.0 = 30000.0 zł]
-Eko Polska 2020       -> CentMedEko Nowogrodzka [Koszt = 450 * 70.0 = 31500.0 zł]
-BioTech 2.0           -> CentMedEko Nowogrodzka [Koszt = 450 * 90.99 = 40945.5 zł]
-Eko Polska 2020       -> CentMedEko 24h [Koszt = 240 * 80.0 = 19200.0 zł]
-BioTech 2.0           -> CentMedEko 24h [Koszt = 450 * 70.0 = 31500.0 zł]
-Post-Covid Sp. z o.o. -> CentMedEko Centrala [Koszt = 450 * 80.0 = 36000.0 zł]
+Hegmann Inc                  -> Apt [Koszt = 100 * 94.0 = 9400.0 zł]
+Runolfsson Steuber and Lakin -> Wintheiser PLC [Koszt = 200 * 79.0 = 15800.0 zł]
+Russel-Flatley               -> Moen Marks and Schaefer [Koszt = 105 * 61.0 = 6405.0 zł]
+Wolf-Huels                   -> Bednar Welch and Baumbach [Koszt = 212 * 63.0 = 13356.0 zł]
+Runolfsson Steuber and Lakin -> Labadie Mante and Hackett [Koszt = 183 * 65.0 = 11895.0 zł]
+Runolfsson Steuber and Lakin -> Cremin Herman and Beatty [Koszt = 48 * 65.0 = 3120.0 zł]
+Opłaty całkowite: 59976.0

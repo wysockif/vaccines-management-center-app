@@ -10,11 +10,11 @@ public class WeightedGraph implements Graph {
     }
 
     @Override
-    public void addEdge(int from, int to, int flow, int capacity, double price) {
+    public void addEdge(int from, int to, int capacity, double price) {
         if (areVerticesExist(from, to)) {
             throw new IllegalArgumentException("Conajmniej jeden z podanych wierzchołków nie istnieje");
         }
-        Edge edge = new Edge(flow, capacity, price);
+        Edge edge = new Edge(capacity, price);
         graph[from][to] = edge;
     }
 
@@ -37,23 +37,11 @@ public class WeightedGraph implements Graph {
         }
     }
 
-    @Override
-    public int getFlowOfEdge(int from, int to) {
-        checkCorrectnessOfOperation(from, to, "Nie można pobrać przepływu z nieistniejącej krawędzi");
-        return graph[from][to].getFlow();
-    }
 
     @Override
     public int getCapacityOfEdge(int from, int to) {
         checkCorrectnessOfOperation(from, to, "Nie można pobrać przepustowości z nieistniejącej krawędzi");
         return graph[from][to].getCapacity();
-    }
-
-    @Override
-    public void setFlowOfEdge(int from, int to, int flow) {
-        checkCorrectnessOfOperation(from, to, "Nie można ustawić przepływu w nieistniejącej krawędzi");
-        graph[from][to].setFlow(flow);
-
     }
 
 
@@ -72,12 +60,6 @@ public class WeightedGraph implements Graph {
     @Override
     public int getNumberOfVertices() {
         return numberOfVertices;
-    }
-
-    @Override
-    public void increaseFlowOfEdge(int from, int to, int flow) {
-        checkCorrectnessOfOperation(from, to, "Nie można zwwiększyć przepływu w nieistniejącej krawędzi");
-        graph[from][to].increaseFlow(flow);
     }
 
     @Override
