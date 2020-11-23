@@ -13,22 +13,16 @@ public class BellmanFordAlgorithm implements FindingPathAlgorithm {
     public static final int INFINITY = MAX_VALUE;
     public static final int UNDEFINED = -1;
 
-    public BellmanFordAlgorithm() {
-
-    }
 
     @Override
     public List<Integer> findPath(Graph residualGraph) {
         int numberOfVertices = residualGraph.getNumberOfVertices();
         double[] distances = initializeDistancesArray(numberOfVertices);
         int[] predecessors = initializePredecessorsArray(numberOfVertices);
-
         for (int i = 0; i < numberOfVertices - 1; i++) {
             relaxEdges(residualGraph, numberOfVertices, distances, predecessors);
         }
-
         List<Integer> cheapestPath = findCheapestPath(predecessors);
-
         return cheapestPath;
     }
 

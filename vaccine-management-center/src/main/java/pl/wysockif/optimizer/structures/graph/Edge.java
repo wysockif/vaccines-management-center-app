@@ -37,13 +37,17 @@ public class Edge {
 
     @Override
     public String toString() {
-        return String.format("[%12s] ",  +
-                + flow + "/"
+        return String.format("[%12s] ", +
+                +flow + "/"
                 + capacity +
-                ", " + price );
+                ", " + price);
     }
 
     public void increaseFlow(int flow) {
         this.flow += flow;
+    }
+
+    public void increaseCapacity(int amount) {
+        capacity += amount;
     }
 }

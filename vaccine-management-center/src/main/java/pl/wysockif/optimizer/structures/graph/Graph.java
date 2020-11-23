@@ -24,4 +24,6 @@ public interface Graph {
     void increaseFlowOfEdge(int from, int ro, int flow);
 
     void removeEdge(int vertex1, int vertex2);
+
+    void increaseCapacityOfEdge(int from, int to, int amount);
 }

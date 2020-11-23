@@ -86,6 +86,12 @@ public class WeightedGraph implements Graph {
         graph[from][to] = null;
     }
 
+    @Override
+    public void increaseCapacityOfEdge(int from, int to, int amount) {
+        checkCorrectnessOfOperation(from, to, "Nie można zwwiększyć przepływu w nieistniejącej krawędzi");
+        graph[from][to].increaseCapacity(amount);
+    }
+
     private boolean areVerticesExist(int from, int to) {
         return (from >= numberOfVertices || to >= numberOfVertices);
     }
