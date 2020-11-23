@@ -2,38 +2,38 @@ package pl.wysockif.optimizer.structures.graph;
 
 public class WeightedGraph implements Graph {
     private final int numberOfVertices;
-    private final Edge[][] graph;
+    private final double[][] prices;
+    private final int[][] capacities;
 
     public WeightedGraph(int numberOfVertices) {
-        graph = new Edge[numberOfVertices][numberOfVertices];
         this.numberOfVertices = numberOfVertices;
+        prices = new double[numberOfVertices][numberOfVertices];
+        capacities = new int[numberOfVertices][numberOfVertices];
     }
 
     @Override
     public void addEdge(int from, int to, int capacity, double price) {
-        if (areVerticesExist(from, to)) {
+        if (!areVerticesExist(from, to)) {
             throw new IllegalArgumentException("Conajmniej jeden z podanych wierzchołków nie istnieje");
         }
-        Edge edge = new Edge(capacity, price);
-        graph[from][to] = edge;
+        prices[from][to] = price;
+        capacities[from][to] = capacity;
     }
 
     @Override
     public boolean isEdgeExist(int from, int to) {
-        return graph[from][to] != null;
+        return capacities[from][to] > 0;
     }
 
     @Override
     public double getPriceOfEdge(int from, int to) {
         checkCorrectnessOfOperation(from, to, "Nie można pobrać ceny z nieistniejącej krawędzi");
-        return graph[from][to].getPrice();
+        return prices[from][to];
     }
 
     private void checkCorrectnessOfOperation(int from, int to, String message) {
-        if (areVerticesExist(from, to)) {
+        if (!areVerticesExist(from, to)) {
             throw new UnsupportedOperationException("Conajmniej jeden z podanych wierzchołków nie istnieje");
-        } else if (!isEdgeExist(from, to)) {
-            throw new UnsupportedOperationException(message);
         }
     }
 
@@ -41,20 +41,7 @@ public class WeightedGraph implements Graph {
     @Override
     public int getCapacityOfEdge(int from, int to) {
         checkCorrectnessOfOperation(from, to, "Nie można pobrać przepustowości z nieistniejącej krawędzi");
-        return graph[from][to].getCapacity();
-    }
-
-
-    @Override
-    public void setCapacityOfEdge(int from, int to, int capacity) {
-        checkCorrectnessOfOperation(from, to, "Nie można ustawić przepustowości w nieistniejącej krawędzi");
-        graph[from][to].setCapacity(capacity);
-    }
-
-    @Override
-    public void setPriceOfEdge(int from, int to, double price) {
-        checkCorrectnessOfOperation(from, to, "Nie można ustawić ceny w nieistniejącej krawędzi");
-        graph[from][to].setPrice(price);
+        return capacities[from][to];
     }
 
     @Override
@@ -65,32 +52,17 @@ public class WeightedGraph implements Graph {
     @Override
     public void removeEdge(int from, int to) {
         checkCorrectnessOfOperation(from, to, "Nie można skasować nieistniejącej krawędzi");
-        graph[from][to] = null;
+        capacities[from][to] = 0;
     }
 
     @Override
     public void increaseCapacityOfEdge(int from, int to, int amount) {
-        checkCorrectnessOfOperation(from, to, "Nie można zwwiększyć przepływu w nieistniejącej krawędzi");
-        graph[from][to].increaseCapacity(amount);
+        checkCorrectnessOfOperation(from, to, "Nie można zwiększyć przepływu w nieistniejącej krawędzi");
+        capacities[from][to] += amount;
     }
 
     private boolean areVerticesExist(int from, int to) {
-        return (from >= numberOfVertices || to >= numberOfVertices);
+        return (from < numberOfVertices && to < numberOfVertices);
     }
 
-    @Override
-    public String toString() {
-        StringBuilder string = new StringBuilder();
-        for (int i = 0; i < numberOfVertices; i++) {
-            for (int j = 0; j < numberOfVertices; j++) {
-                if (graph[i][j] == null) {
-                    string.append(String.format("[%12s] ", "0/0, 0.0"));
-                } else {
-                    string.append(graph[i][j]);
-                }
-            }
-            string.append("\n");
-        }
-        return String.valueOf(string);
-    }
 }
