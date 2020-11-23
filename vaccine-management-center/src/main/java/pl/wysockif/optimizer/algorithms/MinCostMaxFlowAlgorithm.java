@@ -40,7 +40,7 @@ public class MinCostMaxFlowAlgorithm {
             double price = connection.getPrice();
             int maxNumberOfVaccines = connection.getMaxNumberOVaccines();
             int numberOfProducers = producers.getNumberOfProducers();
-            graph.addEdge(producerIndex + 1, pharmacyIndex + numberOfProducers + 1,0, maxNumberOfVaccines, price);
+            graph.addEdge(producerIndex + 1, pharmacyIndex + numberOfProducers + 1, maxNumberOfVaccines, price);
         }
     }
 
@@ -48,14 +48,14 @@ public class MinCostMaxFlowAlgorithm {
         int numberOfProducers = producers.getNumberOfProducers();
         for (int i = 0; i < pharmacies.getNumberOfPharmacies(); i++) {
             Pharmacy pharmacy = pharmacies.getPharmacyByIndex(i);
-            graph.addEdge(numberOfProducers + i + 1, numberOfVertices - 1, 0, pharmacy.getDailyDemand(), 0);
+            graph.addEdge(numberOfProducers + i + 1, numberOfVertices - 1, pharmacy.getDailyDemand(), 0);
         }
     }
 
     private void addProducersToGraph(Graph graph) {
         for (int i = 0; i < producers.getNumberOfProducers(); i++) {
             Producer producer = producers.getProducerByIndex(i);
-            graph.addEdge(0, i + 1, 0, producer.getDailyProduction(), 0);
+            graph.addEdge(0, i + 1, producer.getDailyProduction(), 0);
         }
     }
 
@@ -75,13 +75,8 @@ public class MinCostMaxFlowAlgorithm {
                         double price = finalGraph.getPriceOfEdge(u, v) * -1;
                         int amount = finalGraph.getCapacityOfEdge(u, v);
                         int numberOfProducers = producers.getNumberOfProducers();
-                        int numberOfPharmacies = pharmacies.getNumberOfPharmacies();
-                        System.out.println(u + " " + v);
-
                         String producerName = producers.getProducerByIndex(v - 1).getName();
                         String pharmacyName = pharmacies.getPharmacyByIndex(u - numberOfProducers -1).getName();
-
-                        System.out.println("u --> v  = "+  amount + " " + price );
 
 
                         Deal deal = new Deal(producerName, pharmacyName, amount, price);
