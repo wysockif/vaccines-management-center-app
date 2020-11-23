@@ -1,33 +1,23 @@
 package pl.wysockif.optimizer.io;
 
+import pl.wysockif.optimizer.algorithms.Deal;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.List;
 
 public class OutputFileWriter {
     public static String fileName;
-    public int longestLength;
+    private PrintWriter printWriter;
 
     public OutputFileWriter(String path){
         File file = new File(path);
         fileName = file.getName();
-        longestLength = findLongestLength();
-        PrintWriter printWriter = createPrintWriterIfFileExists(file);
-        String line = concatenateLine(longestLength, "Eko Polska 2020", "CentMedEko 24h", 100, 50.5 );
-        saveLineToFile(printWriter, line);
-
-        line = concatenateLine(longestLength, "Post-Covid Sp. z o.o.", "CentMedEko Nowogrodzka", 500, 10.5 );
-        saveLineToFile(printWriter, line);
-
-
-        printWriter.close();
+        printWriter = createPrintWriterIfFileExists(file);
     }
 
-    private int findLongestLength() {
-        return 25;
-    }
-
-    public void saveLineToFile(PrintWriter printWriter, String line){
+    public void saveLineToFile( String line){
         printWriter.println(line);
     }
 
@@ -54,4 +44,36 @@ public class OutputFileWriter {
     }
 
 
+    public void saveDeals(List<Deal> deals) {
+        int longestNameLength = 0;
+        double totalCost = 0.0;
+        if (!deals.isEmpty())
+            longestNameLength = findLongestNameLength(deals);
+
+        while(!deals.isEmpty()){
+            Deal deal = deals.remove(0);
+            totalCost += deal.getPrice() * deal.getAmount();
+            String line = concatenateLine(longestNameLength, deal.getProducerName(), deal.getPharmacyName(), deal.getAmount(), deal.getPrice());
+            saveLineToFile(line);
+        }
+
+        saveTheSummary(totalCost);
+        printWriter.close();
+    }
+
+    private void saveTheSummary(double totalCost) {
+        String line = "Opłaty całkowite: " + totalCost;
+        saveLineToFile(line);
+    }
+
+    private int findLongestNameLength(List<Deal> deals) {
+        int longestName = deals.get(0).getProducerName().length();
+
+        for(Deal deal : deals){
+            if(deal.getProducerName().length() > longestName){
+                longestName = deal.getProducerName().length();
+            }
+        }
+        return longestName;
+    }
 }

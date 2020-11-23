@@ -9,6 +9,9 @@ import pl.wysockif.optimizer.items.producers.Producers;
 import pl.wysockif.optimizer.structures.graph.Graph;
 import pl.wysockif.optimizer.structures.graph.WeightedGraph;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class MinCostMaxFlowAlgorithm {
     private final Producers producers;
     private final Pharmacies pharmacies;
@@ -60,5 +63,34 @@ public class MinCostMaxFlowAlgorithm {
         int numberOfProducers = producers.getNumberOfProducers();
         int numberOfPharmacies = pharmacies.getNumberOfPharmacies();
         return numberOfProducers + numberOfPharmacies + 2;
+    }
+
+    public List<Deal> loadResults(Graph finalGraph) {
+        List<Deal> deals = new LinkedList<>();
+
+        for (int u = finalGraph.getNumberOfVertices() - 2; u >= 1; u--) {
+            for (int v = u - 1; v >= 1; v--) {
+                if (u > v) {
+                    if (finalGraph.isEdgeExist(u, v)) {
+                        double price = finalGraph.getPriceOfEdge(u, v) * -1;
+                        int amount = finalGraph.getCapacityOfEdge(u, v);
+                        int numberOfProducers = producers.getNumberOfProducers();
+                        int numberOfPharmacies = pharmacies.getNumberOfPharmacies();
+                        System.out.println(u + " " + v);
+
+                        String producerName = producers.getProducerByIndex(v - 1).getName();
+                        String pharmacyName = pharmacies.getPharmacyByIndex(u - numberOfProducers -1).getName();
+
+                        System.out.println("u --> v  = "+  amount + " " + price );
+
+
+                        Deal deal = new Deal(producerName, pharmacyName, amount, price);
+                        deals.add(deal);
+                    }
+                }
+            }
+        }
+
+        return deals;
     }
 }

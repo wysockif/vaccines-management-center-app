@@ -43,4 +43,8 @@ public class Producer {
                 ", dailyProduction=" + dailyProduction +
                 '}';
     }
+
+    public String getName() {
+        return name;
+    }
 }

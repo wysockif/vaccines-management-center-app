@@ -8,22 +8,21 @@ import java.util.List;
 
 public class EdmondsKarpAlgorithm implements MaxFlowAlgorithm {
     public static final int INFINITY = Integer.MAX_VALUE;
-    private FindingPathAlgorithm findingPathAlgorithm;
+    private final FindingPathAlgorithm findingPathAlgorithm;
 
     public EdmondsKarpAlgorithm(FindingPathAlgorithm findingPathAlgorithm) {
         this.findingPathAlgorithm = findingPathAlgorithm;
     }
 
-    public void findMaxFlow(Graph graph) {
-        int maxFlow = 0;
-        int numberOfVertices = graph.getNumberOfVertices();
-
+    public Graph findMaxFlow(Graph graph) {
         Graph residualGraph = createResidualGraph(graph);
+        System.out.println("sda");
         List<Integer> path = findingPathAlgorithm.findPath(residualGraph);
 
         int n = 10;
-//        while (!path.isEmpty()) {
-        while (n > 0) {
+        while (!path.isEmpty()) {
+
+            System.out.println("Długość ściezki " + path.size());
             int minCapacity = findMinCapacity(residualGraph, path);
             increaseFlow(residualGraph, path, minCapacity);
 
@@ -31,32 +30,34 @@ public class EdmondsKarpAlgorithm implements MaxFlowAlgorithm {
 
             System.out.println(residualGraph);
             path = findingPathAlgorithm.findPath(residualGraph);
-            n--;
+
         }
 
-
+        return residualGraph;
     }
+
 
     private void increaseFlow(Graph residualGraph, List<Integer> path, int flow) {
         int sizeOfPath = path.size();
         for (int i = 0; i < sizeOfPath - 1; i++) {
             int vertex1 = path.get(i);
             int vertex2 = path.get(i + 1);
-            int capacity = residualGraph.getCapacityOfEdge(vertex1, vertex2);
             double price = residualGraph.getPriceOfEdge(vertex1, vertex2);
-            residualGraph.increaseFlowOfEdge(vertex1, vertex2, capacity - flow);
 
-            if (!residualGraph.isEdgeExist(vertex2, vertex1)) {
-                residualGraph.addEdge(vertex2, vertex1, flow, capacity, -price);
-            } else {
-                residualGraph.setFlowOfEdge(vertex2, vertex1, flow);
-                residualGraph.setPriceOfEdge(vertex2, vertex1, -price);
-            }
 
-            if (residualGraph.getCapacityOfEdge(vertex1, vertex2) == flow) {
+            residualGraph.increaseCapacityOfEdge(vertex1, vertex2, -flow);
+
+            if (residualGraph.isEdgeExist(vertex2, vertex1))
+                residualGraph.increaseCapacityOfEdge(vertex2, vertex1, flow);
+            else
+                residualGraph.addEdge(vertex2, vertex1, 0, flow, -price);
+
+            if (residualGraph.getCapacityOfEdge(vertex2, vertex1) == 0)
+                residualGraph.removeEdge(vertex2, vertex1);
+
+            if (residualGraph.getCapacityOfEdge(vertex1, vertex2) == 0)
                 residualGraph.removeEdge(vertex1, vertex2);
-                System.out.println("here");
-            }
+
         }
     }
 
@@ -79,6 +80,7 @@ public class EdmondsKarpAlgorithm implements MaxFlowAlgorithm {
         for (int u = 0; u < numberOfVertices; u++) {
             for (int v = 0; v < numberOfVertices; v++) {
                 copyEdge(graph, residualGraph, u, v);
+
             }
         }
         return residualGraph;
@@ -89,7 +91,7 @@ public class EdmondsKarpAlgorithm implements MaxFlowAlgorithm {
             int capacity = graph.getCapacityOfEdge(u, v);
             double price = graph.getPriceOfEdge(u, v);
             int flow = graph.getFlowOfEdge(u, v);
-            residualGraph.addEdge(u, v, flow, capacity, price);
+            residualGraph.addEdge(u, v, 0, capacity - flow, price);
         }
     }
 }
