@@ -21,7 +21,7 @@ public class EdmondsKarpAlgorithm implements MaxFlowAlgorithm {
             int minCapacity = findMinCapacity(residualGraph, path);
             increaseFlow(residualGraph, path, minCapacity);
             path = findingPathAlgorithm.findPath(residualGraph);
-
+//            System.out.println(path);
         }
 
         return residualGraph;

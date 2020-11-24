@@ -17,31 +17,19 @@ public class Deal {
         return producerName;
     }
 
-    public void setProducerName(String producerName) {
-        this.producerName = producerName;
-    }
-
     public String getPharmacyName() {
         return pharmacyName;
-    }
-
-    public void setPharmacyName(String pharmacyName) {
-        this.pharmacyName = pharmacyName;
     }
 
     public int getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+//    public void setPrice(double price) {
+//        this.price = price;
+//    }
 }

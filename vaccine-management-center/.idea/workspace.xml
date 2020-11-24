@@ -6,11 +6,33 @@
   <component name="ChangeListManager">
     <list default="true" id="9a2d0a13-90c8-459c-bd89-f559637367fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/Optimizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/algorithms/Deal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/algorithms/Deal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/algorithms/flow/EdmondsKarpAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/algorithms/flow/EdmondsKarpAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/structures/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/structures/graph/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/structures/graph/WeightedGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/structures/graph/WeightedGraph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/data3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/data3.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/algorithms/path/BellmanFordAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/algorithms/path/BellmanFordAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/output.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dataa.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataa.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/output.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/Optimizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/Optimizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/Deal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/Deal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/MaxFlowAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/MaxFlowAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/MinCostMaxFlowAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/MinCostMaxFlowAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/flow/EdmondsKarpAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/flow/EdmondsKarpAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/flow/MaxFlowAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/flow/MaxFlowAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/path/BellmanFordAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/path/BellmanFordAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/path/FindingPathAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/path/FindingPathAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/ErrorsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/ErrorsHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/InputFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/InputFileReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/OutputFileWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/OutputFileWriter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/Items.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/Items.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/connections/Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/connections/Connection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/connections/Connections.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/connections/Connections.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/pharmacies/Pharmacies.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/pharmacies/Pharmacies.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/pharmacies/Pharmacy.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/pharmacies/Pharmacy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/producers/Producer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/producers/Producer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/producers/Producers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/producers/Producers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/structures/graph/Edge.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/structures/graph/Edge.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/structures/graph/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/structures/graph/Graph.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/structures/graph/WeightedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/structures/graph/WeightedGraph.class" afterDir="false" />
     </list>
@@ -124,19 +146,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="BlockingQueueFIFOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="vaccine-management-center" />
       <extension name="coverage">
@@ -214,6 +223,13 @@
       <workItem from="1606148423329" duration="174000" />
       <workItem from="1606148618058" duration="3587000" />
       <workItem from="1606152256661" duration="2818000" />
+      <workItem from="1606156132928" duration="525000" />
+      <workItem from="1606156708130" duration="96000" />
+      <workItem from="1606156887151" duration="90000" />
+      <workItem from="1606157746888" duration="121000" />
+      <workItem from="1606162756211" duration="166000" />
+      <workItem from="1606173582492" duration="518000" />
+      <workItem from="1606174121305" duration="3158000" />
     </task>
     <servers />
   </component>
@@ -251,30 +267,30 @@
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605884470731" />
     <state x="-1328" y="297" key="FileChooserDialogImpl/-1920.77.1536.832/0.0.1920.1040@-1920.77.1536.832" timestamp="1605777606660" />
-    <state width="1877" height="247" key="GridCell.Tab.0.bottom" timestamp="1606155174583">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom" timestamp="1606177264625">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="248" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606073518760" />
-    <state width="1877" height="247" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606155174583" />
-    <state width="1493" height="184" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606091531631" />
-    <state width="1877" height="247" key="GridCell.Tab.0.center" timestamp="1606155174582">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="247" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606157867645" />
+    <state width="1493" height="183" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606177264625" />
+    <state width="1493" height="183" key="GridCell.Tab.0.center" timestamp="1606177264617">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="248" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606073518760" />
-    <state width="1877" height="247" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606155174582" />
-    <state width="1493" height="184" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606091531631" />
-    <state width="1877" height="247" key="GridCell.Tab.0.left" timestamp="1606155174582">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="247" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606157867645" />
+    <state width="1493" height="183" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606177264617" />
+    <state width="1493" height="183" key="GridCell.Tab.0.left" timestamp="1606177264617">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="248" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606073518760" />
-    <state width="1877" height="247" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606155174582" />
-    <state width="1493" height="184" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606091531630" />
-    <state width="1877" height="247" key="GridCell.Tab.0.right" timestamp="1606155174582">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="247" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606157867645" />
+    <state width="1493" height="183" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606177264617" />
+    <state width="1493" height="183" key="GridCell.Tab.0.right" timestamp="1606177264625">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="248" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606073518760" />
-    <state width="1877" height="247" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606155174582" />
-    <state width="1493" height="184" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606091531631" />
+    <state width="1877" height="247" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606157867645" />
+    <state width="1493" height="183" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606177264625" />
     <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1606131090886">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -299,10 +315,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="263" key="IDE.errors.dialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605101284765" />
-    <state x="490" y="175" key="Maven.ArtifactSearchDialog" timestamp="1605627680072">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="392" y="135" key="Maven.ArtifactSearchDialog" timestamp="1606174596203">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="490" y="175" key="Maven.ArtifactSearchDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605627680072" />
+    <state x="392" y="135" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1606174596203" />
     <state x="775" y="454" key="ReplaceDuplicatesPrompt" timestamp="1606049354356">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -336,10 +353,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="736" y="278" key="refactoring.ChangeSignatureDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606152329969" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1606143828799">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="493" y="190" key="run.anything.popup" timestamp="1606175113111">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="616" y="240" key="run.anything.popup/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606143828799" />
+    <state x="493" y="190" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1606175113111" />
     <state x="752" y="378" key="scopes" timestamp="1605623858199">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
