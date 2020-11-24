@@ -33,6 +33,9 @@ public class BellmanFordAlgorithm implements FindingPathAlgorithm {
             return cheapestPath;
         }
         while (predecessorIndex != UNDEFINED) {
+            if(predecessors[predecessors.length - 1] == UNDEFINED){
+                break;
+            }
             cheapestPath.add(predecessorIndex);
             predecessorIndex = predecessors[predecessorIndex];
         }
