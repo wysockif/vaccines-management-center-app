@@ -2,7 +2,6 @@ package pl.wysockif.optimizer.algorithms.path;
 
 import pl.wysockif.optimizer.structures.graph.Graph;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -16,25 +15,26 @@ public class BellmanFordAlgorithm implements FindingPathAlgorithm {
     @Override
     public List<Integer> findPath(Graph residualGraph) {
         int numberOfVertices = residualGraph.getNumberOfVertices();
-        BigDecimal[] distances = initializeDistancesArray(numberOfVertices);
+        int[] distances = initializeDistancesArray(numberOfVertices);
+//        BigDecimal[] distances = initializeDistancesArray(numberOfVertices);
         int[] predecessors = initializePredecessorsArray(numberOfVertices);
         for (int i = 0; i < numberOfVertices - 1; i++) {
             relaxEdges(residualGraph, numberOfVertices, distances, predecessors);
         }
         checkForNegativeCycle(residualGraph, numberOfVertices, distances);
 
-        if (!distances[numberOfVertices - 1].equals(INFINITY)) {
+        if (distances[numberOfVertices - 1] != INFINITY) {
             return findCheapestPath(predecessors);
         }
         return new LinkedList<>();
     }
 
-    private void checkForNegativeCycle(Graph residualGraph, int numberOfVertices, BigDecimal[] distances) {
+    private void checkForNegativeCycle(Graph residualGraph, int numberOfVertices, int[] distances) {
         for (int u = 0; u < numberOfVertices; u++) {
             for (int v = 0; v < numberOfVertices; v++) {
                 if (residualGraph.containsEdge(u, v)) {
-                    BigDecimal price = BigDecimal.valueOf(residualGraph.getPriceOfEdge(u, v));
-                    if (distances[u].add(price).compareTo(distances[v]) < 0) {
+                    int price = residualGraph.getPriceOfEdge(u, v);
+                    if (distances[u] + price <distances[v]) {
                         throw new UnsupportedOperationException("Ujemny cykl");
                     }
                 }
@@ -59,7 +59,7 @@ public class BellmanFordAlgorithm implements FindingPathAlgorithm {
         return cheapestPath;
     }
 
-    private void relaxEdges(Graph residualGraph, int numberOfVertices, BigDecimal[] distances, int[] predecessors) {
+    private void relaxEdges(Graph residualGraph, int numberOfVertices, int[] distances, int[] predecessors) {
         for (int u = 0; u < numberOfVertices; u++) {
             for (int v = 0; v < numberOfVertices; v++) {
                 relaxEdge(residualGraph, distances, predecessors, u, v);
@@ -67,12 +67,12 @@ public class BellmanFordAlgorithm implements FindingPathAlgorithm {
         }
     }
 
-    private void relaxEdge(Graph residualGraph, BigDecimal[] distances, int[] predecessors, int u, int v) {
+    private void relaxEdge(Graph residualGraph, int[] distances, int[] predecessors, int u, int v) {
         if (residualGraph.containsEdge(u, v)) {
-            BigDecimal price = BigDecimal.valueOf(residualGraph.getPriceOfEdge(u, v));
-            if (distances[u].add(price).compareTo(distances[v]) < 0) {
-                BigDecimal value = distances[u].add(price);
-                distances[v] = new BigDecimal(String.valueOf(value));
+            int price = residualGraph.getPriceOfEdge(u, v);
+            if (distances[u]+ price < distances[v]) {
+                int value = distances[u] +price;
+                distances[v] = value;
                 predecessors[v] = u;
             }
         }
@@ -84,12 +84,10 @@ public class BellmanFordAlgorithm implements FindingPathAlgorithm {
         return predecessors;
     }
 
-    private BigDecimal[] initializeDistancesArray(int numberOfVertices) {
-        BigDecimal[] distances = new BigDecimal[numberOfVertices];
-        for (int i = 1; i < numberOfVertices; i++) {
-            distances[i] = new BigDecimal(INFINITY);
-        }
-        distances[0] = new BigDecimal("0.0");
+    private int[] initializeDistancesArray(int numberOfVertices) {
+        int[] distances = new int[numberOfVertices];
+        Arrays.fill(distances, INFINITY);
+        distances[0] = 0;
         return distances;
     }
 

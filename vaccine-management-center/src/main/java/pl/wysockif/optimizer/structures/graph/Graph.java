@@ -3,9 +3,9 @@ package pl.wysockif.optimizer.structures.graph;
 public interface Graph {
 
 
-    double getPriceOfEdge(int from, int to);
+    int getPriceOfEdge(int from, int to);
 
-    void addEdge(int from, int to, int capacity, double price);
+    void addEdge(int from, int to, int capacity, int price);
 
     boolean containsEdge(int from, int to);
 
@@ -17,5 +17,5 @@ public interface Graph {
 
     void increaseCapacityOfEdge(int from, int to, int amount);
 
-    void setPriceOfEdge(int from, int to, double price);
+    void setPriceOfEdge(int from, int to, int price);
 }

@@ -31,7 +31,7 @@ public class EdmondsKarpAlgorithm implements MaxFlowAlgorithm {
         for (int i = 0; i < sizeOfPath - 1; i++) {
             int vertex1 = path.get(i);
             int vertex2 = path.get(i + 1);
-            double price = residualGraph.getPriceOfEdge(vertex1, vertex2);
+            int price = residualGraph.getPriceOfEdge(vertex1, vertex2);
 
 
             residualGraph.increaseCapacityOfEdge(vertex1, vertex2, -flow);

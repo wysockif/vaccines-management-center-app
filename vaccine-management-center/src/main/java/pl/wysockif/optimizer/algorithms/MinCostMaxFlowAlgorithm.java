@@ -37,7 +37,7 @@ public class MinCostMaxFlowAlgorithm {
             Connection connection = connections.getConnectionByIndex(i);
             int producerIndex = producers.getProducerIndexById(connection.getProducer().getId());
             int pharmacyIndex = pharmacies.getPharmacyIndexById(connection.getPharmacy().getId());
-            double price = connection.getPrice();
+            int price = connection.getPrice();
             int maxNumberOfVaccines = connection.getMaxNumberOVaccines();
             int numberOfProducers = producers.getNumberOfProducers();
             graph.addEdge(producerIndex + 1, pharmacyIndex + numberOfProducers + 1, maxNumberOfVaccines, price);
@@ -72,7 +72,7 @@ public class MinCostMaxFlowAlgorithm {
             for (int v = u - 1; v >= 1; v--) {
                 if (u > v) {
                     if (finalGraph.containsEdge(u, v)) {
-                        double price = finalGraph.getPriceOfEdge(u, v) * -1;
+                        int price = finalGraph.getPriceOfEdge(u, v) * -1;
                         int amount = finalGraph.getCapacityOfEdge(u, v);
                         int numberOfProducers = producers.getNumberOfProducers();
                         String producerName = producers.getProducerByIndex(v - 1).getName();

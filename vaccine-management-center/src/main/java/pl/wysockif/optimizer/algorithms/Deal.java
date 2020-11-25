@@ -4,9 +4,9 @@ public class Deal {
     private String producerName;
     private String pharmacyName;
     private int amount;
-    private double price;
+    private int price;
 
-    public Deal(String producerName, String pharmacyName, int amount, double price) {
+    public Deal(String producerName, String pharmacyName, int amount, int price) {
         this.producerName = producerName;
         this.pharmacyName = pharmacyName;
         this.amount = amount;
@@ -25,7 +25,7 @@ public class Deal {
         return amount;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
