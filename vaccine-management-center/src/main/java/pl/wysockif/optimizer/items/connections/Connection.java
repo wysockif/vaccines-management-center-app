@@ -9,9 +9,9 @@ public class Connection {
     private final Producer producer;
     private final Pharmacy pharmacy;
     private final int maxNumberOVaccines;
-    private final double price;
+    private final int price;
 
-    public Connection(Producer producer, Pharmacy pharmacy, int maxNumberOVaccines, double price) {
+    public Connection(Producer producer, Pharmacy pharmacy, int maxNumberOVaccines, int price) {
         this.producer = producer;
         this.pharmacy = pharmacy;
         this.maxNumberOVaccines = maxNumberOVaccines;
@@ -44,7 +44,7 @@ public class Connection {
         return maxNumberOVaccines;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 

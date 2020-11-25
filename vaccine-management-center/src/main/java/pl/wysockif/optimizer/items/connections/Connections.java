@@ -58,6 +58,7 @@ public class Connections implements Items, Iterable<Connection> {
         double price = (double) attributes[3];
         validateNumber(maxNumberOVaccines);
         validateNumber(price);
+        attributes[3] = (int) Math.round(100 * price);
     }
 
     private void checkWhetherExist(long producerId, long pharmacyId) throws DataFormatException {
@@ -83,7 +84,7 @@ public class Connections implements Items, Iterable<Connection> {
         long producerId = (long) attributes[0];
         long pharmacyId = (long) attributes[1];
         int maxNumberOVaccines = (int) attributes[2];
-        double price = (double) attributes[3];
+        int price = (int) attributes[3];
         Producer producer = producers.getProducerById(producerId);
         Pharmacy pharmacy = pharmacies.getPharmacyById(pharmacyId);
 

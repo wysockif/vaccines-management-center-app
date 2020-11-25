@@ -1,20 +1,18 @@
 package pl.wysockif.optimizer.structures.graph;
 
-import java.util.Arrays;
-
 public class WeightedGraph implements Graph {
     private final int numberOfVertices;
-    private final double[][] prices;
+    private final int[][] prices;
     private final int[][] capacities;
 
     public WeightedGraph(int numberOfVertices) {
         this.numberOfVertices = numberOfVertices;
-        prices = new double[numberOfVertices][numberOfVertices];
+        prices = new int[numberOfVertices][numberOfVertices];
         capacities = new int[numberOfVertices][numberOfVertices];
     }
 
     @Override
-    public void addEdge(int from, int to, int capacity, double price) {
+    public void addEdge(int from, int to, int capacity, int price) {
         if (!containsVertices(from, to)) {
             throw new IllegalArgumentException("Conajmniej jeden z podanych wierzchołków nie istnieje");
         }
@@ -28,7 +26,7 @@ public class WeightedGraph implements Graph {
     }
 
     @Override
-    public double getPriceOfEdge(int from, int to) {
+    public int getPriceOfEdge(int from, int to) {
         checkCorrectnessOfOperation(from, to, "Nie można pobrać ceny z nieistniejącej krawędzi");
         return prices[from][to];
     }
@@ -69,7 +67,7 @@ public class WeightedGraph implements Graph {
     }
 
     @Override
-    public void setPriceOfEdge(int from, int to, double price) {
+    public void setPriceOfEdge(int from, int to, int price) {
         prices[from][to] = price;
     }
 }
