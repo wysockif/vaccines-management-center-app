@@ -5,6 +5,7 @@ import pl.wysockif.optimizer.algorithms.Deal;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class OutputFileWriter {
@@ -46,13 +47,15 @@ public class OutputFileWriter {
 
     public void saveDeals(List<Deal> deals) {
         int longestNameLength = 0;
-        double totalCost = 0.0;
+        BigDecimal totalCost = new BigDecimal("0.0");
         if (!deals.isEmpty())
             longestNameLength = findLongestNameLength(deals);
 
         while(!deals.isEmpty()){
             Deal deal = deals.remove(0);
-            totalCost += deal.getPrice() * deal.getAmount();
+            BigDecimal price = BigDecimal.valueOf(deal.getPrice());
+            BigDecimal amount = BigDecimal.valueOf(deal.getAmount());
+            totalCost = totalCost.add(price.multiply(amount));
             String line = concatenateLine(longestNameLength, deal.getProducerName(), deal.getPharmacyName(), deal.getAmount(), deal.getPrice());
             saveLineToFile(line);
         }
@@ -61,7 +64,7 @@ public class OutputFileWriter {
         printWriter.close();
     }
 
-    private void saveTheSummary(double totalCost) {
+    private void saveTheSummary(BigDecimal totalCost) {
         String line = "Opłaty całkowite: " + totalCost;
         System.out.println(totalCost);
         saveLineToFile(line);

@@ -1,5 +1,7 @@
 package pl.wysockif.optimizer.structures.graph;
 
+import java.util.Arrays;
+
 public class WeightedGraph implements Graph {
     private final int numberOfVertices;
     private final double[][] prices;
@@ -13,7 +15,7 @@ public class WeightedGraph implements Graph {
 
     @Override
     public void addEdge(int from, int to, int capacity, double price) {
-        if (!areVerticesExist(from, to)) {
+        if (!containsVertices(from, to)) {
             throw new IllegalArgumentException("Conajmniej jeden z podanych wierzchołków nie istnieje");
         }
         prices[from][to] = price;
@@ -21,7 +23,7 @@ public class WeightedGraph implements Graph {
     }
 
     @Override
-    public boolean isEdgeExist(int from, int to) {
+    public boolean containsEdge(int from, int to) {
         return capacities[from][to] > 0;
     }
 
@@ -32,7 +34,7 @@ public class WeightedGraph implements Graph {
     }
 
     private void checkCorrectnessOfOperation(int from, int to, String message) {
-        if (!areVerticesExist(from, to)) {
+        if (!containsVertices(from, to)) {
             throw new UnsupportedOperationException("Conajmniej jeden z podanych wierzchołków nie istnieje");
         }
     }
@@ -53,6 +55,7 @@ public class WeightedGraph implements Graph {
     public void removeEdge(int from, int to) {
         checkCorrectnessOfOperation(from, to, "Nie można skasować nieistniejącej krawędzi");
         capacities[from][to] = 0;
+        prices[from][to] = 0;
     }
 
     @Override
@@ -61,8 +64,12 @@ public class WeightedGraph implements Graph {
         capacities[from][to] += amount;
     }
 
-    private boolean areVerticesExist(int from, int to) {
+    private boolean containsVertices(int from, int to) {
         return (from < numberOfVertices && to < numberOfVertices);
     }
 
+    @Override
+    public void setPriceOfEdge(int from, int to, double price) {
+        prices[from][to] = price;
+    }
 }

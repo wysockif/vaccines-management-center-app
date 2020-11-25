@@ -71,7 +71,7 @@ public class MinCostMaxFlowAlgorithm {
         for (int u = finalGraph.getNumberOfVertices() - 2; u >= 1; u--) {
             for (int v = u - 1; v >= 1; v--) {
                 if (u > v) {
-                    if (finalGraph.isEdgeExist(u, v)) {
+                    if (finalGraph.containsEdge(u, v)) {
                         double price = finalGraph.getPriceOfEdge(u, v) * -1;
                         int amount = finalGraph.getCapacityOfEdge(u, v);
                         int numberOfProducers = producers.getNumberOfProducers();
