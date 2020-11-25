@@ -4,11 +4,11 @@ import java.util.Objects;
 
 public class Pharmacy {
 
-    private long id;
-    private String name;
-    private int dailyDemand;
+    private final int id;
+    private final String name;
+    private final int dailyDemand;
 
-    public Pharmacy(long id, String name, int dailyDemand) {
+    public Pharmacy(int id, String name, int dailyDemand) {
         this.id = id;
         this.name = name;
         this.dailyDemand = dailyDemand;
@@ -22,35 +22,22 @@ public class Pharmacy {
         return id == pharmacy.id;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getDailyDemand() {
         return dailyDemand;
     }
 
-    public void setDailyDemand(int dailyRequirement) {
-        this.dailyDemand = dailyRequirement;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
-
 
     @Override
     public String toString() {

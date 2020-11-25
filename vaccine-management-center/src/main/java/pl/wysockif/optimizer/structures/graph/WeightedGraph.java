@@ -50,13 +50,6 @@ public class WeightedGraph implements Graph {
     }
 
     @Override
-    public void removeEdge(int from, int to) {
-        checkCorrectnessOfOperation(from, to, "Nie można skasować nieistniejącej krawędzi");
-        capacities[from][to] = 0;
-        prices[from][to] = 0;
-    }
-
-    @Override
     public void increaseCapacityOfEdge(int from, int to, int amount) {
         checkCorrectnessOfOperation(from, to, "Nie można zwiększyć przepływu w nieistniejącej krawędzi");
         capacities[from][to] += amount;

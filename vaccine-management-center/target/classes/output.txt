@@ -129,4 +129,4 @@ Brown Bayer and Stokes         -> Kshlerin Parisian and Boyer [Koszt = 286 * 60.
 Heathcote-Hayes                -> Green LLC [Koszt = 71 * 62.85 = 4462.35 zł]
 Osinski Flatley and Ward       -> Green LLC [Koszt = 3 * 61.21 = 183.63 zł]
 Zemlak Rogahn and Boehm        -> Cruickshank LLC [Koszt = 161 * 60.01 = 9661.61 zł]
-Opłaty całkowite: 915282.29
+Opłaty całkowite: 915282.29 zł

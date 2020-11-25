@@ -12,7 +12,7 @@ public interface Items {
     default Object[] parseAttributes(String[] attributes) throws DataFormatException {
         Object[] convertedAttributes = new Object[attributes.length];
         try {
-            convertedAttributes[0] = Long.parseLong(attributes[0]);
+            convertedAttributes[0] = Integer.parseInt(attributes[0]);
             convertedAttributes[1] = attributes[1];
             convertedAttributes[2] = Integer.parseInt(attributes[2]);
         } catch (NumberFormatException e) {

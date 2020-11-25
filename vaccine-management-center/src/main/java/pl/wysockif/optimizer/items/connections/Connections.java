@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.zip.DataFormatException;
 
 public class Connections implements Items, Iterable<Connection> {
+    private final int converter;
     private final List<Connection> connections;
     private final Producers producers;
     private final Pharmacies pharmacies;
@@ -21,14 +22,15 @@ public class Connections implements Items, Iterable<Connection> {
         this.producers = producers;
         this.pharmacies = pharmacies;
         connections = new ArrayList<>();
+        converter = 100;
     }
 
     @Override
     public Object[] parseAttributes(String[] attributes) throws DataFormatException {
         Object[] convertedAttributes = new Object[attributes.length];
         try {
-            convertedAttributes[0] = Long.parseLong(attributes[0]);
-            convertedAttributes[1] = Long.parseLong(attributes[1]);
+            convertedAttributes[0] = Integer.parseInt(attributes[0]);
+            convertedAttributes[1] = Integer.parseInt(attributes[1]);
             convertedAttributes[2] = Integer.parseInt(attributes[2]);
             convertedAttributes[3] = Double.parseDouble(attributes[3]);
         } catch (NumberFormatException e) {
@@ -44,13 +46,14 @@ public class Connections implements Items, Iterable<Connection> {
         if (attributes.length != 4) {
             throw new DataFormatException("Niepoprawny format danych");
         }
+        validatePrice(attributes[3]);
         return parseAttributes(attributes);
     }
 
     @Override
     public void validateAttributes(Object[] attributes) throws DataFormatException {
-        long producerId = (long) attributes[0];
-        long pharmacyId = (long) attributes[1];
+        int producerId = (int) attributes[0];
+        int pharmacyId = (int) attributes[1];
         checkWhetherExist(producerId, pharmacyId);
         CheckWhetherHasAlreadyContain(producerId, pharmacyId);
 
@@ -58,16 +61,27 @@ public class Connections implements Items, Iterable<Connection> {
         double price = (double) attributes[3];
         validateNumber(maxNumberOVaccines);
         validateNumber(price);
-        attributes[3] = (int) Math.round(100 * price);
+        attributes[3] = (int) Math.round(converter * price);
     }
 
-    private void checkWhetherExist(long producerId, long pharmacyId) throws DataFormatException {
+    private void validatePrice(String price) throws DataFormatException {
+        if (price.contains(".")) {
+            String[] elements = price.split("\\.");
+            if (elements[1].length() > 2) {
+                String message = "Cena nie może mieć więcej niż 2 cyfry po kropce";
+                throw new DataFormatException(message);
+            }
+        }
+    }
+
+
+    private void checkWhetherExist(int producerId, int pharmacyId) throws DataFormatException {
         if (!producers.alreadyContains(producerId)) {
-            String message = "Nie istnieje producent o podanym id: " + producerId + ",";
+            String message = "Nie istnieje producent o podanym id: " + producerId;
             throw new DataFormatException(message);
         }
         if (!pharmacies.alreadyContains(pharmacyId)) {
-            String message = "Nie istnieje apteka o podanym id: " + pharmacyId + ",";
+            String message = "Nie istnieje apteka o podanym id: " + pharmacyId;
             throw new DataFormatException(message);
         }
     }
@@ -81,8 +95,8 @@ public class Connections implements Items, Iterable<Connection> {
 
     @Override
     public void addNewElement(Object[] attributes) {
-        long producerId = (long) attributes[0];
-        long pharmacyId = (long) attributes[1];
+        int producerId = (int) attributes[0];
+        int pharmacyId = (int) attributes[1];
         int maxNumberOVaccines = (int) attributes[2];
         int price = (int) attributes[3];
         Producer producer = producers.getProducerById(producerId);
@@ -92,7 +106,7 @@ public class Connections implements Items, Iterable<Connection> {
         connections.add(connection);
     }
 
-    private void CheckWhetherHasAlreadyContain(long producerId, long pharmacyId) throws DataFormatException {
+    private void CheckWhetherHasAlreadyContain(int producerId, int pharmacyId) throws DataFormatException {
         for (Connection connection : connections) {
             if (connection.getProducer().getId() == producerId && connection.getPharmacy().getId() == pharmacyId) {
                 String message = "Nie można dodawać więcej niż jednego połączenia " +
@@ -110,7 +124,7 @@ public class Connections implements Items, Iterable<Connection> {
         return producers.getNumberOfProducers() * pharmacies.getNumberOfPharmacies();
     }
 
-    public boolean contain(long producerId, long pharmacyId) {
+    public boolean contain(int producerId, int pharmacyId) {
         for (Connection connection : connections) {
             if (connection.getProducer().getId() == producerId && connection.getPharmacy().getId() == pharmacyId) {
                 return true;

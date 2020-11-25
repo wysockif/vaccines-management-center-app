@@ -63,8 +63,8 @@ public class OutputFileWriter {
     }
 
     private void saveTheSummary(int totalCost) {
-        String line = "Opłaty całkowite: " + (double) totalCost / 100;
-        System.out.println((double) totalCost / 100);
+        String line = "Opłaty całkowite: " + (double) totalCost / 100 + " zł";
+//        System.out.println((double) totalCost / 100);
         saveLineToFile(line);
     }
 

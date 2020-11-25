@@ -12,12 +12,12 @@ import pl.wysockif.optimizer.structures.graph.WeightedGraph;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MinCostMaxFlow {
+public class DataHandler {
     private final Producers producers;
     private final Pharmacies pharmacies;
     private final Connections connections;
 
-    public MinCostMaxFlow(Producers producers, Pharmacies pharmacies, Connections connections) {
+    public DataHandler(Producers producers, Pharmacies pharmacies, Connections connections) {
         this.producers = producers;
         this.pharmacies = pharmacies;
         this.connections = connections;
@@ -82,7 +82,7 @@ public class MinCostMaxFlow {
                 }
             }
         }
-
         return deals;
     }
+
 }
