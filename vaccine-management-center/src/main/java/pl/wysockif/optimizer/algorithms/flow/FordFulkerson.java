@@ -1,15 +1,15 @@
 package pl.wysockif.optimizer.algorithms.flow;
 
-import pl.wysockif.optimizer.algorithms.path.FindingPath;
+import pl.wysockif.optimizer.algorithms.path.FindingShortestPath;
 import pl.wysockif.optimizer.structures.graph.Graph;
 
 import java.util.List;
 
 public class FordFulkerson implements MaxFlow {
     public static final int INFINITY = Integer.MAX_VALUE;
-    private final FindingPath findingPathAlgorithm;
+    private final FindingShortestPath findingPathAlgorithm;
 
-    public FordFulkerson(FindingPath findingPathAlgorithm) {
+    public FordFulkerson(FindingShortestPath findingPathAlgorithm) {
         this.findingPathAlgorithm = findingPathAlgorithm;
     }
 
@@ -20,7 +20,6 @@ public class FordFulkerson implements MaxFlow {
             int minCapacity = findMinCapacity(residualGraph, path);
             increaseFlow(residualGraph, path, minCapacity);
             path = findingPathAlgorithm.findPath(residualGraph);
-            System.out.println(path);
         }
         return residualGraph;
     }

@@ -48,4 +48,13 @@ public class Connection {
         return price;
     }
 
+    @Override
+    public String toString() {
+        return "Connection{" +
+                "producer=" + producer +
+                ", pharmacy=" + pharmacy +
+                ", maxNumberOVaccines=" + maxNumberOVaccines +
+                ", price=" + price +
+                '}';
+    }
 }

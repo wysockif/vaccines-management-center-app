@@ -3,11 +3,11 @@ package pl.wysockif.optimizer.items.producers;
 import java.util.Objects;
 
 public class Producer {
-    private final long id;
+    private final int id;
     private final String name;
     private final int dailyProduction;
 
-    public Producer(long id, String name, int dailyProduction) {
+    public Producer(int id, String name, int dailyProduction) {
         this.id = id;
         this.name = name;
         this.dailyProduction = dailyProduction;
@@ -26,7 +26,7 @@ public class Producer {
         return Objects.hash(id);
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
