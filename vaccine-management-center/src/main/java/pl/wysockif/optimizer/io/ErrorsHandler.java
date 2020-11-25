@@ -3,6 +3,7 @@ package pl.wysockif.optimizer.io;
 import static java.lang.System.exit;
 
 public class ErrorsHandler {
+
     public static final int INPUT_FILE_NOT_FOUND = -100;
     public static final int INPUT_FILE_INCORRECT_HEADLINE = -101;
     public static final int INPUT_FILE_INCORRECT_FORMAT = -102;
@@ -13,7 +14,7 @@ public class ErrorsHandler {
 
     public static final int INCORRECT_CALL = -300;
 
-    public static final int INTERNAL_ERROR = -400;
+//    public static final int INTERNAL_ERROR = -400;
 
     public static void handleTheError(int codeError, String message) {
         System.err.println("| Błąd " + codeError + " | " + message + "!");

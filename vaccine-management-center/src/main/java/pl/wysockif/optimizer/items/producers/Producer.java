@@ -13,6 +13,23 @@ public class Producer {
         this.dailyProduction = dailyProduction;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public int getDailyProduction() {
+        return dailyProduction;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -22,29 +39,11 @@ public class Producer {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public int getDailyProduction() {
-        return dailyProduction;
-    }
-
-
-    @Override
     public String toString() {
         return "Producer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", dailyProduction=" + dailyProduction +
                 '}';
-    }
-
-    public String getName() {
-        return name;
     }
 }

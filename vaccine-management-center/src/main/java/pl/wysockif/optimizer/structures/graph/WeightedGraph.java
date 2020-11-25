@@ -13,7 +13,7 @@ public class WeightedGraph implements Graph {
 
     @Override
     public void addEdge(int from, int to, int capacity, int price) {
-        if (!containsVertices(from, to)) {
+        if (containsVertices(from, to)) {
             throw new IllegalArgumentException("Conajmniej jeden z podanych wierzchołków nie istnieje");
         }
         prices[from][to] = price;
@@ -27,12 +27,12 @@ public class WeightedGraph implements Graph {
 
     @Override
     public int getPriceOfEdge(int from, int to) {
-        checkCorrectnessOfOperation(from, to, "Nie można pobrać ceny z nieistniejącej krawędzi");
+        checkCorrectnessOfOperation(from, to);
         return prices[from][to];
     }
 
-    private void checkCorrectnessOfOperation(int from, int to, String message) {
-        if (!containsVertices(from, to)) {
+    private void checkCorrectnessOfOperation(int from, int to) {
+        if (containsVertices(from, to)) {
             throw new UnsupportedOperationException("Conajmniej jeden z podanych wierzchołków nie istnieje");
         }
     }
@@ -40,7 +40,7 @@ public class WeightedGraph implements Graph {
 
     @Override
     public int getCapacityOfEdge(int from, int to) {
-        checkCorrectnessOfOperation(from, to, "Nie można pobrać przepustowości z nieistniejącej krawędzi");
+        checkCorrectnessOfOperation(from, to);
         return capacities[from][to];
     }
 
@@ -51,12 +51,12 @@ public class WeightedGraph implements Graph {
 
     @Override
     public void increaseCapacityOfEdge(int from, int to, int amount) {
-        checkCorrectnessOfOperation(from, to, "Nie można zwiększyć przepływu w nieistniejącej krawędzi");
+        checkCorrectnessOfOperation(from, to);
         capacities[from][to] += amount;
     }
 
     private boolean containsVertices(int from, int to) {
-        return (from < numberOfVertices && to < numberOfVertices);
+        return (from >= numberOfVertices || to >= numberOfVertices);
     }
 
     @Override
