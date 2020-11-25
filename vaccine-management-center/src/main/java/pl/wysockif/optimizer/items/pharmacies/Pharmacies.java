@@ -1,6 +1,5 @@
 package pl.wysockif.optimizer.items.pharmacies;
 
-import org.jetbrains.annotations.NotNull;
 import pl.wysockif.optimizer.Optimizer;
 import pl.wysockif.optimizer.io.ErrorsHandler;
 import pl.wysockif.optimizer.items.Items;
@@ -72,7 +71,6 @@ public class Pharmacies implements Items, Iterable<Pharmacy> {
         }
     }
 
-    @NotNull
     @Override
     public Iterator iterator() {
         return pharmacies.iterator();

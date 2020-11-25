@@ -1,6 +1,5 @@
 package pl.wysockif.optimizer.items.producers;
 
-import org.jetbrains.annotations.NotNull;
 import pl.wysockif.optimizer.Optimizer;
 import pl.wysockif.optimizer.io.ErrorsHandler;
 import pl.wysockif.optimizer.items.Items;
@@ -45,7 +44,7 @@ public class Producers implements Items, Iterable<Producer> {
             String message = "Niepoprawny format danych. Ujemna wartość reprezentująca dzienną produkcję";
             throw new DataFormatException(message);
         }
-        if(id < 0){
+        if (id < 0) {
             String message = "Niepoprawny format danych. Ujemna wartość reprezentująca id producenta";
             throw new DataFormatException(message);
         }
@@ -67,7 +66,7 @@ public class Producers implements Items, Iterable<Producer> {
 
     private void checkUpperLimit() {
         int upperLimit = 300;
-        if(Optimizer.isLimit && producers.size() >= upperLimit){
+        if (Optimizer.isLimit && producers.size() >= upperLimit) {
             String message = "Przekroczono dozwolony limit ilości producentów wynoszący: " + upperLimit;
             String tip = "Aby znieść limit użyj polecenia \"-upper_limit=false\" " +
                     "na końcu komendy uruchamiającej program. \n           " +
@@ -76,7 +75,6 @@ public class Producers implements Items, Iterable<Producer> {
         }
     }
 
-    @NotNull
     @Override
     public Iterator<Producer> iterator() {
         return producers.iterator();

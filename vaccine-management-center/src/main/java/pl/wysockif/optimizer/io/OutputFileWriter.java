@@ -17,14 +17,15 @@ public class OutputFileWriter {
         printWriter = createPrintWriterIfFileExists(file);
     }
 
-    public void saveLineToFile(String line) {
+    private void saveLineToFile(String line) {
         printWriter.println(line);
     }
 
-    public String concatenateLine(int length, String producerName, String pharmacyName, int amount, double price) {
+    private String concatenateLine(int length, String producerName, String pharmacyName, int amount, double price) {
         producerName = rightPad(producerName, length);
+        double totalCost = (double) amount * price / 100;
         return producerName + " -> " + pharmacyName +
-                " [Koszt = " + amount + " * " + (double) price / 100 + " = " + (double) amount * price / 100 + " zł]";
+                " [Koszt = " + amount + " * " + price / 100 + " = " + totalCost + " zł]";
     }
 
     private String rightPad(String text, int length) {
@@ -42,35 +43,37 @@ public class OutputFileWriter {
         return printWriter;
     }
 
-
     public void saveDeals(List<Deal> deals) {
         int longestNameLength = 0;
         int totalCost = 0;
-        if (!deals.isEmpty())
+        if (!deals.isEmpty()) {
             longestNameLength = findLongestNameLength(deals);
-
-        while (!deals.isEmpty()) {
-            Deal deal = deals.remove(0);
-            int price = deal.getPrice();
-            int amount = deal.getAmount();
-            totalCost += price * amount;
-            String line = concatenateLine(longestNameLength, deal.getProducerName(), deal.getPharmacyName(), deal.getAmount(), deal.getPrice());
-            saveLineToFile(line);
         }
-
+        while (!deals.isEmpty()) {
+            totalCost = saveSingleDeal(deals, longestNameLength, totalCost);
+        }
         saveTheSummary(totalCost);
         printWriter.close();
     }
 
+    private int saveSingleDeal(List<Deal> deals, int longestNameLength, int totalCost) {
+        Deal deal = deals.remove(0);
+        int price = deal.getPrice();
+        int amount = deal.getAmount();
+        totalCost += price * amount;
+        String line = concatenateLine(longestNameLength, deal.getProducerName(), deal.getPharmacyName(), deal.getAmount(), deal.getPrice());
+        saveLineToFile(line);
+        return totalCost;
+    }
+
     private void saveTheSummary(int totalCost) {
-        String line = "Opłaty całkowite: " + (double) totalCost / 100 + " zł";
-//        System.out.println((double) totalCost / 100);
+        double convertedTotalCost = (double) totalCost / 100.0;
+        String line = "Opłaty całkowite: " + convertedTotalCost + " zł";
         saveLineToFile(line);
     }
 
     private int findLongestNameLength(List<Deal> deals) {
         int longestName = deals.get(0).getProducerName().length();
-
         for (Deal deal : deals) {
             if (deal.getProducerName().length() > longestName) {
                 longestName = deal.getProducerName().length();

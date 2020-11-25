@@ -64,14 +64,14 @@ public class Optimizer {
         Optimizer optimizer = new Optimizer();
         optimizer.loadData();
         Graph initialGraph = optimizer.prepare();
-//        long before = System.nanoTime();
+        long before = System.nanoTime();
         Graph finalGraph = optimizer.optimize(initialGraph);
-//        System.out.println( (System.nanoTime() - before) / 1_000_000_000.0);
+        System.out.println( (System.nanoTime() - before) / 1_000_000_000.0);
         optimizer.saveResults(finalGraph);
     }
 
     private static void validateArguments(String[] args) {
-        if (args.length < 1 || args.length > 3) {
+        if (args.length < 2 || args.length > 3) {
             String message = "[WYWOŁANIE] Nie poprawna ilość argumentów wywołania";
             ErrorsHandler.handleTheError(INCORRECT_CALL, message);
         } else if (args.length == 3) {
