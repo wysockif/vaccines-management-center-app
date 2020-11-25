@@ -1,10 +1,10 @@
 package pl.wysockif.optimizer.algorithms;
 
 public class Deal {
-    private String producerName;
-    private String pharmacyName;
-    private int amount;
-    private int price;
+    private final String producerName;
+    private final String pharmacyName;
+    private final int amount;
+    private final int price;
 
     public Deal(String producerName, String pharmacyName, int amount, int price) {
         this.producerName = producerName;
@@ -29,7 +29,4 @@ public class Deal {
         return price;
     }
 
-//    public void setPrice(double price) {
-//        this.price = price;
-//    }
 }

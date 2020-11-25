@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BellmanFordAlgorithm implements FindingPathAlgorithm {
-    public static final int INFINITY = 100_000;
+public class BellmanFord implements FindingPath {
+    public static final int INFINITY = 1_000_000_000;
     public static final int UNDEFINED = -1;
 
 
@@ -16,31 +16,14 @@ public class BellmanFordAlgorithm implements FindingPathAlgorithm {
     public List<Integer> findPath(Graph residualGraph) {
         int numberOfVertices = residualGraph.getNumberOfVertices();
         int[] distances = initializeDistancesArray(numberOfVertices);
-//        BigDecimal[] distances = initializeDistancesArray(numberOfVertices);
         int[] predecessors = initializePredecessorsArray(numberOfVertices);
-        for (int i = 0; i < numberOfVertices - 1; i++) {
-            relaxEdges(residualGraph, numberOfVertices, distances, predecessors);
-        }
-        checkForNegativeCycle(residualGraph, numberOfVertices, distances);
+
+        relaxGraph(residualGraph, numberOfVertices, distances, predecessors);
 
         if (distances[numberOfVertices - 1] != INFINITY) {
             return findCheapestPath(predecessors);
         }
         return new LinkedList<>();
-    }
-
-    private void checkForNegativeCycle(Graph residualGraph, int numberOfVertices, int[] distances) {
-        for (int u = 0; u < numberOfVertices; u++) {
-            for (int v = 0; v < numberOfVertices; v++) {
-                if (residualGraph.containsEdge(u, v)) {
-                    int price = residualGraph.getPriceOfEdge(u, v);
-                    if (distances[u] + price <distances[v]) {
-                        throw new UnsupportedOperationException("Ujemny cykl");
-                    }
-                }
-            }
-        }
-
     }
 
     private List<Integer> findCheapestPath(int[] predecessors) {
@@ -50,24 +33,47 @@ public class BellmanFordAlgorithm implements FindingPathAlgorithm {
             return cheapestPath;
         }
         while (predecessorIndex != UNDEFINED) {
-
             cheapestPath.add(predecessorIndex);
             predecessorIndex = predecessors[predecessorIndex];
-
         }
         Collections.reverse(cheapestPath);
         return cheapestPath;
     }
 
-    private void relaxEdges(Graph residualGraph, int numberOfVertices, int[] distances, int[] predecessors) {
+    private void relaxGraph(Graph residualGraph, int numberOfVertices, int[] distances, int[] predecessors) {
+        for (int i = 0; i < numberOfVertices - 1; i++) {
+            relaxEdges(residualGraph, numberOfVertices, distances, predecessors);
+        }
+        checkForNegativeCycle(residualGraph, numberOfVertices, distances);
+    }
+
+    private void checkForNegativeCycle(Graph residualGraph, int numberOfVertices, int[] distances) {
         for (int u = 0; u < numberOfVertices; u++) {
             for (int v = 0; v < numberOfVertices; v++) {
-                relaxEdge(residualGraph, distances, predecessors, u, v);
+                tryToRelaxOneMoreTime(residualGraph, distances, u, v);
+            }
+        }
+
+    }
+    private void tryToRelaxOneMoreTime(Graph residualGraph, int[] distances, int u, int v) {
+        if (residualGraph.containsEdge(u, v)) {
+            int price = residualGraph.getPriceOfEdge(u, v);
+            if (distances[u] + price < distances[v]) {
+                String message = "Wykryto ujemny cykl w grafie";
+                throw new UnsupportedOperationException(message);
             }
         }
     }
 
-    private void relaxEdge(Graph residualGraph, int[] distances, int[] predecessors, int u, int v) {
+    private void relaxEdges(Graph residualGraph, int numberOfVertices, int[] distances, int[] predecessors) {
+        for (int u = 0; u < numberOfVertices; u++) {
+            for (int v = 0; v < numberOfVertices; v++) {
+                relaxSingleEdge(residualGraph, distances, predecessors, u, v);
+            }
+        }
+    }
+
+    private void relaxSingleEdge(Graph residualGraph, int[] distances, int[] predecessors, int u, int v) {
         if (residualGraph.containsEdge(u, v)) {
             int price = residualGraph.getPriceOfEdge(u, v);
             if (distances[u]+ price < distances[v]) {
