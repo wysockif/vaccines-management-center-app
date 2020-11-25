@@ -8,7 +8,7 @@ public class ErrorsHandler {
     public static final int INCORRECT_FORMAT = -3;
     public static final int INSUFFICIENT_DATA = -4;
 
-    public static final int OUTPUT_FILE_NOT_FOUNT = -11;
+    public static final int OUTPUT_FILE_NOT_FOUND = -11;
 
     public static void handleTheError(int codeError, String message) {
         System.err.println("Błąd " + codeError + " " + message);

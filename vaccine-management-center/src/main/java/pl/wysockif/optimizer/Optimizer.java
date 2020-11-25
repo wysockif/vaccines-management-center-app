@@ -1,9 +1,9 @@
 package pl.wysockif.optimizer;
 
 import pl.wysockif.optimizer.algorithms.Deal;
-import pl.wysockif.optimizer.algorithms.MinCostMaxFlowAlgorithm;
-import pl.wysockif.optimizer.algorithms.flow.EdmondsKarpAlgorithm;
-import pl.wysockif.optimizer.algorithms.path.BellmanFordAlgorithm;
+import pl.wysockif.optimizer.algorithms.MinCostMaxFlow;
+import pl.wysockif.optimizer.algorithms.flow.FordFulkerson;
+import pl.wysockif.optimizer.algorithms.path.BellmanFord;
 import pl.wysockif.optimizer.io.InputFileReader;
 import pl.wysockif.optimizer.io.OutputFileWriter;
 import pl.wysockif.optimizer.items.connections.Connections;
@@ -22,16 +22,16 @@ public class Optimizer {
     public Optimizer() {
 
         System.out.println("ODCZYTYWANIE DANYCH");
-        InputFileReader inputFileReader = new InputFileReader("src/main/resources/data7.txt");
+        InputFileReader inputFileReader = new InputFileReader("src/main/resources/data5.txt");
         producers = inputFileReader.getProducers();
         pharmacies = inputFileReader.getPharmacies();
         connections = inputFileReader.getConnections();
         System.out.println("PRZYGOTOWANIE DANYCH");
-        MinCostMaxFlowAlgorithm algorithm = new MinCostMaxFlowAlgorithm(producers, pharmacies, connections);
-        BellmanFordAlgorithm bellmanFordAlgorithm = new BellmanFordAlgorithm();
-        EdmondsKarpAlgorithm edmondsKarpAlgorithm = new EdmondsKarpAlgorithm(bellmanFordAlgorithm);
+        MinCostMaxFlow algorithm = new MinCostMaxFlow(producers, pharmacies, connections);
+        BellmanFord bellmanFord = new BellmanFord();
+        FordFulkerson fordFulkerson = new FordFulkerson(bellmanFord);
         System.out.println("OBLICZANIE");
-        Graph finalGraph = edmondsKarpAlgorithm.findMaxFlow(algorithm.createGraph());
+        Graph finalGraph = fordFulkerson.findMaxFlow(algorithm.createGraph());
         System.out.println("ZAPISYWANIE");
         List<Deal> deals = algorithm.loadResults(finalGraph);
         OutputFileWriter outputFileWriter = new OutputFileWriter("src/main/resources/output.txt");

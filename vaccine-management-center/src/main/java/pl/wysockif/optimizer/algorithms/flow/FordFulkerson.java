@@ -1,18 +1,19 @@
 package pl.wysockif.optimizer.algorithms.flow;
 
-import pl.wysockif.optimizer.algorithms.path.FindingPathAlgorithm;
+import pl.wysockif.optimizer.algorithms.path.FindingPath;
 import pl.wysockif.optimizer.structures.graph.Graph;
 
 import java.util.List;
 
-public class EdmondsKarpAlgorithm implements MaxFlowAlgorithm {
+public class FordFulkerson implements MaxFlow {
     public static final int INFINITY = Integer.MAX_VALUE;
-    private final FindingPathAlgorithm findingPathAlgorithm;
+    private final FindingPath findingPathAlgorithm;
 
-    public EdmondsKarpAlgorithm(FindingPathAlgorithm findingPathAlgorithm) {
+    public FordFulkerson(FindingPath findingPathAlgorithm) {
         this.findingPathAlgorithm = findingPathAlgorithm;
     }
 
+    @Override
     public Graph findMaxFlow(Graph residualGraph) {
         List<Integer> path = findingPathAlgorithm.findPath(residualGraph);
         while (!path.isEmpty()) {
@@ -21,7 +22,6 @@ public class EdmondsKarpAlgorithm implements MaxFlowAlgorithm {
             path = findingPathAlgorithm.findPath(residualGraph);
             System.out.println(path);
         }
-
         return residualGraph;
     }
 
@@ -32,17 +32,14 @@ public class EdmondsKarpAlgorithm implements MaxFlowAlgorithm {
             int vertex1 = path.get(i);
             int vertex2 = path.get(i + 1);
             int price = residualGraph.getPriceOfEdge(vertex1, vertex2);
-
-
-            residualGraph.increaseCapacityOfEdge(vertex1, vertex2, -flow);
-
-//            if (residualGraph.containsEdge(vertex2, vertex1))
-                residualGraph.increaseCapacityOfEdge(vertex2, vertex1, flow);
-
-                //            else
-                residualGraph.setPriceOfEdge(vertex2, vertex1, -price);
-
+            changeValuesOnEdges(residualGraph, flow, vertex1, vertex2, price);
         }
+    }
+
+    private void changeValuesOnEdges(Graph residualGraph, int flow, int vertex1, int vertex2, int price) {
+        residualGraph.increaseCapacityOfEdge(vertex1, vertex2, -flow);
+        residualGraph.increaseCapacityOfEdge(vertex2, vertex1, flow);
+        residualGraph.setPriceOfEdge(vertex2, vertex1, -price);
     }
 
     private int findMinCapacity(Graph residualGraph, List<Integer> path) {

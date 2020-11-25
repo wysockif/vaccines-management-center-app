@@ -1,7 +1,7 @@
 package pl.wysockif.optimizer.io;
 
-import pl.wysockif.optimizer.items.connections.Connections;
 import pl.wysockif.optimizer.items.Items;
+import pl.wysockif.optimizer.items.connections.Connections;
 import pl.wysockif.optimizer.items.pharmacies.Pharmacies;
 import pl.wysockif.optimizer.items.pharmacies.Pharmacy;
 import pl.wysockif.optimizer.items.producers.Producer;
@@ -87,7 +87,7 @@ public class InputFileReader {
             item.validateAttributes(convertedAttributes);
             item.addNewElement(convertedAttributes);
         } catch (DataFormatException e) {
-            String message = "[Plik wejściowy: " + fileName + ", nr linii: " + lineNumber + "]. " + e.getMessage() +".";
+            String message = "[Plik wejściowy: " + fileName + ", nr linii: " + lineNumber + "]. " + e.getMessage() + ".";
             ErrorsHandler.handleTheError(ErrorsHandler.INCORRECT_FORMAT, message);
         }
     }

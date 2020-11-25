@@ -12,12 +12,12 @@ import pl.wysockif.optimizer.structures.graph.WeightedGraph;
 import java.util.LinkedList;
 import java.util.List;
 
-public class MinCostMaxFlowAlgorithm {
+public class MinCostMaxFlow {
     private final Producers producers;
     private final Pharmacies pharmacies;
     private final Connections connections;
 
-    public MinCostMaxFlowAlgorithm(Producers producers, Pharmacies pharmacies, Connections connections) {
+    public MinCostMaxFlow(Producers producers, Pharmacies pharmacies, Connections connections) {
         this.producers = producers;
         this.pharmacies = pharmacies;
         this.connections = connections;
@@ -70,18 +70,15 @@ public class MinCostMaxFlowAlgorithm {
 
         for (int u = finalGraph.getNumberOfVertices() - 2; u >= 1; u--) {
             for (int v = u - 1; v >= 1; v--) {
-                if (u > v) {
-                    if (finalGraph.containsEdge(u, v)) {
-                        int price = finalGraph.getPriceOfEdge(u, v) * -1;
-                        int amount = finalGraph.getCapacityOfEdge(u, v);
-                        int numberOfProducers = producers.getNumberOfProducers();
-                        String producerName = producers.getProducerByIndex(v - 1).getName();
-                        String pharmacyName = pharmacies.getPharmacyByIndex(u - numberOfProducers -1).getName();
+                if ((u > v) && finalGraph.containsEdge(u, v)) {
+                    int price = finalGraph.getPriceOfEdge(u, v) * -1;
+                    int amount = finalGraph.getCapacityOfEdge(u, v);
+                    int numberOfProducers = producers.getNumberOfProducers();
+                    String producerName = producers.getProducerByIndex(v - 1).getName();
+                    String pharmacyName = pharmacies.getPharmacyByIndex(u - numberOfProducers - 1).getName();
 
-
-                        Deal deal = new Deal(producerName, pharmacyName, amount, price);
-                        deals.add(deal);
-                    }
+                    Deal deal = new Deal(producerName, pharmacyName, amount, price);
+                    deals.add(deal);
                 }
             }
         }
