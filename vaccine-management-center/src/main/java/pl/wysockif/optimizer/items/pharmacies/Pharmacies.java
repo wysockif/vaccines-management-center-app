@@ -4,12 +4,12 @@ import pl.wysockif.optimizer.Optimizer;
 import pl.wysockif.optimizer.io.ErrorsHandler;
 import pl.wysockif.optimizer.items.Items;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.zip.DataFormatException;
 
-import static pl.wysockif.optimizer.io.ErrorsHandler.OUTPUT_FILE_EXCEED_LIMIT;
+import static pl.wysockif.optimizer.io.ErrorsHandler.INPUT_FILE_EXCEED_LIMIT;
 
 public class Pharmacies implements Items {
 
@@ -73,7 +73,7 @@ public class Pharmacies implements Items {
             String tip = "Aby znieść limit użyj polecenia \"-upper_limit=false\" " +
                     "na końcu komendy uruchamiającej program. \n           " +
                     "Czas działania włówczas może zostać włówczas znacząco wydłużony.";
-            ErrorsHandler.handleTheError(OUTPUT_FILE_EXCEED_LIMIT, message, tip);
+            ErrorsHandler.handleError(INPUT_FILE_EXCEED_LIMIT, message, tip);
         }
     }
 
@@ -92,5 +92,9 @@ public class Pharmacies implements Items {
     public Pharmacy getPharmacyById(int pharmacyId) {
         int index = indexById.get(pharmacyId);
         return pharmacyByIndex.get(index);
+    }
+
+    public Collection<Pharmacy> getPharmaciesCollection() {
+        return pharmacyByIndex.values();
     }
 }

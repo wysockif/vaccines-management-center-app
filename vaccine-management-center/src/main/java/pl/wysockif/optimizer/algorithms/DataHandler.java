@@ -9,6 +9,7 @@ import pl.wysockif.optimizer.items.producers.Producers;
 import pl.wysockif.optimizer.structures.graph.Graph;
 import pl.wysockif.optimizer.structures.graph.WeightedGraph;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,9 +34,8 @@ public class DataHandler {
     }
 
     private void addConnectionsToGraph(Graph graph) {
-        int numberOfConnections = connections.getNumberOfConnections();
-        for (int i = 0; i < numberOfConnections; i++) {
-            Connection connection = connections.getConnectionByIndex(i);
+        Collection<Connection> connectionsCollection = connections.getConnectionsCollections();
+        for(Connection connection : connectionsCollection){
             int producerIndex = producers.getProducerIndexById(connection.getProducer().getId());
             int pharmacyIndex = pharmacies.getPharmacyIndexById(connection.getPharmacy().getId());
             int price = connection.getPrice();
@@ -48,18 +48,20 @@ public class DataHandler {
 
     private void addPharmaciesToGraph(Graph graph, int numberOfVertices) {
         int numberOfProducers = producers.getNumberOfProducers();
-        int numberOfPharmacies = pharmacies.getNumberOfPharmacies();
-
-        for (int i = 0; i < numberOfPharmacies; i++) {
-            Pharmacy pharmacy = pharmacies.getPharmacyByIndex(i);
-            graph.addEdge(numberOfProducers + i + 1, numberOfVertices - 1, pharmacy.getDailyDemand(), 0);
+        Collection<Pharmacy> pharmaciesCollection = pharmacies.getPharmaciesCollection();
+        int index = 0;
+        for(Pharmacy pharmacy : pharmaciesCollection){
+            graph.addEdge(numberOfProducers + index + 1, numberOfVertices - 1, pharmacy.getDailyDemand(), 0);
+            index++;
         }
     }
 
     private void addProducersToGraph(Graph graph) {
-        for (int i = 0; i < producers.getNumberOfProducers(); i++) {
-            Producer producer = producers.getProducerByIndex(i);
-            graph.addEdge(0, i + 1, producer.getDailyProduction(), 0);
+        Collection<Producer> producersCollection = producers.getProducersCollection();
+        int index = 0;
+        for(Producer producer : producersCollection){
+            graph.addEdge(0, index + 1, producer.getDailyProduction(), 0);
+            index++;
         }
     }
 

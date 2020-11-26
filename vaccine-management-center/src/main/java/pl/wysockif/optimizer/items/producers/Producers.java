@@ -4,24 +4,23 @@ import pl.wysockif.optimizer.Optimizer;
 import pl.wysockif.optimizer.io.ErrorsHandler;
 import pl.wysockif.optimizer.items.Items;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.DataFormatException;
 
-import static pl.wysockif.optimizer.io.ErrorsHandler.OUTPUT_FILE_EXCEED_LIMIT;
+import static pl.wysockif.optimizer.io.ErrorsHandler.INPUT_FILE_EXCEED_LIMIT;
 
 public class Producers implements Items {
+
     private final Map<Integer, Producer> producersByIndex;
     private final Map<Integer, Integer> indexById;
+
     private int counter;
 
     public Producers() {
         producersByIndex = new HashMap<>();
         indexById = new HashMap<>();
-    }
-
-    public boolean alreadyContains(int id) {
-        return indexById.containsKey(id);
     }
 
     public int getNumberOfProducers() {
@@ -74,7 +73,7 @@ public class Producers implements Items {
             String tip = "Aby znieść limit użyj polecenia \"-upper_limit=false\" " +
                     "na końcu komendy uruchamiającej program. \n           " +
                     "Czas działania włówczas może zostać włówczas znacząco wydłużony.";
-            ErrorsHandler.handleTheError(OUTPUT_FILE_EXCEED_LIMIT, message, tip);
+            ErrorsHandler.handleError(INPUT_FILE_EXCEED_LIMIT, message, tip);
         }
     }
 
@@ -90,4 +89,13 @@ public class Producers implements Items {
         int index = indexById.get(producerId);
         return producersByIndex.get(index);
     }
+
+    public boolean alreadyContains(int id) {
+        return indexById.containsKey(id);
+    }
+
+    public Collection<Producer> getProducersCollection() {
+        return producersByIndex.values();
+    }
+
 }

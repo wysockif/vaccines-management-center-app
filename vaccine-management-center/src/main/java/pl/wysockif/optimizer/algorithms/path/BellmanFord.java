@@ -41,8 +41,9 @@ public class BellmanFord implements FindingShortestPath {
     }
 
     private void relaxGraph(Graph residualGraph, int numberOfVertices, int[] distances, int[] predecessors) {
-        for (int i = 0; i < numberOfVertices - 1; i++) {
-            relaxEdges(residualGraph, numberOfVertices, distances, predecessors);
+        boolean areChanges = true;
+        for (int i = 0; i < numberOfVertices - 1 && areChanges; i++) {
+            areChanges = relaxEdges(residualGraph, numberOfVertices, distances, predecessors);
         }
         checkForNegativeCycle(residualGraph, numberOfVertices, distances);
     }
@@ -65,24 +66,29 @@ public class BellmanFord implements FindingShortestPath {
         }
     }
 
-    private void relaxEdges(Graph residualGraph, int numberOfVertices, int[] distances, int[] predecessors) {
-        for (int u = 0; u < numberOfVertices; u++) {
-            for (int v = 0; v < numberOfVertices; v++) {
-                relaxSingleEdge(residualGraph, distances, predecessors, u, v);
+    private boolean relaxEdges(Graph residualGraph, int numberOfVertices, int[] distances, int[] predecessors) {
+        boolean areChanges = false;
+        for (int i = 0; i < numberOfVertices; i++) {
+            for (int j = 0; j < numberOfVertices; j++) {
+                areChanges = relaxSingleEdge(residualGraph, distances, predecessors, areChanges, i, j);
             }
         }
+        return areChanges;
     }
 
-    private void relaxSingleEdge(Graph residualGraph, int[] distances, int[] predecessors, int u, int v) {
+    private boolean relaxSingleEdge(Graph residualGraph, int[] distances, int[] predecessors, boolean areChanges, int u, int v) {
         if (residualGraph.containsEdge(u, v)) {
             int price = residualGraph.getPriceOfEdge(u, v);
             if (distances[u]+ price < distances[v]) {
                 int value = distances[u] +price;
                 distances[v] = value;
                 predecessors[v] = u;
+                areChanges = true;
             }
         }
+        return areChanges;
     }
+
 
     private int[] initializePredecessorsArray(int numberOfVertices) {
         int[] predecessors = new int[numberOfVertices];
