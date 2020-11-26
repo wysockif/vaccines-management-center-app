@@ -6,22 +6,25 @@ import pl.wysockif.optimizer.items.pharmacies.Pharmacy;
 import pl.wysockif.optimizer.items.producers.Producer;
 import pl.wysockif.optimizer.items.producers.Producers;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.zip.DataFormatException;
 
-public class Connections implements Items, Iterable<Connection> {
+public class Connections implements Items {
     private final int converter;
     private final Producers producers;
     private final Pharmacies pharmacies;
-    private final List<Connection> connections;
+    private final Map<Integer, Connection> connectionByIndex;
+    private final Map<ConnectionKey, Connection> connectionByKey;
+    private int counter;
 
     public Connections(Producers producers, Pharmacies pharmacies) {
         this.producers = producers;
         this.pharmacies = pharmacies;
-        connections = new ArrayList<>();
+        connectionByIndex = new HashMap<>();
+        connectionByKey = new HashMap<>();
         converter = 100;
     }
 
@@ -35,7 +38,10 @@ public class Connections implements Items, Iterable<Connection> {
         Pharmacy pharmacy = pharmacies.getPharmacyById(pharmacyId);
 
         Connection connection = new Connection(producer, pharmacy, maxNumberOVaccines, price);
-        connections.add(connection);
+        connectionByIndex.put(counter, connection);
+        ConnectionKey connectionKey = new ConnectionKey(producerId, pharmacyId);
+        connectionByKey.put(connectionKey, connection);
+        counter++;
     }
 
     @Override
@@ -104,12 +110,11 @@ public class Connections implements Items, Iterable<Connection> {
     }
 
     private void checkIfHasAlreadyContain(int producerId, int pharmacyId) throws DataFormatException {
-        for (Connection connection : connections) {
-            if (connection.getProducer().getId() == producerId && connection.getPharmacy().getId() == pharmacyId) {
-                String message = "Nie można dodawać więcej niż jednego połączenia " +
-                        "z tym samym id producenta i apteki";
-                throw new DataFormatException(message);
-            }
+        ConnectionKey connectionKey = new ConnectionKey(producerId, pharmacyId);
+        if (connectionByKey.containsKey(connectionKey)) {
+            String message = "Nie można dodawać więcej niż jednego połączenia " +
+                    "z tym samym id producenta i apteki";
+            throw new DataFormatException(message);
         }
     }
 
@@ -123,17 +128,8 @@ public class Connections implements Items, Iterable<Connection> {
         }
     }
 
-    public boolean contain(int producerId, int pharmacyId) {
-        for (Connection connection : connections) {
-            if (connection.getProducer().getId() == producerId && connection.getPharmacy().getId() == pharmacyId) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public int getSize() {
-        return connections.size();
+        return connectionByIndex.size();
     }
 
     public int getExpectedSize() {
@@ -141,15 +137,34 @@ public class Connections implements Items, Iterable<Connection> {
     }
 
     public int getNumberOfConnections() {
-        return connections.size();
+        return connectionByIndex.size();
     }
 
     public Connection getConnectionByIndex(int index) {
-        return connections.get(index);
+        return connectionByIndex.get(index);
     }
 
-    @Override
-    public Iterator<Connection> iterator() {
-        return connections.iterator();
+    public static class ConnectionKey {
+        private final int producerId;
+        private final int pharmacyId;
+
+        public ConnectionKey(int producerId, int pharmacyId) {
+            this.producerId = producerId;
+            this.pharmacyId = pharmacyId;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            ConnectionKey connectionKey = (ConnectionKey) o;
+            return producerId == connectionKey.producerId &&
+                    pharmacyId == connectionKey.pharmacyId;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(producerId, pharmacyId);
+        }
     }
 }

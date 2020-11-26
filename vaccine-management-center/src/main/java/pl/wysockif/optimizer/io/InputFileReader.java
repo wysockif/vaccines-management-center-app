@@ -60,14 +60,14 @@ public class InputFileReader {
 
     private String findMissingConnection(Connections connections) {
         String missing = "";
-        for (Producer producer : producers) {
-            for (Pharmacy pharmacy : pharmacies) {
-                if (!connections.contain(producer.getId(), pharmacy.getId())) {
-                    missing = "producent o id: " + producer.getId() + ", apteka o id: " + pharmacy.getId();
-                    return missing;
-                }
-            }
-        }
+//        for (Producer producer : producers) {
+//            for (Pharmacy pharmacy : pharmacies) {
+//                if (!connections.contain(producer.getId(), pharmacy.getId())) {
+//                    missing = "producent o id: " + producer.getId() + ", apteka o id: " + pharmacy.getId();
+//                    return missing;
+//                }
+//            }
+//        }
         return missing;
     }
 

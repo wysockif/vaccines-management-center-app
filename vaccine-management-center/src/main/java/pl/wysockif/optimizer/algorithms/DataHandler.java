@@ -49,6 +49,7 @@ public class DataHandler {
     private void addPharmaciesToGraph(Graph graph, int numberOfVertices) {
         int numberOfProducers = producers.getNumberOfProducers();
         int numberOfPharmacies = pharmacies.getNumberOfPharmacies();
+
         for (int i = 0; i < numberOfPharmacies; i++) {
             Pharmacy pharmacy = pharmacies.getPharmacyByIndex(i);
             graph.addEdge(numberOfProducers + i + 1, numberOfVertices - 1, pharmacy.getDailyDemand(), 0);
