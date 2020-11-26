@@ -60,14 +60,18 @@ public class Optimizer {
     }
 
     public static void main(String[] args) {
+        long before = System.nanoTime();
         validateArguments(args);
         Optimizer optimizer = new Optimizer();
+        long b = System.nanoTime();
         optimizer.loadData();
+        System.out.println("Samo odczytywanie: " + (System.nanoTime() - b) / 1_000_000_000.0);
         Graph initialGraph = optimizer.prepare();
-        long before = System.nanoTime();
+        b = System.nanoTime();
         Graph finalGraph = optimizer.optimize(initialGraph);
-        System.out.println( (System.nanoTime() - before) / 1_000_000_000.0);
+        System.out.println("Sam algorytm: " + (System.nanoTime() - b) / 1_000_000_000.0);
         optimizer.saveResults(finalGraph);
+        System.out.println("Cały program: " + (System.nanoTime() - before) / 1_000_000_000.0);
     }
 
     private static void validateArguments(String[] args) {

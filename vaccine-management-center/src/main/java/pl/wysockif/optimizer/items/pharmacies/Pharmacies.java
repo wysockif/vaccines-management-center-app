@@ -4,22 +4,26 @@ import pl.wysockif.optimizer.Optimizer;
 import pl.wysockif.optimizer.io.ErrorsHandler;
 import pl.wysockif.optimizer.items.Items;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.util.zip.DataFormatException;
 
 import static pl.wysockif.optimizer.io.ErrorsHandler.OUTPUT_FILE_EXCEED_LIMIT;
 
-public class Pharmacies implements Items, Iterable<Pharmacy> {
-    private final List<Pharmacy> pharmacies;
+public class Pharmacies implements Items {
+
+    private final Map<Integer, Pharmacy> pharmacyByIndex;
+    private final Map<Integer, Integer> indexById;
+    private int counter;
 
     public Pharmacies() {
-        pharmacies = new ArrayList<>();
+        pharmacyByIndex = new HashMap<>();
+        indexById = new HashMap<>();
     }
 
     public int getNumberOfPharmacies() {
-        return pharmacies.size();
+        return pharmacyByIndex.size();
     }
 
 
@@ -54,7 +58,9 @@ public class Pharmacies implements Items, Iterable<Pharmacy> {
         String name = (String) attributes[1];
         int dailyRequirement = (int) attributes[2];
         Pharmacy pharmacy = new Pharmacy(id, name, dailyRequirement);
-        pharmacies.add(pharmacy);
+        pharmacyByIndex.put(counter, pharmacy);
+        indexById.put(id, counter);
+        counter++;
         if (Optimizer.isLimit) {
             checkUpperLimit();
         }
@@ -62,7 +68,7 @@ public class Pharmacies implements Items, Iterable<Pharmacy> {
 
     private void checkUpperLimit() {
         int upperLimit = 300;
-        if (pharmacies.size() >= upperLimit) {
+        if (pharmacyByIndex.size() >= upperLimit) {
             String message = "Przekroczono dozwolony limit ilości aptek wynoszący: " + upperLimit;
             String tip = "Aby znieść limit użyj polecenia \"-upper_limit=false\" " +
                     "na końcu komendy uruchamiającej program. \n           " +
@@ -71,24 +77,20 @@ public class Pharmacies implements Items, Iterable<Pharmacy> {
         }
     }
 
-    @Override
-    public Iterator iterator() {
-        return pharmacies.iterator();
-    }
-
     public Pharmacy getPharmacyByIndex(int index) {
-        return pharmacies.get(index);
+        return pharmacyByIndex.get(index);
     }
 
     public boolean alreadyContains(int pharmacyId) {
-        return pharmacies.contains(new Pharmacy(pharmacyId, "", 0));
+        return indexById.containsKey(pharmacyId);
     }
 
     public int getPharmacyIndexById(int pharmacyId) {
-        return pharmacies.indexOf(new Pharmacy(pharmacyId, "", 0));
+        return indexById.get(pharmacyId);
     }
 
     public Pharmacy getPharmacyById(int pharmacyId) {
-        return pharmacies.get(getPharmacyIndexById(pharmacyId));
+        int index = indexById.get(pharmacyId);
+        return pharmacyByIndex.get(index);
     }
 }

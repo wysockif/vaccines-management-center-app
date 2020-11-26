@@ -5,41 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a2d0a13-90c8-459c-bd89-f559637367fa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyleidea-libs/readme.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/statistic.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/wysockif/optimizer/algorithms/DataHandlerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/wysockif/optimizer/algorithms/flow/FordFulkersonTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/wysockif/optimizer/algorithms/path/BellmanFordTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/wysockif/optimizer/io/OutputFileWriterTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/wysockif/optimizer/items/connections/ConnectionsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/wysockif/optimizer/items/pharmacies/PharmaciesTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/wysockif/optimizer/items/producers/ProducersTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pl/wysockif/optimizer/structures/graph/WeightedGraphTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vaccine-management-center.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/Optimizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/Optimizer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/algorithms/DataHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/algorithms/DataHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/algorithms/flow/MaxFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/algorithms/flow/MaxFlow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/io/OutputFileWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/io/OutputFileWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/io/InputFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/io/InputFileReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/connections/Connections.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/connections/Connections.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/pharmacies/Pharmacies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/pharmacies/Pharmacies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/producers/Producer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/producers/Producer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/producers/Producers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pl/wysockif/optimizer/items/producers/Producers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/output.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/output.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/output.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/Optimizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/Optimizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/DataHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/algorithms/DataHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/ErrorsHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/ErrorsHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/InputFileReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/InputFileReader.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/OutputFileWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/io/OutputFileWriter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/connections/Connections.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/connections/Connections.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/pharmacies/Pharmacies.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/pharmacies/Pharmacies.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/producers/Producer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/producers/Producer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/producers/Producers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/items/producers/Producers.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/dataa.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/vaccine-management-center-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/vaccine-management-center-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/structures/graph/WeightedGraph.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pl/wysockif/optimizer/structures/graph/WeightedGraph.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -91,7 +73,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="last.edited.regexp" value="adn | asda " />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Projekty/2020Z_AISD_proj_ind_GR3_gr31/vaccine-management-center" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -130,7 +112,7 @@
     <configuration name="Optimizer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="pl.wysockif.optimizer.Optimizer" />
       <module name="vaccine-management-center" />
-      <option name="PROGRAM_PARAMETERS" value="src/main/resources/data10.txt src/main/resources/output.txt -upper_limit=false" />
+      <option name="PROGRAM_PARAMETERS" value="src/main/resources/data6.txt src/main/resources/output.txt -upper_limit=false" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="pl.wysockif.optimizer.*" />
@@ -150,6 +132,19 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -266,7 +261,9 @@
       <workItem from="1606325722093" duration="40000" />
       <workItem from="1606325790775" duration="200000" />
       <workItem from="1606326014776" duration="2403000" />
-      <workItem from="1606332235823" duration="6466000" />
+      <workItem from="1606332235823" duration="9141000" />
+      <workItem from="1606345902410" duration="6876000" />
+      <workItem from="1606383583817" duration="4149000" />
     </task>
     <servers />
   </component>
@@ -278,28 +275,31 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="94" key="#Project_Structure/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605098274696" />
-    <state x="348" y="322" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606332513440">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="278" y="135" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606390364411">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="-1662" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606307539771" />
+    <state x="-1662" y="54" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606385229122" />
     <state x="348" y="322" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606332513440" />
+    <state x="278" y="135" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1606390364411" />
     <state x="-1337" y="104" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1606307528694">
       <screen x="-1920" y="0" width="1536" height="832" />
     </state>
     <state x="-1337" y="104" key="#com.intellij.ide.macro.MacrosDialog/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606307528694" />
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1606322856920">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="612" y="162" key="#com.intellij.ide.util.MemberChooser" timestamp="1606352404469">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606322856920" />
+    <state x="612" y="162" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1606352404469" />
     <state x="743" y="385" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1605444984936">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="743" y="385" width="433" height="217" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605444984936" />
-    <state x="529" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606311239839">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606388045331">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="-1497" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1605648877038" />
     <state x="529" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606311239839" />
+    <state x="423" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1606388045331" />
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606311309941">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -316,39 +316,40 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1246" y="227" key="#xdebugger.evaluate/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606238315074" />
-    <state x="707" y="364" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1606339293742">
+    <state x="707" y="364" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1606341479507">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="707" y="364" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606339293742" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605884470731">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="707" y="364" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606341479507" />
+    <state x="592" y="218" key="FileChooserDialogImpl" timestamp="1606388737681">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605884470731" />
+    <state x="740" y="275" key="FileChooserDialogImpl/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606342007143" />
     <state x="-1328" y="297" key="FileChooserDialogImpl/-1920.77.1536.832/0.0.1920.1040@-1920.77.1536.832" timestamp="1605777606660" />
-    <state width="1877" height="251" key="GridCell.Tab.0.bottom" timestamp="1606332516741">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="592" y="218" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606388737681" />
+    <state width="1493" height="160" key="GridCell.Tab.0.bottom" timestamp="1606390341398">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606315873727" />
-    <state width="1877" height="251" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606332516741" />
-    <state width="1877" height="284" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606262657563" />
-    <state width="1877" height="251" key="GridCell.Tab.0.center" timestamp="1606332516741">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1875" height="171" key="GridCell.Tab.0.bottom/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606387467545" />
+    <state width="1493" height="160" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1606390341398" />
+    <state width="1493" height="160" key="GridCell.Tab.0.center" timestamp="1606390341398">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606315873727" />
-    <state width="1877" height="251" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606332516741" />
-    <state width="1877" height="284" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606262657561" />
-    <state width="1877" height="251" key="GridCell.Tab.0.left" timestamp="1606332516741">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1875" height="171" key="GridCell.Tab.0.center/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606387467545" />
+    <state width="1493" height="160" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1606390341398" />
+    <state width="1493" height="160" key="GridCell.Tab.0.left" timestamp="1606390341398">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606315873727" />
-    <state width="1877" height="251" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606332516741" />
-    <state width="1877" height="284" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606262657560" />
-    <state width="1877" height="251" key="GridCell.Tab.0.right" timestamp="1606332516741">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1875" height="171" key="GridCell.Tab.0.left/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606387467544" />
+    <state width="1493" height="160" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1606390341398" />
+    <state width="1493" height="160" key="GridCell.Tab.0.right" timestamp="1606390341398">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="188" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606315873727" />
-    <state width="1877" height="251" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606332516741" />
-    <state width="1877" height="284" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606262657563" />
+    <state width="1875" height="171" key="GridCell.Tab.0.right/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606387467545" />
+    <state width="1493" height="160" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1606390341398" />
     <state width="1877" height="284" key="GridCell.Tab.1.bottom" timestamp="1606262657565">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -406,11 +407,11 @@
       <screen x="-1920" y="0" width="1536" height="832" />
     </state>
     <state x="-1810" y="0" width="1242" height="645" maximized="true" key="dock-window-2/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1605623756182" />
-    <state x="1218" y="453" key="extract.method.dialog" timestamp="1606339085987">
+    <state x="1218" y="453" key="extract.method.dialog" timestamp="1606341058094">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-962" y="182" key="extract.method.dialog/-1920.0.1536.832/0.0.1920.1040@-1920.0.1536.832" timestamp="1606307221561" />
-    <state x="1218" y="453" key="extract.method.dialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606339085987" />
+    <state x="1218" y="453" key="extract.method.dialog/-1920.0.1536.832/0.0.1920.1040@0.0.1920.1040" timestamp="1606341058094" />
     <state x="667" y="253" width="586" height="534" key="find.popup" timestamp="1606324427619">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
