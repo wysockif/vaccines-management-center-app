@@ -9,6 +9,8 @@ import pl.wysockif.optimizer.items.producers.Producers;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 import java.util.zip.DataFormatException;
@@ -28,6 +30,7 @@ public class InputFileReader {
         File inputFile = new File(path);
         fileName = inputFile.getName();
         lineNumber = 0;
+        ArrayList<Integer> sf;
         scanner = createScannerIfTheSpecifiedFileExists(inputFile);
         producers = loadProducersFromFile(scanner);
         pharmacies = loadPharmaciesFromFile(scanner);
@@ -54,20 +57,23 @@ public class InputFileReader {
             String missing = findMissingConnection(connections);
             String message = "[Plik wejściowy: " + fileName + "]. Nie znaleziono wystarczającej liczby połączeń." +
                     " Brakujące połączenie: " + missing;
-            ErrorsHandler.handleTheError(INPUT_FILE_SUFFICIENT_DATA, message);
+            ErrorsHandler.handleError(INPUT_FILE_SUFFICIENT_DATA, message);
         }
     }
 
     private String findMissingConnection(Connections connections) {
         String missing = "";
-//        for (Producer producer : producers) {
-//            for (Pharmacy pharmacy : pharmacies) {
-//                if (!connections.contain(producer.getId(), pharmacy.getId())) {
-//                    missing = "producent o id: " + producer.getId() + ", apteka o id: " + pharmacy.getId();
-//                    return missing;
-//                }
-//            }
-//        }
+        Collection<Producer> producersCollection = producers.getProducersCollection();
+        Collection<Pharmacy> pharmaciesCollection = pharmacies.getPharmaciesCollection();
+
+        for (Producer producer : producersCollection) {
+            for (Pharmacy pharmacy : pharmaciesCollection) {
+                if (!connections.contain(producer.getId(), pharmacy.getId())) {
+                    missing = "producent o id: " + producer.getId() + ", apteka o id: " + pharmacy.getId();
+                    return missing;
+                }
+            }
+        }
         return missing;
     }
 
@@ -91,7 +97,7 @@ public class InputFileReader {
             item.addNewElement(convertedAttributes);
         } catch (DataFormatException e) {
             String message = "[Plik wejściowy: " + fileName + ", nr linii: " + lineNumber + "]. " + e.getMessage();
-            ErrorsHandler.handleTheError(INPUT_FILE_INCORRECT_FORMAT, message);
+            ErrorsHandler.handleError(INPUT_FILE_INCORRECT_FORMAT, message);
         }
     }
 
@@ -103,7 +109,7 @@ public class InputFileReader {
         }
         if (headline == null || !isHeadlineCorrect(headline)) {
             String message = "[Plik wejściowy: " + fileName + ", nr linii: " + lineNumber + "]. " + "Niepoprawny nagłówek";
-            ErrorsHandler.handleTheError(ErrorsHandler.INPUT_FILE_INCORRECT_HEADLINE, message);
+            ErrorsHandler.handleError(ErrorsHandler.INPUT_FILE_INCORRECT_HEADLINE, message);
         }
     }
 
@@ -113,7 +119,7 @@ public class InputFileReader {
             scanner = new Scanner(file);
         } catch (FileNotFoundException e) {
             String message = "[Plik wejściowy: " + fileName + "]. Plik nie został znaleziony";
-            ErrorsHandler.handleTheError(ErrorsHandler.INPUT_FILE_NOT_FOUND, message);
+            ErrorsHandler.handleError(ErrorsHandler.INPUT_FILE_NOT_FOUND, message);
         }
         return scanner;
     }

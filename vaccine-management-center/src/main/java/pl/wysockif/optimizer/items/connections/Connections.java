@@ -6,6 +6,7 @@ import pl.wysockif.optimizer.items.pharmacies.Pharmacy;
 import pl.wysockif.optimizer.items.producers.Producer;
 import pl.wysockif.optimizer.items.producers.Producers;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -142,6 +143,15 @@ public class Connections implements Items {
 
     public Connection getConnectionByIndex(int index) {
         return connectionByIndex.get(index);
+    }
+
+    public Collection<Connection> getConnectionsCollections() {
+        return connectionByIndex.values();
+    }
+
+    public boolean contain(int producerId, int pharmacyId) {
+        ConnectionKey connectionKey = new ConnectionKey(producerId, pharmacyId);
+        return connectionByKey.containsKey(connectionKey);
     }
 
     public static class ConnectionKey {
