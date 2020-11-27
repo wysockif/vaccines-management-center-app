@@ -60,6 +60,7 @@ public class Producers implements Items {
         String name = (String) attributes[1];
         int dailyProduction = (int) attributes[2];
         Producer producer = new Producer(id, name, dailyProduction);
+
         producersByIndex.put(counter, producer);
         indexById.put(id, counter);
         counter++;
@@ -67,8 +68,8 @@ public class Producers implements Items {
     }
 
     private void checkUpperLimit() {
-        int upperLimit = 300;
-        if (Optimizer.isLimit && producersByIndex.size() >= upperLimit) {
+        int upperLimit = 500;
+        if (Optimizer.isLimit && producersByIndex.size() > upperLimit) {
             String message = "Przekroczono dozwolony limit ilości producentów wynoszący: " + upperLimit;
             String tip = "Aby znieść limit użyj polecenia \"-upper_limit=false\" " +
                     "na końcu komendy uruchamiającej program. \n           " +
