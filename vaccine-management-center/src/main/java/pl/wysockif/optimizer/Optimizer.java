@@ -31,6 +31,15 @@ public class Optimizer {
     private MaxFlow maxFlow;
 
 
+    public static void main(String[] args) {
+        validateArguments(args);
+        Optimizer optimizer = new Optimizer();
+        optimizer.loadData();
+        Graph initialGraph = optimizer.prepare();
+        Graph finalGraph = optimizer.optimize(initialGraph);
+        optimizer.saveResults(finalGraph);
+    }
+
     private void loadData() {
         System.out.print("(1/4) TRWA ODCZYTYWANIE I WALIDACJA DANYCH... ");
         long before = System.nanoTime();
@@ -73,15 +82,6 @@ public class Optimizer {
         System.out.printf("[ %.4fs ]\n", time);
         System.out.println("Wynik został pomyślnie zapisany w pliku: " + outputFilePath + ".\n" +
                 "Całkowity koszt wyniósł: " + BigDecimal.valueOf(price).toPlainString() + " zł.");
-    }
-
-    public static void main(String[] args) {
-        validateArguments(args);
-        Optimizer optimizer = new Optimizer();
-        optimizer.loadData();
-        Graph initialGraph = optimizer.prepare();
-        Graph finalGraph = optimizer.optimize(initialGraph);
-        optimizer.saveResults(finalGraph);
     }
 
     private static void validateArguments(String[] args) {

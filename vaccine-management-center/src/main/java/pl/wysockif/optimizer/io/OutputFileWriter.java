@@ -11,7 +11,6 @@ import java.util.List;
 import static java.lang.Long.MAX_VALUE;
 import static pl.wysockif.optimizer.io.ErrorsHandler.OUTPUT_FILE_NOT_FOUND;
 import static pl.wysockif.optimizer.io.ErrorsHandler.TOTAL_COST_OUT_OF_LIMIT;
-import static pl.wysockif.optimizer.io.ErrorsHandler.handleError;
 
 public class OutputFileWriter {
     public static String fileName;
@@ -19,6 +18,7 @@ public class OutputFileWriter {
 
     public OutputFileWriter(String path) {
         File file = new File(path);
+
         fileName = file.getName();
         printWriter = createPrintWriterIfFileExists(file);
     }
@@ -30,6 +30,7 @@ public class OutputFileWriter {
     private String concatenateLine(int length, String producerName, String pharmacyName, int amount, double price) {
         producerName = rightPad(producerName, length);
         double totalCost = (double) amount * price / 100;
+
         return producerName + " -> " + pharmacyName +
                 " [Koszt = " + amount + " * " + price / 100 + " = " + totalCost + " zł]";
     }
@@ -40,6 +41,7 @@ public class OutputFileWriter {
 
     private PrintWriter createPrintWriterIfFileExists(File outputFile) {
         PrintWriter printWriter = null;
+
         try {
             printWriter = new PrintWriter(outputFile);
         } catch (FileNotFoundException e) {
@@ -52,12 +54,14 @@ public class OutputFileWriter {
     public double saveDeals(List<Deal> deals) {
         int longestNameLength = 0;
         long totalCost = 0;
+
         if (!deals.isEmpty()) {
             longestNameLength = findLongestNameLength(deals);
         }
         while (!deals.isEmpty()) {
             totalCost = saveSingleDeal(deals, longestNameLength, totalCost);
         }
+
         double price = saveTheSummary(totalCost);
         printWriter.close();
         return price;
@@ -67,10 +71,12 @@ public class OutputFileWriter {
         Deal deal = deals.remove(0);
         int price = deal.getPrice();
         int amount = deal.getAmount();
+
         checkTotalCostLimit(totalCost, price, amount + 1);
         totalCost += price * amount;
         String line = concatenateLine(longestNameLength, deal.getProducerName(), deal.getPharmacyName(), deal.getAmount(), deal.getPrice());
         saveLineToFile(line);
+
         return totalCost;
     }
 
@@ -85,12 +91,14 @@ public class OutputFileWriter {
         double convertedTotalCost =  (double)totalCost / 100.0;
         BigDecimal totalCostDecimal = BigDecimal.valueOf(convertedTotalCost);
         String line = "Opłaty całkowite: " + totalCostDecimal.toPlainString() + " zł";
+
         saveLineToFile(line);
         return convertedTotalCost;
     }
 
     private int findLongestNameLength(List<Deal> deals) {
         int longestName = deals.get(0).getProducerName().length();
+
         for (Deal deal : deals) {
             if (deal.getProducerName().length() > longestName) {
                 longestName = deal.getProducerName().length();

@@ -9,7 +9,6 @@ import pl.wysockif.optimizer.items.producers.Producers;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -28,13 +27,12 @@ public class InputFileReader {
 
     public InputFileReader(String path) {
         File inputFile = new File(path);
+
         fileName = inputFile.getName();
-        lineNumber = 0;
-        ArrayList<Integer> sf;
-        scanner = createScannerIfTheSpecifiedFileExists(inputFile);
+        scanner = createScannerIfSpecifiedFileExists(inputFile);
         producers = loadProducersFromFile(scanner);
         pharmacies = loadPharmaciesFromFile(scanner);
-        connections = loadConnectionsFromFile(scanner, producers, pharmacies);
+        connections = loadConnectionsFromFile(scanner);
     }
 
     private Producers loadProducersFromFile(Scanner scanner) {
@@ -46,9 +44,10 @@ public class InputFileReader {
         return (Pharmacies) readDataFromFile(scanner, new Pharmacies());
     }
 
-    private Connections loadConnectionsFromFile(Scanner scanner, Producers producers, Pharmacies pharmacies) {
+    private Connections loadConnectionsFromFile(Scanner scanner) {
         Connections connections = (Connections) readDataFromFile(scanner, new Connections(producers, pharmacies));
         checkNumberOfConnections(connections);
+
         return connections;
     }
 
@@ -81,6 +80,7 @@ public class InputFileReader {
         while (scanner.hasNext()) {
             String line = scanner.nextLine();
             lineNumber++;
+
             if (isHeadlineCorrect(line)) {
                 break;
             }
@@ -91,6 +91,7 @@ public class InputFileReader {
 
     private void loadSingleItem(Items item, String line) {
         String[] attributes = line.split(Pattern.quote(" | "));
+
         try {
             Object[] convertedAttributes = item.convertAttributes(attributes);
             item.validateAttributes(convertedAttributes);
@@ -103,6 +104,7 @@ public class InputFileReader {
 
     private void checkHeadline() {
         String headline = null;
+
         if (scanner.hasNext()) {
             headline = scanner.nextLine();
             lineNumber++;
@@ -113,7 +115,7 @@ public class InputFileReader {
         }
     }
 
-    private Scanner createScannerIfTheSpecifiedFileExists(File file) {
+    private Scanner createScannerIfSpecifiedFileExists(File file) {
         Scanner scanner = null;
         try {
             scanner = new Scanner(file);

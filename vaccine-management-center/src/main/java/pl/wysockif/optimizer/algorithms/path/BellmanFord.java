@@ -19,7 +19,6 @@ public class BellmanFord implements FindingShortestPath {
         int[] predecessors = initializePredecessorsArray(numberOfVertices);
 
         relaxGraph(residualGraph, numberOfVertices, distances, predecessors);
-
         if (distances[numberOfVertices - 1] != INFINITY) {
             return findCheapestPath(predecessors);
         }
@@ -27,8 +26,9 @@ public class BellmanFord implements FindingShortestPath {
     }
 
     private List<Integer> findCheapestPath(int[] predecessors) {
-        List<Integer> cheapestPath = new LinkedList<>();
         int predecessorIndex = predecessors.length - 1;
+        List<Integer> cheapestPath = new LinkedList<>();
+
         if (predecessors[predecessorIndex] == UNDEFINED) {
             return cheapestPath;
         }
@@ -42,6 +42,7 @@ public class BellmanFord implements FindingShortestPath {
 
     private void relaxGraph(Graph residualGraph, int numberOfVertices, int[] distances, int[] predecessors) {
         boolean areChanges = true;
+
         for (int i = 0; i < numberOfVertices - 1 && areChanges; i++) {
             areChanges = relaxEdges(residualGraph, numberOfVertices, distances, predecessors);
         }
@@ -49,16 +50,18 @@ public class BellmanFord implements FindingShortestPath {
     }
 
     private void checkForNegativeCycle(Graph residualGraph, int numberOfVertices, int[] distances) {
-        for (int u = 0; u < numberOfVertices; u++) {
-            for (int v = 0; v < numberOfVertices; v++) {
-                tryToRelaxOneMoreTime(residualGraph, distances, u, v);
+        for (int i = 0; i < numberOfVertices; i++) {
+            for (int j = 0; j < numberOfVertices; j++) {
+                tryToRelaxOneMoreTime(residualGraph, distances, i, j);
             }
         }
 
     }
+
     private void tryToRelaxOneMoreTime(Graph residualGraph, int[] distances, int u, int v) {
         if (residualGraph.containsEdge(u, v)) {
             int price = residualGraph.getPriceOfEdge(u, v);
+
             if (distances[u] + price < distances[v]) {
                 String message = "Wykryto ujemny cykl w grafie";
                 throw new UnsupportedOperationException(message);
@@ -68,6 +71,7 @@ public class BellmanFord implements FindingShortestPath {
 
     private boolean relaxEdges(Graph residualGraph, int numberOfVertices, int[] distances, int[] predecessors) {
         boolean areChanges = false;
+
         for (int i = 0; i < numberOfVertices; i++) {
             for (int j = 0; j < numberOfVertices; j++) {
                 areChanges = relaxSingleEdge(residualGraph, distances, predecessors, areChanges, i, j);
@@ -79,8 +83,10 @@ public class BellmanFord implements FindingShortestPath {
     private boolean relaxSingleEdge(Graph residualGraph, int[] distances, int[] predecessors, boolean areChanges, int u, int v) {
         if (residualGraph.containsEdge(u, v)) {
             int price = residualGraph.getPriceOfEdge(u, v);
-            if (distances[u]+ price < distances[v]) {
-                int value = distances[u] +price;
+
+            if (distances[u] + price < distances[v]) {
+                int value = distances[u] + price;
+
                 distances[v] = value;
                 predecessors[v] = u;
                 areChanges = true;
@@ -92,14 +98,18 @@ public class BellmanFord implements FindingShortestPath {
 
     private int[] initializePredecessorsArray(int numberOfVertices) {
         int[] predecessors = new int[numberOfVertices];
+
         Arrays.fill(predecessors, UNDEFINED);
+
         return predecessors;
     }
 
     private int[] initializeDistancesArray(int numberOfVertices) {
         int[] distances = new int[numberOfVertices];
+
         Arrays.fill(distances, INFINITY);
         distances[0] = 0;
+
         return distances;
     }
 

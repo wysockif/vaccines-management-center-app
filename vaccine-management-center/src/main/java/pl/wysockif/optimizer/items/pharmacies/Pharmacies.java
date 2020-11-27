@@ -13,9 +13,9 @@ import static pl.wysockif.optimizer.io.ErrorsHandler.INPUT_FILE_EXCEED_LIMIT;
 
 public class Pharmacies implements Items {
 
+    private int counter;
     private final Map<Integer, Pharmacy> pharmacyByIndex;
     private final Map<Integer, Integer> indexById;
-    private int counter;
 
     public Pharmacies() {
         pharmacyByIndex = new HashMap<>();
@@ -39,6 +39,7 @@ public class Pharmacies implements Items {
     public void validateAttributes(Object[] attributes) throws DataFormatException {
         int dailyRequirement = (int) attributes[2];
         int id = (int) attributes[0];
+
         if (dailyRequirement < 0) {
             String message = "Niepoprawny format danych. Ujemna wartość reprezentująca dzienne zapotrzebowanie";
             throw new DataFormatException(message);
@@ -58,6 +59,7 @@ public class Pharmacies implements Items {
         String name = (String) attributes[1];
         int dailyRequirement = (int) attributes[2];
         Pharmacy pharmacy = new Pharmacy(id, name, dailyRequirement);
+
         pharmacyByIndex.put(counter, pharmacy);
         indexById.put(id, counter);
         counter++;
@@ -67,8 +69,9 @@ public class Pharmacies implements Items {
     }
 
     private void checkUpperLimit() {
-        int upperLimit = 300;
-        if (pharmacyByIndex.size() >= upperLimit) {
+        int upperLimit = 500;
+
+        if (pharmacyByIndex.size() > upperLimit) {
             String message = "Przekroczono dozwolony limit ilości aptek wynoszący: " + upperLimit;
             String tip = "Aby znieść limit użyj polecenia \"-upper_limit=false\" " +
                     "na końcu komendy uruchamiającej program. \n           " +

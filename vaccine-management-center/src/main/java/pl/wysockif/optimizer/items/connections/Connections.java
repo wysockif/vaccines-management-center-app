@@ -18,7 +18,7 @@ public class Connections implements Items {
     private final Producers producers;
     private final Pharmacies pharmacies;
     private final Map<Integer, Connection> connectionByIndex;
-    private final Map<ConnectionKey, Connection> connectionByKey;
+    private final Map<ConnectionIdKey, Connection> connectionByKey;
     private int counter;
 
     public Connections(Producers producers, Pharmacies pharmacies) {
@@ -40,14 +40,15 @@ public class Connections implements Items {
 
         Connection connection = new Connection(producer, pharmacy, maxNumberOVaccines, price);
         connectionByIndex.put(counter, connection);
-        ConnectionKey connectionKey = new ConnectionKey(producerId, pharmacyId);
-        connectionByKey.put(connectionKey, connection);
+        ConnectionIdKey connectionIdKey = new ConnectionIdKey(producerId, pharmacyId);
+        connectionByKey.put(connectionIdKey, connection);
         counter++;
     }
 
     @Override
     public Object[] parseAttributes(String[] attributes) throws DataFormatException {
         Object[] convertedAttributes = new Object[attributes.length];
+
         try {
             convertedAttributes[0] = Integer.parseInt(attributes[0]);
             convertedAttributes[1] = Integer.parseInt(attributes[1]);
@@ -66,10 +67,11 @@ public class Connections implements Items {
     public void validateAttributes(Object[] attributes) throws DataFormatException {
         int producerId = (int) attributes[0];
         int pharmacyId = (int) attributes[1];
-        checkIfExist(producerId, pharmacyId);
-        checkIfHasAlreadyContain(producerId, pharmacyId);
         int maxNumberOVaccines = (int) attributes[2];
         double price = (double) attributes[3];
+
+        checkIfExist(producerId, pharmacyId);
+        checkIfHasAlreadyContain(producerId, pharmacyId);
         validateNumber(maxNumberOVaccines);
         validateNumber(price);
         checkIfGreaterThanLimit(price);
@@ -87,6 +89,7 @@ public class Connections implements Items {
 
     private void checkIfGreaterThanLimit(double price) throws DataFormatException {
         int limit = 999_999_999;
+
         if (price >= limit) {
             throw new DataFormatException("Cena nie może być większa od: " + limit);
         }
@@ -111,8 +114,9 @@ public class Connections implements Items {
     }
 
     private void checkIfHasAlreadyContain(int producerId, int pharmacyId) throws DataFormatException {
-        ConnectionKey connectionKey = new ConnectionKey(producerId, pharmacyId);
-        if (connectionByKey.containsKey(connectionKey)) {
+        ConnectionIdKey connectionIdKey = new ConnectionIdKey(producerId, pharmacyId);
+
+        if (connectionByKey.containsKey(connectionIdKey)) {
             String message = "Nie można dodawać więcej niż jednego połączenia " +
                     "z tym samym id producenta i apteki";
             throw new DataFormatException(message);
@@ -137,28 +141,22 @@ public class Connections implements Items {
         return producers.getNumberOfProducers() * pharmacies.getNumberOfPharmacies();
     }
 
-    public int getNumberOfConnections() {
-        return connectionByIndex.size();
-    }
 
-    public Connection getConnectionByIndex(int index) {
-        return connectionByIndex.get(index);
-    }
 
-    public Collection<Connection> getConnectionsCollections() {
+    public Collection<Connection> getConnectionsCollection() {
         return connectionByIndex.values();
     }
 
     public boolean contain(int producerId, int pharmacyId) {
-        ConnectionKey connectionKey = new ConnectionKey(producerId, pharmacyId);
-        return connectionByKey.containsKey(connectionKey);
+        ConnectionIdKey connectionIdKey = new ConnectionIdKey(producerId, pharmacyId);
+        return connectionByKey.containsKey(connectionIdKey);
     }
 
-    public static class ConnectionKey {
+    public static class ConnectionIdKey {
         private final int producerId;
         private final int pharmacyId;
 
-        public ConnectionKey(int producerId, int pharmacyId) {
+        public ConnectionIdKey(int producerId, int pharmacyId) {
             this.producerId = producerId;
             this.pharmacyId = pharmacyId;
         }
@@ -167,9 +165,9 @@ public class Connections implements Items {
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            ConnectionKey connectionKey = (ConnectionKey) o;
-            return producerId == connectionKey.producerId &&
-                    pharmacyId == connectionKey.pharmacyId;
+            ConnectionIdKey connectionIdKey = (ConnectionIdKey) o;
+            return producerId == connectionIdKey.producerId &&
+                    pharmacyId == connectionIdKey.pharmacyId;
         }
 
         @Override

@@ -27,40 +27,56 @@ public class DataHandler {
     public Graph createGraph() {
         int numberOfVertices = countNumberOfVertices();
         Graph graph = new WeightedGraph(numberOfVertices);
+
         addProducersToGraph(graph);
         addPharmaciesToGraph(graph, numberOfVertices);
         addConnectionsToGraph(graph);
+
         return graph;
     }
 
     private void addConnectionsToGraph(Graph graph) {
-        Collection<Connection> connectionsCollection = connections.getConnectionsCollections();
-        for(Connection connection : connectionsCollection){
+        Collection<Connection> connectionsCollection = connections.getConnectionsCollection();
+
+        for (Connection connection : connectionsCollection) {
             int producerIndex = producers.getProducerIndexById(connection.getProducer().getId());
             int pharmacyIndex = pharmacies.getPharmacyIndexById(connection.getPharmacy().getId());
             int price = connection.getPrice();
             int maxNumberOfVaccines = connection.getMaxNumberOVaccines();
             int from = producerIndex + 1;
             int to = pharmacyIndex + producers.getNumberOfProducers() + 1;
+
             graph.addEdge(from, to, maxNumberOfVaccines, price);
         }
     }
 
     private void addPharmaciesToGraph(Graph graph, int numberOfVertices) {
+        int index = 0;
+        int price = 0;
         int numberOfProducers = producers.getNumberOfProducers();
         Collection<Pharmacy> pharmaciesCollection = pharmacies.getPharmaciesCollection();
-        int index = 0;
-        for(Pharmacy pharmacy : pharmaciesCollection){
-            graph.addEdge(numberOfProducers + index + 1, numberOfVertices - 1, pharmacy.getDailyDemand(), 0);
+
+        for (Pharmacy pharmacy : pharmaciesCollection) {
+            int from = numberOfProducers + index + 1;
+            int to = numberOfVertices - 1;
+            int dailyDemand = pharmacy.getDailyDemand();
+
+            graph.addEdge(from, to, dailyDemand, price);
             index++;
         }
     }
 
     private void addProducersToGraph(Graph graph) {
-        Collection<Producer> producersCollection = producers.getProducersCollection();
         int index = 0;
-        for(Producer producer : producersCollection){
-            graph.addEdge(0, index + 1, producer.getDailyProduction(), 0);
+        int price = 0;
+        Collection<Producer> producersCollection = producers.getProducersCollection();
+
+        for (Producer producer : producersCollection) {
+            int from = 0;
+            int to = index + 1;
+            int dailyProduction = producer.getDailyProduction();
+
+            graph.addEdge(from, to, dailyProduction, price);
             index++;
         }
     }
@@ -68,13 +84,18 @@ public class DataHandler {
     private int countNumberOfVertices() {
         int numberOfProducers = producers.getNumberOfProducers();
         int numberOfPharmacies = pharmacies.getNumberOfPharmacies();
-        return numberOfProducers + numberOfPharmacies + 2;
+        int numberOfSourcesAndSinks = 2;
+
+        return numberOfProducers + numberOfPharmacies + numberOfSourcesAndSinks;
     }
 
     public List<Deal> loadResults(Graph finalGraph) {
+        int lastPharmacyVertexIndex = finalGraph.getNumberOfVertices() - 2;
+        int firstProducerVertexIndex = 1;
         List<Deal> deals = new LinkedList<>();
-        for (int i = finalGraph.getNumberOfVertices() - 2; i >= 1; i--) {
-            for (int j = i - 1; j >= 1; j--) {
+
+        for (int i = lastPharmacyVertexIndex; i >= firstProducerVertexIndex; i--) {
+            for (int j = i - 1; j >= firstProducerVertexIndex; j--) {
                 addDeal(finalGraph, deals, i, j);
             }
         }
@@ -82,15 +103,15 @@ public class DataHandler {
     }
 
     private void addDeal(Graph finalGraph, List<Deal> deals, int u, int v) {
-        if ((u > v) && finalGraph.containsEdge(u, v)) {
+        if (u > v && finalGraph.containsEdge(u, v)) {
             int price = finalGraph.getPriceOfEdge(u, v) * -1;
             int amount = finalGraph.getCapacityOfEdge(u, v);
             int numberOfProducers = producers.getNumberOfProducers();
             String producerName = producers.getProducerByIndex(v - 1).getName();
             String pharmacyName = pharmacies.getPharmacyByIndex(u - numberOfProducers - 1).getName();
+
             Deal deal = new Deal(producerName, pharmacyName, amount, price);
             deals.add(deal);
         }
     }
-
 }
