@@ -2,7 +2,6 @@ pl\wysockif\optimizer\Optimizer.class
 pl\wysockif\optimizer\algorithms\DataHandler.class
 pl\wysockif\optimizer\io\InputFileReader.class
 pl\wysockif\optimizer\items\producers\Producer.class
-pl\wysockif\optimizer\items\connections\Connections$ConnectionKey.class
 pl\wysockif\optimizer\items\connections\Connections.class
 pl\wysockif\optimizer\items\pharmacies\Pharmacies.class
 pl\wysockif\optimizer\structures\graph\WeightedGraph.class
@@ -15,6 +14,7 @@ pl\wysockif\optimizer\algorithms\flow\MaxFlow.class
 pl\wysockif\optimizer\algorithms\flow\FordFulkerson.class
 pl\wysockif\optimizer\items\producers\Producers.class
 pl\wysockif\optimizer\io\ErrorsHandler.class
+pl\wysockif\optimizer\items\connections\Connections$ConnectionIdKey.class
 pl\wysockif\optimizer\algorithms\path\FindingShortestPath.class
 pl\wysockif\optimizer\structures\graph\Graph.class
 pl\wysockif\optimizer\io\OutputFileWriter.class
