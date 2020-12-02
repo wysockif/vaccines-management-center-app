@@ -18,20 +18,6 @@ public class Connection {
         this.price = price;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Connection that = (Connection) o;
-        return Objects.equals(producer, that.producer) &&
-                Objects.equals(pharmacy, that.pharmacy);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(producer, pharmacy);
-    }
-
     public Producer getProducer() {
         return producer;
     }
@@ -46,6 +32,24 @@ public class Connection {
 
     public int getPrice() {
         return price;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()){
+            return false;
+        }
+        Connection that = (Connection) o;
+        return Objects.equals(producer, that.producer) &&
+                Objects.equals(pharmacy, that.pharmacy);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(producer, pharmacy);
     }
 
     @Override

@@ -13,9 +13,7 @@ public class WeightedGraph implements Graph {
 
     @Override
     public void addEdge(int from, int to, int capacity, int price) {
-        if (containsVertices(from, to)) {
-            throw new IllegalArgumentException("Conajmniej jeden z podanych wierzchołków nie istnieje");
-        }
+        checkCorrectnessOfOperation(from, to);
         prices[from][to] = price;
         capacities[from][to] = capacity;
     }
@@ -61,6 +59,7 @@ public class WeightedGraph implements Graph {
 
     @Override
     public void setPriceOfEdge(int from, int to, int price) {
+        checkCorrectnessOfOperation(from, to);
         prices[from][to] = price;
     }
 }

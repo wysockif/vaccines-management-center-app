@@ -1,12 +1,12 @@
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\structures\graph\WeightedGraph.java
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\items\producers\Producer.java
+C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\algorithms\path\FindingPath.java
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\items\pharmacies\Pharmacies.java
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\algorithms\flow\MaxFlow.java
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\items\pharmacies\Pharmacy.java
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\structures\graph\Graph.java
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\io\OutputFileWriter.java
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\items\connections\Connection.java
-C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\algorithms\path\FindingShortestPath.java
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\io\InputFileReader.java
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\algorithms\DataHandler.java
 C:\Users\wysoc\OneDrive\Pulpit\2020Z_AISD_proj_ind_GR3_gr31\vaccine-management-center\src\main\java\pl\wysockif\optimizer\Optimizer.java

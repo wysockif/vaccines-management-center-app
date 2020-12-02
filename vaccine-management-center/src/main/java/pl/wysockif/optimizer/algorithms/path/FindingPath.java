@@ -4,6 +4,6 @@ import pl.wysockif.optimizer.structures.graph.Graph;
 
 import java.util.List;
 
-public interface FindingShortestPath {
+public interface FindingPath {
     List<Integer> findPath(Graph residualGraph);
 }

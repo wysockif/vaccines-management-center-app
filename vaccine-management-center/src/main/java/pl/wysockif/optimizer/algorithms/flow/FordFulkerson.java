@@ -1,20 +1,25 @@
 package pl.wysockif.optimizer.algorithms.flow;
 
-import pl.wysockif.optimizer.algorithms.path.FindingShortestPath;
+import pl.wysockif.optimizer.algorithms.path.FindingPath;
 import pl.wysockif.optimizer.structures.graph.Graph;
 
 import java.util.List;
 
-public class FordFulkerson implements MaxFlow {
-    public static final int INFINITY = Integer.MAX_VALUE;
-    private final FindingShortestPath findingPathAlgorithm;
+import static java.lang.Integer.MAX_VALUE;
 
-    public FordFulkerson(FindingShortestPath findingPathAlgorithm) {
+public class FordFulkerson implements MaxFlow {
+    public static final int INFINITY = MAX_VALUE;
+    private final FindingPath findingPathAlgorithm;
+
+    public FordFulkerson(FindingPath findingPathAlgorithm) {
         this.findingPathAlgorithm = findingPathAlgorithm;
     }
 
     @Override
     public Graph findMaxFlow(Graph residualGraph) {
+        checkIfArgumentIsNotNull(residualGraph);
+        checkIfGraphContainsAtLeastOneVertex(residualGraph);
+
         List<Integer> path = findingPathAlgorithm.findPath(residualGraph);
 
         while (!path.isEmpty()) {
@@ -23,10 +28,8 @@ public class FordFulkerson implements MaxFlow {
             increaseFlow(residualGraph, path, minCapacity);
             path = findingPathAlgorithm.findPath(residualGraph);
         }
-
         return residualGraph;
     }
-
 
     private void increaseFlow(Graph residualGraph, List<Integer> path, int flow) {
         int sizeOfPath = path.size();
@@ -54,10 +57,22 @@ public class FordFulkerson implements MaxFlow {
             int predecessor = path.get(i);
             int successor = path.get(i + 1);
 
-            if (minCapacity > residualGraph.getCapacityOfEdge(predecessor , successor)) {
-                minCapacity = residualGraph.getCapacityOfEdge(predecessor , successor);
+            if (minCapacity > residualGraph.getCapacityOfEdge(predecessor, successor)) {
+                minCapacity = residualGraph.getCapacityOfEdge(predecessor, successor);
             }
         }
         return minCapacity;
+    }
+
+    private void checkIfGraphContainsAtLeastOneVertex(Graph residualGraph) {
+        if (residualGraph.getNumberOfVertices() < 1) {
+            throw new UnsupportedOperationException("Graf nie może nie posidać wierzchołków!");
+        }
+    }
+
+    private void checkIfArgumentIsNotNull(Object argument) {
+        if(argument == null){
+            throw new IllegalArgumentException("Niezainicjowany argument!");
+        }
     }
 }
