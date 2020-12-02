@@ -12,7 +12,6 @@ import java.util.zip.DataFormatException;
 import static pl.wysockif.optimizer.io.ErrorsHandler.INPUT_FILE_EXCEED_LIMIT;
 
 public class Producers implements Items {
-
     private final Map<Integer, Producer> producersByIndex;
     private final Map<Integer, Integer> indexById;
 
@@ -23,13 +22,9 @@ public class Producers implements Items {
         indexById = new HashMap<>();
     }
 
-    public int getNumberOfProducers() {
-        return producersByIndex.size();
-    }
-
-
     @Override
     public Object[] convertAttributes(String[] attributes) throws DataFormatException {
+        checkIfArgumentIsNotNull(attributes);
         if (attributes.length != 3) {
             throw new DataFormatException("Niepoprawny format danych");
         }
@@ -38,6 +33,7 @@ public class Producers implements Items {
 
     @Override
     public void validateAttributes(Object[] attributes) throws DataFormatException {
+        checkIfArgumentIsNotNull(attributes);
         int dailyProduction = (int) attributes[2];
         int id = (int) attributes[0];
         if (dailyProduction < 0) {
@@ -48,7 +44,7 @@ public class Producers implements Items {
             String message = "Niepoprawny format danych. Ujemna wartość reprezentująca id producenta";
             throw new DataFormatException(message);
         }
-        if (alreadyContains(id)) {
+        if (contain(id)) {
             String message = "Nie można dodawać producentów o tym samym id";
             throw new DataFormatException(message);
         }
@@ -56,6 +52,7 @@ public class Producers implements Items {
 
     @Override
     public void addNewElement(Object[] attributes) {
+        checkIfArgumentIsNotNull(attributes);
         int id = (int) attributes[0];
         String name = (String) attributes[1];
         int dailyProduction = (int) attributes[2];
@@ -68,14 +65,24 @@ public class Producers implements Items {
     }
 
     private void checkUpperLimit() {
-        int upperLimit = 500;
-        if (Optimizer.isLimit && producersByIndex.size() > upperLimit) {
+        int upperLimit = 1000;
+        if (Optimizer.isLimit() && producersByIndex.size() > upperLimit) {
             String message = "Przekroczono dozwolony limit ilości producentów wynoszący: " + upperLimit;
             String tip = "Aby znieść limit użyj polecenia \"-upper_limit=false\" " +
                     "na końcu komendy uruchamiającej program. \n           " +
                     "Czas działania włówczas może zostać włówczas znacząco wydłużony.";
             ErrorsHandler.handleError(INPUT_FILE_EXCEED_LIMIT, message, tip);
         }
+    }
+
+    private void checkIfArgumentIsNotNull(Object argument) {
+        if(argument == null){
+            throw new IllegalArgumentException("Niezainicjowany argument");
+        }
+    }
+
+    public int getNumberOfProducers() {
+        return producersByIndex.size();
     }
 
     public Producer getProducerByIndex(int index) {
@@ -91,12 +98,26 @@ public class Producers implements Items {
         return producersByIndex.get(index);
     }
 
-    public boolean alreadyContains(int id) {
-        return indexById.containsKey(id);
+    private Object[] parseAttributes(String[] attributes) throws DataFormatException {
+        Object[] convertedAttributes = new Object[attributes.length];
+        try {
+            convertedAttributes[2] = Integer.parseInt(attributes[2]);
+            convertedAttributes[1] = attributes[1];
+            convertedAttributes[0] = Integer.parseInt(attributes[0]);
+        } catch (NumberFormatException e) {
+            String info = e.getMessage().replace("For input string: ", "");
+            String message = "Nieudana konwersja danej: " + info;
+            throw new DataFormatException(message);
+        }
+        return convertedAttributes;
     }
 
     public Collection<Producer> getProducersCollection() {
         return producersByIndex.values();
+    }
+
+    public boolean contain(int producerId) {
+        return indexById.containsKey(producerId);
     }
 
 }

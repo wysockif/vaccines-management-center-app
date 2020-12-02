@@ -1,0 +1,7 @@
+pl\wysockif\optimizer\structures\graph\WeightedGraphTest.class
+pl\wysockif\optimizer\algorithms\path\BellmanFordTest.class
+pl\wysockif\optimizer\items\producers\ProducersTest.class
+pl\wysockif\optimizer\algorithms\flow\FordFulkersonTest.class
+pl\wysockif\optimizer\items\connections\ConnectionsTest.class
+pl\wysockif\optimizer\items\pharmacies\PharmaciesTest.class
+pl\wysockif\optimizer\algorithms\DataHandlerTest.class

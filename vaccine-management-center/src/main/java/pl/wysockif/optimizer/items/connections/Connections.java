@@ -31,6 +31,7 @@ public class Connections implements Items {
 
     @Override
     public void addNewElement(Object[] attributes) {
+        checkIfArgumentIsNotNull(attributes);
         int producerId = (int) attributes[0];
         int pharmacyId = (int) attributes[1];
         int maxNumberOVaccines = (int) attributes[2];
@@ -45,8 +46,8 @@ public class Connections implements Items {
         counter++;
     }
 
-    @Override
-    public Object[] parseAttributes(String[] attributes) throws DataFormatException {
+    private Object[] parseAttributes(String[] attributes) throws DataFormatException {
+        checkIfArgumentIsNotNull(attributes);
         Object[] convertedAttributes = new Object[attributes.length];
 
         try {
@@ -65,6 +66,7 @@ public class Connections implements Items {
 
     @Override
     public void validateAttributes(Object[] attributes) throws DataFormatException {
+        checkIfArgumentIsNotNull(attributes);
         int producerId = (int) attributes[0];
         int pharmacyId = (int) attributes[1];
         int maxNumberOVaccines = (int) attributes[2];
@@ -80,6 +82,7 @@ public class Connections implements Items {
 
     @Override
     public Object[] convertAttributes(String[] attributes) throws DataFormatException {
+        checkIfArgumentIsNotNull(attributes);
         if (attributes.length != 4) {
             throw new DataFormatException("Niepoprawny format danych");
         }
@@ -95,12 +98,18 @@ public class Connections implements Items {
         }
     }
 
+    private void checkIfArgumentIsNotNull(Object argument) {
+        if(argument == null){
+            throw new IllegalArgumentException("Niezainicjowany argument");
+        }
+    }
+
     private void checkIfExist(int producerId, int pharmacyId) throws DataFormatException {
-        if (!producers.alreadyContains(producerId)) {
+        if (!producers.contain(producerId)) {
             String message = "Nie istnieje producent o podanym id: " + producerId;
             throw new DataFormatException(message);
         }
-        if (!pharmacies.alreadyContains(pharmacyId)) {
+        if (!pharmacies.contain(pharmacyId)) {
             String message = "Nie istnieje apteka o podanym id: " + pharmacyId;
             throw new DataFormatException(message);
         }

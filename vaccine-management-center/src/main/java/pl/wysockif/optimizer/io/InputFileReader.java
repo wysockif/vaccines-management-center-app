@@ -35,6 +35,20 @@ public class InputFileReader {
         connections = loadConnectionsFromFile(scanner);
     }
 
+    public Items readDataFromFile(Scanner scanner, Items item) {
+        checkIfArgumentsAreNotNull(scanner, item);
+        while (scanner.hasNext()) {
+            String line = scanner.nextLine();
+            lineNumber++;
+
+            if (isHeadlineCorrect(line)) {
+                break;
+            }
+            loadSingleItem(item, line);
+        }
+        return item;
+    }
+
     private Producers loadProducersFromFile(Scanner scanner) {
         checkHeadline();
         return (Producers) readDataFromFile(scanner, new Producers());
@@ -45,10 +59,10 @@ public class InputFileReader {
     }
 
     private Connections loadConnectionsFromFile(Scanner scanner) {
-        Connections connections = (Connections) readDataFromFile(scanner, new Connections(producers, pharmacies));
-        checkNumberOfConnections(connections);
+        Connections loadedConnections = (Connections) readDataFromFile(scanner, new Connections(producers, pharmacies));
+        checkNumberOfConnections(loadedConnections);
 
-        return connections;
+        return loadedConnections;
     }
 
     private void checkNumberOfConnections(Connections connections) {
@@ -76,17 +90,12 @@ public class InputFileReader {
         return missing;
     }
 
-    public Items readDataFromFile(Scanner scanner, Items item) {
-        while (scanner.hasNext()) {
-            String line = scanner.nextLine();
-            lineNumber++;
-
-            if (isHeadlineCorrect(line)) {
-                break;
+    private void checkIfArgumentsAreNotNull(Object... args) {
+        for(Object o : args){
+            if(o == null){
+                throw new IllegalArgumentException("Niezainicjowany argument!");
             }
-            loadSingleItem(item, line);
         }
-        return item;
     }
 
     private void loadSingleItem(Items item, String line) {
@@ -116,14 +125,14 @@ public class InputFileReader {
     }
 
     private Scanner createScannerIfSpecifiedFileExists(File file) {
-        Scanner scanner = null;
+        Scanner createdScanner = null;
         try {
-            scanner = new Scanner(file);
+            createdScanner = new Scanner(file);
         } catch (FileNotFoundException e) {
             String message = "[Plik wejściowy: " + fileName + "]. Plik nie został znaleziony";
             ErrorsHandler.handleError(ErrorsHandler.INPUT_FILE_NOT_FOUND, message);
         }
-        return scanner;
+        return createdScanner;
     }
 
     private boolean isHeadlineCorrect(String headline) {

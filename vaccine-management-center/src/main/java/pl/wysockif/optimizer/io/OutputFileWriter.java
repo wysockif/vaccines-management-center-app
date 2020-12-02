@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.LinkedList;
 import java.util.List;
 
 import static java.lang.Long.MAX_VALUE;
@@ -13,7 +14,7 @@ import static pl.wysockif.optimizer.io.ErrorsHandler.OUTPUT_FILE_NOT_FOUND;
 import static pl.wysockif.optimizer.io.ErrorsHandler.TOTAL_COST_OUT_OF_LIMIT;
 
 public class OutputFileWriter {
-    public static String fileName;
+    private final String fileName;
     private final PrintWriter printWriter;
 
     public OutputFileWriter(String path) {
@@ -36,22 +37,24 @@ public class OutputFileWriter {
     }
 
     private String rightPad(String text, int length) {
-        return String.format("%-" + length + "." + length + "s", text);
+        String format = "%-" + length + "." + length + "s";
+        return String.format(format, text);
     }
 
     private PrintWriter createPrintWriterIfFileExists(File outputFile) {
-        PrintWriter printWriter = null;
+        PrintWriter createdPrintWriter = null;
 
         try {
-            printWriter = new PrintWriter(outputFile);
+            createdPrintWriter = new PrintWriter(outputFile);
         } catch (FileNotFoundException e) {
             String message = "[Plik wyjściowy: " + fileName + "]. Błąd tworzenia pliku.";
             ErrorsHandler.handleError(OUTPUT_FILE_NOT_FOUND, message);
         }
-        return printWriter;
+        return createdPrintWriter;
     }
 
     public double saveDeals(List<Deal> deals) {
+        checkIfArgumentIsNotNull(deals);
         int longestNameLength = 0;
         long totalCost = 0;
 
@@ -67,8 +70,14 @@ public class OutputFileWriter {
         return price;
     }
 
+    private void checkIfArgumentIsNotNull(Object argument) {
+        if(argument == null){
+            throw new IllegalArgumentException("Niezainicjowany argument!");
+        }
+    }
+
     private long saveSingleDeal(List<Deal> deals, int longestNameLength, long totalCost) {
-        Deal deal = deals.remove(0);
+        Deal deal = ((LinkedList<Deal>)deals).removeFirst();
         int price = deal.getPrice();
         int amount = deal.getAmount();
 
@@ -82,7 +91,8 @@ public class OutputFileWriter {
 
     private void checkTotalCostLimit(long totalCost, int price, int amount) {
         if (totalCost >= MAX_VALUE - price * amount) {
-            ErrorsHandler.handleError(TOTAL_COST_OUT_OF_LIMIT, "");
+            String message = "Przekroczono dopuszczalną wartość całkowitego kosztu";
+            ErrorsHandler.handleError(TOTAL_COST_OUT_OF_LIMIT, message);
         }
     }
 

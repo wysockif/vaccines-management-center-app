@@ -26,16 +26,20 @@ public class Producer {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(id);
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()){
+            return false;
+        }
+        Producer producer = (Producer) o;
+        return id == producer.id;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Producer producer = (Producer) o;
-        return id == producer.id;
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override

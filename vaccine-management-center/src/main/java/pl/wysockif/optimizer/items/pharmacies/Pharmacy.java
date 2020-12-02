@@ -14,14 +14,6 @@ public class Pharmacy {
         this.dailyDemand = dailyDemand;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Pharmacy pharmacy = (Pharmacy) o;
-        return id == pharmacy.id;
-    }
-
     public int getId() {
         return id;
     }
@@ -35,6 +27,18 @@ public class Pharmacy {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o){
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()){
+            return false;
+        }
+        Pharmacy pharmacy = (Pharmacy) o;
+        return id == pharmacy.id;
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(id);
     }
@@ -44,7 +48,7 @@ public class Pharmacy {
         return "Pharmacy{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", dailyRequirement=" + dailyDemand +
+                ", dailyDemand=" + dailyDemand +
                 '}';
     }
 }

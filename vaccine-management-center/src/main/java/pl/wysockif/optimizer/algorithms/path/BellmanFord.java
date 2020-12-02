@@ -7,13 +7,15 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BellmanFord implements FindingShortestPath {
+public class BellmanFord implements FindingPath {
     public static final int INFINITY = 1_000_000_000;
     public static final int UNDEFINED = -1;
 
-
     @Override
     public List<Integer> findPath(Graph residualGraph) {
+        checkIfArgumentIsNotNull(residualGraph);
+        checkIfGraphContainsAtLeastOneVertex(residualGraph);
+
         int numberOfVertices = residualGraph.getNumberOfVertices();
         int[] distances = initializeDistancesArray(numberOfVertices);
         int[] predecessors = initializePredecessorsArray(numberOfVertices);
@@ -55,7 +57,6 @@ public class BellmanFord implements FindingShortestPath {
                 tryToRelaxOneMoreTime(residualGraph, distances, i, j);
             }
         }
-
     }
 
     private void tryToRelaxOneMoreTime(Graph residualGraph, int[] distances, int u, int v) {
@@ -80,6 +81,12 @@ public class BellmanFord implements FindingShortestPath {
         return areChanges;
     }
 
+    private void checkIfGraphContainsAtLeastOneVertex(Graph residualGraph) {
+        if (residualGraph.getNumberOfVertices() < 1) {
+            throw new UnsupportedOperationException("Graf nie może nie posidać wierzchołków!");
+        }
+    }
+
     private boolean relaxSingleEdge(Graph residualGraph, int[] distances, int[] predecessors, boolean areChanges, int u, int v) {
         if (residualGraph.containsEdge(u, v)) {
             int price = residualGraph.getPriceOfEdge(u, v);
@@ -95,12 +102,16 @@ public class BellmanFord implements FindingShortestPath {
         return areChanges;
     }
 
+    private void checkIfArgumentIsNotNull(Object argument) {
+        if (argument == null) {
+            throw new IllegalArgumentException("Niezainicjowany argument!");
+        }
+    }
 
     private int[] initializePredecessorsArray(int numberOfVertices) {
         int[] predecessors = new int[numberOfVertices];
 
         Arrays.fill(predecessors, UNDEFINED);
-
         return predecessors;
     }
 
@@ -109,7 +120,6 @@ public class BellmanFord implements FindingShortestPath {
 
         Arrays.fill(distances, INFINITY);
         distances[0] = 0;
-
         return distances;
     }
 

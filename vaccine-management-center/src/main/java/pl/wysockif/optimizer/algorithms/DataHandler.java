@@ -24,6 +24,39 @@ public class DataHandler {
         this.connections = connections;
     }
 
+    public List<Deal> loadResults(Graph finalGraph) {
+        checkIfArgumentIsNotNull(finalGraph);
+        int lastPharmacyVertexIndex = finalGraph.getNumberOfVertices() - 2;
+        int firstProducerVertexIndex = 1;
+        List<Deal> deals = new LinkedList<>();
+
+        for (int i = lastPharmacyVertexIndex; i >= firstProducerVertexIndex; i--) {
+            for (int j = i - 1; j >= firstProducerVertexIndex; j--) {
+                addDeal(finalGraph, deals, i, j);
+            }
+        }
+        return deals;
+    }
+
+    private void addDeal(Graph finalGraph, List<Deal> deals, int firstVertex, int secondVertex) {
+        if (firstVertex > secondVertex && finalGraph.containsEdge(firstVertex, secondVertex)) {
+            int price = finalGraph.getPriceOfEdge(firstVertex, secondVertex) * -1;
+            int amount = finalGraph.getCapacityOfEdge(firstVertex, secondVertex);
+            int numberOfProducers = producers.getNumberOfProducers();
+            String producerName = producers.getProducerByIndex(secondVertex - 1).getName();
+            String pharmacyName = pharmacies.getPharmacyByIndex(firstVertex - numberOfProducers - 1).getName();
+
+            Deal deal = new Deal(producerName, pharmacyName, amount, price);
+            ((LinkedList<Deal>)deals).addFirst(deal);
+        }
+    }
+
+    private void checkIfArgumentIsNotNull(Object argument) {
+        if(argument == null){
+            throw new IllegalArgumentException("Niezainicjowany argument!");
+        }
+    }
+
     public Graph createGraph() {
         int numberOfVertices = countNumberOfVertices();
         Graph graph = new WeightedGraph(numberOfVertices);
@@ -43,8 +76,9 @@ public class DataHandler {
             int pharmacyIndex = pharmacies.getPharmacyIndexById(connection.getPharmacy().getId());
             int price = connection.getPrice();
             int maxNumberOfVaccines = connection.getMaxNumberOVaccines();
-            int from = producerIndex + 1;
-            int to = pharmacyIndex + producers.getNumberOfProducers() + 1;
+            int indexOfSource = 1;
+            int from = producerIndex + indexOfSource;
+            int to = pharmacyIndex + producers.getNumberOfProducers() + indexOfSource;
 
             graph.addEdge(from, to, maxNumberOfVaccines, price);
         }
@@ -87,31 +121,5 @@ public class DataHandler {
         int numberOfSourcesAndSinks = 2;
 
         return numberOfProducers + numberOfPharmacies + numberOfSourcesAndSinks;
-    }
-
-    public List<Deal> loadResults(Graph finalGraph) {
-        int lastPharmacyVertexIndex = finalGraph.getNumberOfVertices() - 2;
-        int firstProducerVertexIndex = 1;
-        List<Deal> deals = new LinkedList<>();
-
-        for (int i = lastPharmacyVertexIndex; i >= firstProducerVertexIndex; i--) {
-            for (int j = i - 1; j >= firstProducerVertexIndex; j--) {
-                addDeal(finalGraph, deals, i, j);
-            }
-        }
-        return deals;
-    }
-
-    private void addDeal(Graph finalGraph, List<Deal> deals, int u, int v) {
-        if (u > v && finalGraph.containsEdge(u, v)) {
-            int price = finalGraph.getPriceOfEdge(u, v) * -1;
-            int amount = finalGraph.getCapacityOfEdge(u, v);
-            int numberOfProducers = producers.getNumberOfProducers();
-            String producerName = producers.getProducerByIndex(v - 1).getName();
-            String pharmacyName = pharmacies.getPharmacyByIndex(u - numberOfProducers - 1).getName();
-
-            Deal deal = new Deal(producerName, pharmacyName, amount, price);
-            deals.add(deal);
-        }
     }
 }

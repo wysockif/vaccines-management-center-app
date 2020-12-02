@@ -5,7 +5,7 @@ import pl.wysockif.optimizer.algorithms.Deal;
 import pl.wysockif.optimizer.algorithms.flow.FordFulkerson;
 import pl.wysockif.optimizer.algorithms.flow.MaxFlow;
 import pl.wysockif.optimizer.algorithms.path.BellmanFord;
-import pl.wysockif.optimizer.algorithms.path.FindingShortestPath;
+import pl.wysockif.optimizer.algorithms.path.FindingPath;
 import pl.wysockif.optimizer.io.ErrorsHandler;
 import pl.wysockif.optimizer.io.InputFileReader;
 import pl.wysockif.optimizer.io.OutputFileWriter;
@@ -20,15 +20,20 @@ import java.util.List;
 import static pl.wysockif.optimizer.io.ErrorsHandler.INCORRECT_CALL;
 
 public class Optimizer {
-    public static boolean isLimit;
+    private static boolean isLimit;
     private static String inputFilePath;
     private static String outputFilePath;
 
+    private final String timeFormat;
     private Producers producers;
     private Pharmacies pharmacies;
     private Connections connections;
     private DataHandler minCostMaxFlow;
     private MaxFlow maxFlow;
+
+    public Optimizer(){
+        timeFormat = "[ %.4fs ]\n";
+    }
 
 
     public static void main(String[] args) {
@@ -48,18 +53,18 @@ public class Optimizer {
         pharmacies = inputFileReader.getPharmacies();
         connections = inputFileReader.getConnections();
         double time = (double)(System.nanoTime() - before) / 1_000_000_000.0;
-        System.out.printf("[ %.4fs ]\n", time);
+        System.out.printf(timeFormat, time);
     }
 
-    public Graph prepare() {
+    private Graph prepare() {
         System.out.print("(2/4) TRWA PRZYGOTOWYWANIE... ");
         long before = System.nanoTime();
         minCostMaxFlow = new DataHandler(producers, pharmacies, connections);
-        FindingShortestPath findingPath = new BellmanFord();
+        FindingPath findingPath = new BellmanFord();
         maxFlow = new FordFulkerson(findingPath);
         Graph graph = minCostMaxFlow.createGraph();
         double time = (double)(System.nanoTime() - before) / 1_000_000_000.0;
-        System.out.printf("[ %.4fs ]\n", time);
+        System.out.printf(timeFormat, time);
         return graph;
     }
 
@@ -68,18 +73,18 @@ public class Optimizer {
         long before = System.nanoTime();
         Graph finalGraph = this.maxFlow.findMaxFlow(initialGraph);
         double time = (double)(System.nanoTime() - before) / 1_000_000_000.0;
-        System.out.printf("[ %.4fs ]\n", time);
+        System.out.printf(timeFormat, time);
         return finalGraph;
     }
 
-    public void saveResults(Graph finalGraph) {
+    private void saveResults(Graph finalGraph) {
         System.out.print("(4/4) TRWA ZAPISYWANIE... ");
         long before = System.nanoTime();
         List<Deal> deals = minCostMaxFlow.loadResults(finalGraph);
         OutputFileWriter outputFileWriter = new OutputFileWriter(outputFilePath);
         double price = outputFileWriter.saveDeals(deals);
         double time = (double)(System.nanoTime() - before) / 1_000_000_000.0;
-        System.out.printf("[ %.4fs ]\n", time);
+        System.out.printf(timeFormat, time);
         System.out.println("Wynik został pomyślnie zapisany w pliku: " + outputFilePath + ".\n" +
                 "Całkowity koszt wyniósł: " + BigDecimal.valueOf(price).toPlainString() + " zł.");
     }
@@ -106,5 +111,9 @@ public class Optimizer {
             String message = "[WYWOŁANIE] Nie rozpoznano polecenia: " + instruction;
             ErrorsHandler.handleError(INCORRECT_CALL, message);
         }
+    }
+
+    public static boolean isLimit() {
+        return isLimit;
     }
 }

@@ -12,7 +12,6 @@ import java.util.zip.DataFormatException;
 import static pl.wysockif.optimizer.io.ErrorsHandler.INPUT_FILE_EXCEED_LIMIT;
 
 public class Pharmacies implements Items {
-
     private int counter;
     private final Map<Integer, Pharmacy> pharmacyByIndex;
     private final Map<Integer, Integer> indexById;
@@ -29,6 +28,7 @@ public class Pharmacies implements Items {
 
     @Override
     public Object[] convertAttributes(String[] attributes) throws DataFormatException {
+        checkIfArgumentIsNotNull(attributes);
         if (attributes.length != 3) {
             throw new DataFormatException("Niepoprawny format danych");
         }
@@ -37,6 +37,7 @@ public class Pharmacies implements Items {
 
     @Override
     public void validateAttributes(Object[] attributes) throws DataFormatException {
+        checkIfArgumentIsNotNull(attributes);
         int dailyRequirement = (int) attributes[2];
         int id = (int) attributes[0];
 
@@ -48,13 +49,14 @@ public class Pharmacies implements Items {
             String message = "Niepoprawny format danych. Ujemna wartość reprezentująca id producenta";
             throw new DataFormatException(message);
         }
-        if (alreadyContains(id)) {
+        if (contain(id)) {
             throw new DataFormatException("Nie można dodawać aptek o tym samym id");
         }
     }
 
     @Override
     public void addNewElement(Object[] attributes) {
+        checkIfArgumentIsNotNull(attributes);
         int id = (int) attributes[0];
         String name = (String) attributes[1];
         int dailyRequirement = (int) attributes[2];
@@ -63,13 +65,19 @@ public class Pharmacies implements Items {
         pharmacyByIndex.put(counter, pharmacy);
         indexById.put(id, counter);
         counter++;
-        if (Optimizer.isLimit) {
+        if (Optimizer.isLimit()) {
             checkUpperLimit();
         }
     }
 
+    private void checkIfArgumentIsNotNull(Object argument) {
+        if(argument == null){
+            throw new IllegalArgumentException("Niezainicjowany argument");
+        }
+    }
+
     private void checkUpperLimit() {
-        int upperLimit = 500;
+        int upperLimit = 1000;
 
         if (pharmacyByIndex.size() > upperLimit) {
             String message = "Przekroczono dozwolony limit ilości aptek wynoszący: " + upperLimit;
@@ -80,11 +88,25 @@ public class Pharmacies implements Items {
         }
     }
 
+    private Object[] parseAttributes(String[] attributes) throws DataFormatException {
+        Object[] convertedAttributes = new Object[attributes.length];
+        try {
+            convertedAttributes[0] = Integer.parseInt(attributes[0]);
+            convertedAttributes[1] = attributes[1];
+            convertedAttributes[2] = Integer.parseInt(attributes[2]);
+        } catch (NumberFormatException e) {
+            String info = e.getMessage().replace("For input string: ", "");
+            String message = "Nieudana konwersja danej: " + info;
+            throw new DataFormatException(message);
+        }
+        return convertedAttributes;
+    }
+
     public Pharmacy getPharmacyByIndex(int index) {
         return pharmacyByIndex.get(index);
     }
 
-    public boolean alreadyContains(int pharmacyId) {
+    public boolean contain(int pharmacyId) {
         return indexById.containsKey(pharmacyId);
     }
 
