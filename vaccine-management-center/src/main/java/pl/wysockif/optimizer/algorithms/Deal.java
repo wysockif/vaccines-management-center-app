@@ -36,7 +36,7 @@ public class Deal {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         Deal deal = (Deal) o;
@@ -49,5 +49,15 @@ public class Deal {
     @Override
     public int hashCode() {
         return Objects.hash(producerName, pharmacyName, amount, price);
+    }
+
+    @Override
+    public String toString() {
+        return "Deal{" +
+                "producerName='" + producerName + '\'' +
+                ", pharmacyName='" + pharmacyName + '\'' +
+                ", amount=" + amount +
+                ", price=" + price +
+                '}';
     }
 }

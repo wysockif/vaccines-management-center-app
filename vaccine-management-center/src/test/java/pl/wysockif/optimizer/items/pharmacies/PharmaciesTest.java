@@ -87,7 +87,7 @@ public class PharmaciesTest {
 
         // then
         Object[] expectedAttributes = {0, "Nazwa apteki", 600};
-        assertArrayEquals(expectedAttributes,actualAttributes);
+        assertArrayEquals(expectedAttributes, actualAttributes);
     }
 
     @Test(expected = DataFormatException.class)

@@ -47,12 +47,12 @@ public class DataHandler {
             String pharmacyName = pharmacies.getPharmacyByIndex(firstVertex - numberOfProducers - 1).getName();
 
             Deal deal = new Deal(producerName, pharmacyName, amount, price);
-            ((LinkedList<Deal>)deals).addFirst(deal);
+            ((LinkedList<Deal>) deals).addFirst(deal);
         }
     }
 
     private void checkIfArgumentIsNotNull(Object argument) {
-        if(argument == null){
+        if (argument == null) {
             throw new IllegalArgumentException("Niezainicjowany argument!");
         }
     }

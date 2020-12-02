@@ -45,8 +45,6 @@ b
 :
 
 output.txt,a\d\adbe6c7d3c0d8b19ecd492bec9532c13a6e1c9ad
-N
-exemplaryData/correct/data.txt,2\0\20967ecdad6e42001e36ec4ff18887a9b61c6725
 Q
 !exemplaryData/incorrect/data1.txt,6\d\6d1f8f7a4f78dcd28900f46a52dc392ff1c96c8c
 Q
@@ -98,3 +96,7 @@ v
 Fsrc/test/java/pl/wysockif/optimizer/items/producers/ProducersTest.java,3\1\31ee10782f3f99bffa73e30ac7144f006231ac87
 x
 Hsrc/test/java/pl/wysockif/optimizer/items/pharmacies/PharmaciesTest.java,e\c\ec5e398a3ebe143bb360008d4df2dbe9401d0516
+8
+data.txt,b\1\b12c19770204e84412a803b5e9fea02307e3379c
+O
+exemplaryData/correct/data1.txt,c\b\cb18e9d698c3c8ed6405692f9f3288e3261eea68

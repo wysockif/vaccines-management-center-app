@@ -29,12 +29,6 @@ public class WeightedGraph implements Graph {
         return prices[from][to];
     }
 
-    private void checkCorrectnessOfOperation(int from, int to) {
-        if (containsVertices(from, to)) {
-            throw new UnsupportedOperationException("Conajmniej jeden z podanych wierzchołków nie istnieje");
-        }
-    }
-
 
     @Override
     public int getCapacityOfEdge(int from, int to) {
@@ -53,13 +47,19 @@ public class WeightedGraph implements Graph {
         capacities[from][to] += amount;
     }
 
-    private boolean containsVertices(int from, int to) {
-        return (from >= numberOfVertices || to >= numberOfVertices);
-    }
-
     @Override
     public void setPriceOfEdge(int from, int to, int price) {
         checkCorrectnessOfOperation(from, to);
         prices[from][to] = price;
+    }
+
+    private boolean containsVertices(int from, int to) {
+        return (from >= numberOfVertices || to >= numberOfVertices);
+    }
+
+    private void checkCorrectnessOfOperation(int from, int to) {
+        if (containsVertices(from, to)) {
+            throw new UnsupportedOperationException("Conajmniej jeden z podanych wierzchołków nie istnieje");
+        }
     }
 }

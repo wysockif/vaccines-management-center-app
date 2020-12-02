@@ -60,8 +60,8 @@ public class DataHandlerTest {
         given(producers.getProducerByIndex(1)).willReturn(new Producer(1, "producent 1", 100));
         given(pharmacies.getPharmacyByIndex(0)).willReturn(new Pharmacy(0, "apteka 0", 100));
         Graph graph = new WeightedGraph(5);
-        graph.addEdge(3,1, 40, -90);
-        graph.addEdge(3,2, 50, -60);
+        graph.addEdge(3, 1, 40, -90);
+        graph.addEdge(3, 2, 50, -60);
 
         // when
         List<Deal> actualDeals = dataHandler.loadResults(graph);
@@ -80,7 +80,7 @@ public class DataHandlerTest {
         given(producers.getProducerByIndex(0)).willReturn(new Producer(0, "producent 0", 100));
         given(pharmacies.getPharmacyByIndex(0)).willReturn(new Pharmacy(0, "apteka 0", 100));
         Graph graph = new WeightedGraph(4);
-        graph.addEdge(2,1, 40, -90);
+        graph.addEdge(2, 1, 40, -90);
 
         // when
         List<Deal> actualDeals = dataHandler.loadResults(graph);

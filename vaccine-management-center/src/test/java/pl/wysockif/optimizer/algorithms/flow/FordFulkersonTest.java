@@ -172,8 +172,8 @@ public class FordFulkersonTest {
 
         // when
         Graph graph = maxFlow.findMaxFlow(residualGraph);
-        int actualResidualCapacityOfFirstEdge = graph.getCapacityOfEdge(1,0);
-        int actualResidualCapacityOfSecondEdge = graph.getCapacityOfEdge(2,1);
+        int actualResidualCapacityOfFirstEdge = graph.getCapacityOfEdge(1, 0);
+        int actualResidualCapacityOfSecondEdge = graph.getCapacityOfEdge(2, 1);
 
         // then
         int expectedResidualCapacityOfFirstEdge = 75;
@@ -194,7 +194,7 @@ public class FordFulkersonTest {
         given(findingShortestPath.findPath(graph)).willReturn(shortestPath).willReturn(emptyPath);
 
         // when
-        boolean isFirstEdge = maxFlow.findMaxFlow(graph).containsEdge(0,1);
+        boolean isFirstEdge = maxFlow.findMaxFlow(graph).containsEdge(0, 1);
 
         // then
         assertFalse(isFirstEdge);

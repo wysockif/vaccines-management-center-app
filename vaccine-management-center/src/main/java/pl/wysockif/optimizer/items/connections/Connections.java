@@ -99,7 +99,7 @@ public class Connections implements Items {
     }
 
     private void checkIfArgumentIsNotNull(Object argument) {
-        if(argument == null){
+        if (argument == null) {
             throw new IllegalArgumentException("Niezainicjowany argument");
         }
     }
@@ -151,7 +151,6 @@ public class Connections implements Items {
     }
 
 
-
     public Collection<Connection> getConnectionsCollection() {
         return connectionByIndex.values();
     }
@@ -172,8 +171,12 @@ public class Connections implements Items {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
             ConnectionIdKey connectionIdKey = (ConnectionIdKey) o;
             return producerId == connectionIdKey.producerId &&
                     pharmacyId == connectionIdKey.pharmacyId;

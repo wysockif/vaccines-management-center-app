@@ -1,6 +1,5 @@
 package pl.wysockif.optimizer.items.producers;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +14,7 @@ public class ProducersTest {
     private Producers producers;
 
     @Before
-    public void setUp()  {
+    public void setUp() {
         producers = new Producers();
     }
 
@@ -91,7 +90,7 @@ public class ProducersTest {
 
         // then
         Object[] expectedAttributes = {0, "Nazwa producenta", 600};
-        assertArrayEquals(expectedAttributes,actualAttributes);
+        assertArrayEquals(expectedAttributes, actualAttributes);
     }
 
     @Test(expected = DataFormatException.class)

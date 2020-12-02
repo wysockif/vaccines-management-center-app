@@ -71,7 +71,7 @@ public class FordFulkerson implements MaxFlow {
     }
 
     private void checkIfArgumentIsNotNull(Object argument) {
-        if(argument == null){
+        if (argument == null) {
             throw new IllegalArgumentException("Niezainicjowany argument!");
         }
     }
