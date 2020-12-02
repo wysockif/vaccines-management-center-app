@@ -76,7 +76,7 @@ public class Producers implements Items {
     }
 
     private void checkIfArgumentIsNotNull(Object argument) {
-        if(argument == null){
+        if (argument == null) {
             throw new IllegalArgumentException("Niezainicjowany argument");
         }
     }

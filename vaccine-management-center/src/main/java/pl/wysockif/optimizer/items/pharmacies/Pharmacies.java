@@ -36,6 +36,22 @@ public class Pharmacies implements Items {
     }
 
     @Override
+    public void addNewElement(Object[] attributes) {
+        checkIfArgumentIsNotNull(attributes);
+        int id = (int) attributes[0];
+        String name = (String) attributes[1];
+        int dailyRequirement = (int) attributes[2];
+        Pharmacy pharmacy = new Pharmacy(id, name, dailyRequirement);
+
+        pharmacyByIndex.put(counter, pharmacy);
+        indexById.put(id, counter);
+        counter++;
+        if (Optimizer.isLimit()) {
+            checkUpperLimit();
+        }
+    }
+
+    @Override
     public void validateAttributes(Object[] attributes) throws DataFormatException {
         checkIfArgumentIsNotNull(attributes);
         int dailyRequirement = (int) attributes[2];
@@ -54,24 +70,8 @@ public class Pharmacies implements Items {
         }
     }
 
-    @Override
-    public void addNewElement(Object[] attributes) {
-        checkIfArgumentIsNotNull(attributes);
-        int id = (int) attributes[0];
-        String name = (String) attributes[1];
-        int dailyRequirement = (int) attributes[2];
-        Pharmacy pharmacy = new Pharmacy(id, name, dailyRequirement);
-
-        pharmacyByIndex.put(counter, pharmacy);
-        indexById.put(id, counter);
-        counter++;
-        if (Optimizer.isLimit()) {
-            checkUpperLimit();
-        }
-    }
-
     private void checkIfArgumentIsNotNull(Object argument) {
-        if(argument == null){
+        if (argument == null) {
             throw new IllegalArgumentException("Niezainicjowany argument");
         }
     }

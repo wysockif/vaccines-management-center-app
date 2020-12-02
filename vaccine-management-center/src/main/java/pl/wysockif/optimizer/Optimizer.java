@@ -20,6 +20,8 @@ import java.util.List;
 import static pl.wysockif.optimizer.io.ErrorsHandler.INCORRECT_CALL;
 
 public class Optimizer {
+    public static final double NANOSECONDS_IN_SECOND = 1_000_000_000.0;
+
     private static boolean isLimit;
     private static String inputFilePath;
     private static String outputFilePath;
@@ -31,7 +33,7 @@ public class Optimizer {
     private DataHandler minCostMaxFlow;
     private MaxFlow maxFlow;
 
-    public Optimizer(){
+    public Optimizer() {
         timeFormat = "[ %.4fs ]\n";
     }
 
@@ -52,7 +54,7 @@ public class Optimizer {
         producers = inputFileReader.getProducers();
         pharmacies = inputFileReader.getPharmacies();
         connections = inputFileReader.getConnections();
-        double time = (double)(System.nanoTime() - before) / 1_000_000_000.0;
+        double time = (double) (System.nanoTime() - before) / NANOSECONDS_IN_SECOND;
         System.out.printf(timeFormat, time);
     }
 
@@ -63,7 +65,7 @@ public class Optimizer {
         FindingPath findingPath = new BellmanFord();
         maxFlow = new FordFulkerson(findingPath);
         Graph graph = minCostMaxFlow.createGraph();
-        double time = (double)(System.nanoTime() - before) / 1_000_000_000.0;
+        double time = (double) (System.nanoTime() - before) / NANOSECONDS_IN_SECOND;
         System.out.printf(timeFormat, time);
         return graph;
     }
@@ -72,7 +74,7 @@ public class Optimizer {
         System.out.print("(3/4) TRWA OBLICZANIE... ");
         long before = System.nanoTime();
         Graph finalGraph = this.maxFlow.findMaxFlow(initialGraph);
-        double time = (double)(System.nanoTime() - before) / 1_000_000_000.0;
+        double time = (double) (System.nanoTime() - before) / NANOSECONDS_IN_SECOND;
         System.out.printf(timeFormat, time);
         return finalGraph;
     }
@@ -83,7 +85,7 @@ public class Optimizer {
         List<Deal> deals = minCostMaxFlow.loadResults(finalGraph);
         OutputFileWriter outputFileWriter = new OutputFileWriter(outputFilePath);
         double price = outputFileWriter.saveDeals(deals);
-        double time = (double)(System.nanoTime() - before) / 1_000_000_000.0;
+        double time = (double) (System.nanoTime() - before) / NANOSECONDS_IN_SECOND;
         System.out.printf(timeFormat, time);
         System.out.println("Wynik został pomyślnie zapisany w pliku: " + outputFilePath + ".\n" +
                 "Całkowity koszt wyniósł: " + BigDecimal.valueOf(price).toPlainString() + " zł.");

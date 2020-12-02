@@ -91,8 +91,8 @@ public class InputFileReader {
     }
 
     private void checkIfArgumentsAreNotNull(Object... args) {
-        for(Object o : args){
-            if(o == null){
+        for (Object o : args) {
+            if (o == null) {
                 throw new IllegalArgumentException("Niezainicjowany argument!");
             }
         }

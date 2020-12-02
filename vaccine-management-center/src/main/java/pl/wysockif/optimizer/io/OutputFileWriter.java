@@ -29,14 +29,14 @@ public class OutputFileWriter {
     }
 
     private String concatenateLine(int length, String producerName, String pharmacyName, int amount, double price) {
-        producerName = rightPad(producerName, length);
+        producerName = createRightPad(producerName, length);
         double totalCost = (double) amount * price / 100;
 
         return producerName + " -> " + pharmacyName +
                 " [Koszt = " + amount + " * " + price / 100 + " = " + totalCost + " zł]";
     }
 
-    private String rightPad(String text, int length) {
+    private String createRightPad(String text, int length) {
         String format = "%-" + length + "." + length + "s";
         return String.format(format, text);
     }
@@ -71,13 +71,13 @@ public class OutputFileWriter {
     }
 
     private void checkIfArgumentIsNotNull(Object argument) {
-        if(argument == null){
+        if (argument == null) {
             throw new IllegalArgumentException("Niezainicjowany argument!");
         }
     }
 
     private long saveSingleDeal(List<Deal> deals, int longestNameLength, long totalCost) {
-        Deal deal = ((LinkedList<Deal>)deals).removeFirst();
+        Deal deal = ((LinkedList<Deal>) deals).removeFirst();
         int price = deal.getPrice();
         int amount = deal.getAmount();
 
@@ -98,7 +98,7 @@ public class OutputFileWriter {
 
 
     private double saveTheSummary(long totalCost) {
-        double convertedTotalCost =  (double)totalCost / 100.0;
+        double convertedTotalCost = (double) totalCost / 100.0;
         BigDecimal totalCostDecimal = BigDecimal.valueOf(convertedTotalCost);
         String line = "Opłaty całkowite: " + totalCostDecimal.toPlainString() + " zł";
 
